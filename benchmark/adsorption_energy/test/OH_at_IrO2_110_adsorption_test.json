@@ -1,0 +1,10 @@
+{
+  "case_id": "OH_at_IrO2_110_adsorption",
+  "category": "adsorption_energy",
+  "description": "Calculate the adsorption energy of OH on the IrO2(110) surface.",
+  "workspace": "adsorption_energy/bench_OH_at_IrO2_110_adsorption",
+  "user_prompt": "Calculate the adsorption energy of OH on the IrO2(110) rutile surface (P4_2/mnm) at the coordinatively unsaturated Ir site. Report the final adsorption energy Eads (in eV), defined as Eads = E(slab+OH) - E(slab) - (E_H2O - 1/2 E_H2).",
+  "benchmark_result": {
+    "Eads": null
+  }
+}

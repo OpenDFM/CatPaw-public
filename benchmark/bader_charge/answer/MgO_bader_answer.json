@@ -1,0 +1,45 @@
+{
+  "case_id": "MgO_bader",
+  "category": "bader_charge",
+  "description": "Perform Bader charge analysis on bulk MgO (rock salt).",
+  "workspace": "bader_charge/bench_MgO_bader",
+  "user_prompt": "Perform Bader charge analysis on bulk MgO (rock salt structure, Fm-3m). Report the Bader net charge (in electrons) for Mg atoms and O atoms.",
+
+  "tags": {
+    "is_magnetic": false,
+    "needs_dft+u": false,
+    "modeling_difficulty": "M1",
+    "correction_difficulty": "P1",
+    "workflow_complexity": "W2"
+  },
+
+  "acceptance_criteria": {
+    "Mg_bader_charge": {
+      "value": 1.70,
+      "unit": "e",
+      "tolerance": 0.2,
+      "tolerance_type": "absolute"
+    },
+    "O_bader_charge": {
+      "value": -1.70,
+      "unit": "e",
+      "tolerance": 0.2,
+      "tolerance_type": "absolute"
+    }
+  },
+
+  "method": {
+    "references": [
+      "Limas & Manz, RSC Adv. 6, 45727 (2016)"
+    ],
+    "modeling": "Rock-salt MgO (Fm-3m); primitive 2-atom or conventional 8-atom cell.",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "magnetism": "ISPIN=1",
+      "kpoints": ">= 6x6x6 (bulk)",
+      "smearing": "ISMEAR=-5 or ISMEAR=0, SIGMA=0.05",
+      "precision": "PREC=Accurate"
+    },
+    "rationale": "Bader values from Limas & Manz 2016: bulk MgO Mg +1.70 e is explicitly reported; O -1.70 e follows from charge neutrality. The ~15% shortfall from the formal +/-2 is Bader's grid partition of this closed-shell ionic insulator. The key_parameters are the recommended VASP protocol. Tolerance +/-0.20 e absolute."
+  }
+}

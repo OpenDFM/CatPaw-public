@@ -1,0 +1,40 @@
+{
+  "case_id": "O3_spin",
+  "category": "spin_localization",
+  "description": "Analyze spin density of a gas-phase O3 (ozone) molecule. This is a negative control for molecules.",
+  "workspace": "spin_localization/bench_O3_spin",
+  "user_prompt": "Perform spin density analysis on a gas-phase O3 (ozone) molecule in a vacuum box. Determine whether the system has unpaired electrons and report the total magnetic moment of the molecule.",
+
+  "tags": {
+    "is_magnetic": false,
+    "needs_dft+u": false,
+    "modeling_difficulty": "M1",
+    "correction_difficulty": "P1",
+    "workflow_complexity": "W2"
+  },
+
+  "acceptance_criteria": {
+    "total_magmom": {
+      "value": 0.0,
+      "unit": "uB",
+      "tolerance": 0.10,
+      "tolerance_type": "absolute"
+    }
+  },
+
+  "method": {
+    "references": [
+      "Borowski et al., J. Chem. Phys. 97, 5568 (1992)",
+      "NIST Chemistry WebBook, NIST Standard Reference Database 69 (O3, X^1A1 ground state)"
+    ],
+    "modeling": "Single O3 molecule in a cubic vacuum box >= 12 A.",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "magnetism": "ISPIN=2",
+      "kpoints": "Gamma-only",
+      "smearing": "ISMEAR=0, SIGMA=0.01",
+      "precision": "PREC=Accurate, ENCUT >= 520 eV, LORBIT=11"
+    },
+    "rationale": "Negative control: O3 has the X^1A1 singlet ground state (18 valence electrons, even), so the total magnetic moment is fixed at 0 by spin multiplicity. ISPIN=2 must still be enabled so the agent verifies rather than assumes the non-magnetic ground state and reports 'no unpaired electrons'. Tolerance 0.10 uB absorbs the VASP magnetisation-integration noise floor."
+  }
+}

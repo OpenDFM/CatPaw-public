@@ -1,0 +1,39 @@
+{
+  "case_id": "Pt_at_Ni_111_dband",
+  "category": "d_band_center",
+  "description": "Calculate the d-band center of a single Pt atom substituting one surface Ni atom on the Ni(111) ferromagnetic surface.",
+  "workspace": "d_band_center/bench_Pt_at_Ni_111_dband",
+  "user_prompt": "Build a Ni(111) surface slab (FCC, Fm-3m) and substitute one surface Ni atom with a single Pt atom. Extract the d-band center (in eV relative to the Fermi level) from the Pt atom's d-orbital projected DOS and report the final value.",
+
+  "tags": {
+    "is_magnetic": true,
+    "needs_dft+u": false,
+    "modeling_difficulty": "M3",
+    "correction_difficulty": "P2",
+    "workflow_complexity": "W2"
+  },
+
+  "acceptance_criteria": {
+    "d_band_center": {
+      "value": -3.05,
+      "unit": "eV",
+      "tolerance": 0.4,
+      "tolerance_type": "absolute"
+    }
+  },
+
+  "method": {
+    "references": [
+      "Ruban, Hammer, Stoltze, Skriver, and Norskov, J. Mol. Catal. A: Chem. 115, 421-429 (1997)."
+    ],
+    "modeling": "Use a ferromagnetic Ni(111) slab with one top-layer Ni atom substituted by Pt. Project the DOS on the substituted Pt atom only.",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "magnetism": "ISPIN=2",
+      "kpoints": ">= 5x5x1 (3x3x1 slab)",
+      "smearing": "ISMEAR=0 SIGMA=0.05",
+      "precision": "PREC=Accurate; LORBIT=11; NEDOS >= 2001"
+    },
+    "rationale": "Ruban et al. list the isolated surface impurity shift for Pt in a Ni host as -0.80 eV relative to the clean Pt(111) diagonal value of -2.25 eV, giving epsilon_d(Pt@Ni(111)) = -3.05 eV. Their epsilon_d is the surface-atom d-DOS centroid relative to E_F, matching the benchmark full_d_band_centers_rel_fermi_eV convention. This case scores substitutional surface Pt, not Pt overlayer or Pt-skin geometries on Ni. The 0.4 eV absolute tolerance covers the gap between Ruban's non-magnetic LMTO-ASA/LDA, dilute, unrelaxed impurity model and a ferromagnetic relaxed VASP/PBE/PAW slab."
+  }
+}

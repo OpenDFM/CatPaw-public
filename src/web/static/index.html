@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CatPaw · Workflow</title>
+  <script src="/static/preferences.js"></script>
+  <link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+  <aside id="sidebar">
+    <div class="brand-row"><a id="home-link" class="brand" href="/" aria-label="CatPaw 首页" data-i18n-aria-label="CatPaw 首页">CatPaw <small data-i18n="催化计算智能体">催化计算智能体</small></a><button id="close-sidebar" class="mobile-only" aria-label="关闭工作区列表" data-i18n-aria-label="关闭工作区列表">×</button></div><button id="new-run" type="button"><span data-i18n="＋ 新建计算">＋ 新建计算</span></button><label class="workspace-search"><span data-i18n="搜索工作区">搜索工作区</span><input id="workspace-search" type="search" placeholder="名称或研究目标" data-i18n-placeholder="名称或研究目标"></label>
+    <div class="section-label">WORKSPACES <button id="refresh" title="刷新工作区" data-i18n-title="刷新工作区"><span data-i18n="刷新">刷新</span></button></div>
+    <nav id="workspaces" aria-label="工作区" data-i18n-aria-label="工作区"></nav>
+    <p id="live-status" class="live-status" role="status"><span data-i18n="正在连接…">正在连接…</span></p>
+    <button id="open-settings" class="settings-entry" type="button" aria-haspopup="dialog"><span class="settings-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m9.5 3-.6 2.2-1.7 1L5 5.6 2.5 10l1.6 1.6v1.8L2.5 15 5 19.4l2.2-.6 1.7 1 .6 2.2h5l.6-2.2 1.7-1 2.2.6 2.5-4.4-1.6-1.6v-1.8L21.5 10 19 5.6l-2.2.6-1.7-1-.6-2.2Z"/><circle cx="12" cy="12.5" r="3.2"/></svg></span><span><span data-i18n="设置">设置</span><small><span data-i18n="Agent 模型与连接">Agent 模型与连接</span></small></span></button>
+  </aside>
+  <div id="scrim" hidden></div>
+  <main>
+    <div class="topbar">
+      <button id="open-sidebar" class="mobile-only" aria-label="打开工作区列表" aria-expanded="false" aria-controls="sidebar" data-i18n-aria-label="打开工作区列表">☰</button>
+      <strong><span data-i18n="计算工作区">计算工作区</span></strong>
+      <nav id="workspace-nav" aria-label="页面导航" hidden data-i18n-aria-label="页面导航"><a href="#workflow">DAG</a><a href="#inspection"><span data-i18n="节点与 Trace">节点与 Trace</span></a><a href="#report-section"><span data-i18n="报告">报告</span></a></nav>
+      <div class="display-preferences">
+        <div class="preference-group" role="group" aria-label="界面语言" data-i18n-aria-label="界面语言">
+          <button type="button" data-language="zh-CN" lang="zh-CN" aria-pressed="false">中<span class="language-full">文</span></button>
+          <button type="button" data-language="en" lang="en" aria-pressed="true">EN</button>
+        </div>
+        <div class="preference-group" role="group" aria-label="外观" data-i18n-aria-label="外观">
+          <button type="button" data-theme="light" aria-label="浅色模式" title="浅色模式" data-i18n-aria-label="浅色模式" data-i18n-title="浅色模式" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg></button>
+          <button type="button" data-theme="dark" aria-label="深色模式" title="深色模式" data-i18n-aria-label="深色模式" data-i18n-title="深色模式" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 13A8.5 8.5 0 0 1 11 3.5 8.5 8.5 0 1 0 20.5 13Z"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <div class="content">
+    <div id="error" role="alert" hidden></div>
+    <div id="new-task" class="new-task">
+      <h1><span data-i18n="今天想探索什么？">今天想探索什么？</span></h1>
+      <p class="muted"><span data-i18n="描述你的体系与计算目标，让 CatPaw 开始工作。">描述你的体系与计算目标，让 CatPaw 开始工作。</span></p>
+      <form id="launch" class="composer" aria-label="新建计算" data-i18n-aria-label="新建计算">
+        <textarea name="goal" aria-label="研究目标" required rows="4" placeholder="例如：计算 CO 在 Ni(111) 表面的吸附能，比较不同吸附位点…" data-i18n-aria-label="研究目标" data-i18n-placeholder="例如：计算 CO 在 Ni(111) 表面的吸附能，比较不同吸附位点…"></textarea>
+        <details class="task-options">
+          <summary><span data-i18n="⚙ 计算选项">⚙ 计算选项</span></summary>
+          <div class="option-fields">
+            <label><span data-i18n="工作区名称">工作区名称</span><input name="workspace_name" pattern="[A-Za-z0-9_-]+" placeholder="可选，英文名称" data-i18n-placeholder="可选，英文名称"></label>
+          </div>
+        </details>
+        <div id="attachment" class="attachment" hidden><span id="attachment-name"></span><button id="remove-structure" type="button" aria-label="移除初始结构" data-i18n-aria-label="移除初始结构">×</button></div>
+        <div class="composer-actions">
+          <div class="composer-tools">
+            <input id="structure-file" type="file" hidden>
+            <button id="attach-structure" class="icon-button" type="button" aria-label="上传初始结构" title="上传初始结构（最多 10 MB）" data-i18n-aria-label="上传初始结构" data-i18n-title="上传初始结构（最多 10 MB）">＋</button>
+            <button id="review-mode" class="pill" type="button" aria-pressed="false" title="开启后在审核关口等待你的反馈，节点串行执行" data-i18n-title="开启后在审核关口等待你的反馈，节点串行执行"><span data-i18n="人工审核">人工审核</span></button>
+          </div>
+          <button class="primary" type="submit"><span data-i18n="启动计算 ↑">启动计算 ↑</span></button>
+        </div>
+        <p id="launch-status" role="status"></p>
+      </form>
+    </div>
+    <header id="workspace-header" hidden><div><p class="section-label">RESEARCH WORKFLOW</p><h1 id="title"><span data-i18n="选择一个工作区">选择一个工作区</span></h1><p id="goal"><span data-i18n="查看计算依赖、节点证据和 Agent 执行过程。">查看计算依赖、节点证据和 Agent 执行过程。</span></p></div><div class="workspace-actions"><span id="status" class="badge"></span><div id="task-actions" hidden><button id="stop-run" type="button" title="停止 Agent，并取消本任务的 Slurm 作业" data-i18n-title="停止 Agent，并取消本任务的 Slurm 作业"><span data-i18n="■ 停止">■ 停止</span></button><button id="delete-run" class="danger-text" type="button"><span data-i18n="删除">删除</span></button></div></div></header>
+    <div id="detail" hidden>
+      <section id="review-panel" hidden aria-labelledby="review-title">
+        <div class="section-head"><h2 id="review-title"><span data-i18n="等待人工审核">等待人工审核</span></h2><span class="badge"><span data-i18n="等待反馈">等待反馈</span></span></div>
+        <p id="review-prompt"></p>
+        <button id="review-node" type="button" hidden><span data-i18n="查看节点证据">查看节点证据</span></button>
+        <details><summary><span data-i18n="审核结果详情">审核结果详情</span></summary><pre id="review-result" class="document"></pre></details>
+        <form id="review-form">
+          <label><span data-i18n="审核意见">审核意见</span><textarea id="review-feedback" rows="3" placeholder="批准时可留空；要求修改时请说明原因和具体修改内容" data-i18n-placeholder="批准时可留空；要求修改时请说明原因和具体修改内容"></textarea></label>
+          <div class="controls"><button class="primary" type="submit" value="APPROVE"><span data-i18n="批准并继续">批准并继续</span></button><button type="submit" value="REVISE"><span data-i18n="要求修改">要求修改</span></button></div>
+          <p id="review-status" role="status"></p>
+        </form>
+      </section>
+      <section id="api-wait-panel" hidden aria-labelledby="api-wait-title">
+        <div class="section-head"><h2 id="api-wait-title"><span data-i18n="API 重试等待">API 重试等待</span></h2><span id="api-wait-count" class="badge"></span></div>
+        <div id="api-waits" class="api-waits"></div>
+      </section>
+      <section id="workflow">
+        <div class="section-head"><h2><span data-i18n="计算 DAG">计算 DAG</span></h2><div class="controls"><span id="counts"></span><button id="zoom-out" aria-label="缩小 DAG" data-i18n-aria-label="缩小 DAG">−</button><button id="zoom-in" aria-label="放大 DAG" data-i18n-aria-label="放大 DAG">＋</button></div></div>
+        <div class="legend"><span data-status="done"><span data-i18n="完成">完成</span></span><span data-status="running"><span data-i18n="执行中">执行中</span></span><span data-status="ready"><span data-i18n="就绪">就绪</span></span><span data-status="pending"><span data-i18n="等待依赖">等待依赖</span></span><span data-status="failed"><span data-i18n="失败">失败</span></span></div>
+        <div id="dag" class="dag" aria-label="计算依赖图" data-i18n-aria-label="计算依赖图"></div>
+      </section>
+      <div id="inspection" class="inspection">
+        <section class="node-panel">
+          <div class="section-head"><h2 id="node-title"><span data-i18n="节点详情">节点详情</span></h2><span id="node-status" class="badge"></span></div>
+          <p id="node-goal" class="muted"><span data-i18n="点击 DAG 中的节点查看输入和结果。">点击 DAG 中的节点查看输入和结果。</span></p>
+          <div id="node-inputs"></div><p id="node-error" class="failure"></p>
+          <div class="tabs" role="tablist" aria-label="节点检查" data-i18n-aria-label="节点检查">
+            <button role="tab" id="tab-overview" aria-controls="node-overview" aria-selected="true"><span data-i18n="阶段与计算">阶段与计算</span></button>
+            <button role="tab" id="tab-parameters" aria-controls="node-parameters" aria-selected="false"><span data-i18n="参数设置">参数设置</span></button>
+            <button role="tab" id="tab-evidence" aria-controls="node-evidence" aria-selected="false"><span data-i18n="证据文件">证据文件</span></button>
+          </div>
+          <div id="node-overview" role="tabpanel" aria-labelledby="tab-overview"><div id="stages" class="stages"></div><div id="structures"></div>
+          <div id="structure-preview" hidden>
+            <h3><span data-i18n="结构可视化">结构可视化</span></h3>
+            <label><span data-i18n="结构文件">结构文件</span><select id="preview-source"></select></label>
+            <div class="preview-actions"><button id="generate-preview" type="button"><span data-i18n="生成并保存">生成并保存</span></button></div>
+            <p id="preview-status" class="muted" role="status"></p>
+            <div id="preview-display" hidden>
+              <div class="preview-actions"><select id="preview-style" aria-label="结构显示样式" data-i18n-aria-label="结构显示样式"><option value="ball" data-i18n="球棍">球棍</option><option value="sphere" data-i18n="空间填充">空间填充</option><option value="stick" data-i18n="棍状">棍状</option></select><button id="reset-preview" type="button"><span data-i18n="重置视角">重置视角</span></button></div>
+              <div id="preview-canvas" aria-label="三维结构可视化" data-i18n-aria-label="三维结构可视化"></div>
+              <p id="preview-atom" class="muted"><span data-i18n="拖动旋转 · 滚轮缩放 · 点击原子查看元素与坐标">拖动旋转 · 滚轮缩放 · 点击原子查看元素与坐标</span></p>
+            </div>
+          </div>
+          <div id="calculations">
+            <section id="calculation-live" class="calculation-live" hidden aria-label="计算实时监控" data-i18n-aria-label="计算实时监控">
+              <div class="section-head"><h3><span data-i18n="计算实时监控">计算实时监控</span></h3><button id="calculation-refresh" type="button"><span data-i18n="刷新">刷新</span></button></div>
+              <label><span data-i18n="计算尝试">计算尝试</span><select id="calculation-select"></select></label>
+              <p id="calculation-summary"></p><p id="calculation-resources" class="muted"></p>
+              <dl id="calculation-metrics" class="calculation-metrics"></dl>
+              <p id="calculation-message" class="muted" role="status"></p>
+              <div id="calculation-charts" class="calculation-charts"></div>
+              <p id="calculation-source" class="muted"></p>
+              <details class="calculation-log"><summary><strong id="calculation-log-name"><span data-i18n="Slurm 日志">Slurm 日志</span></strong> <span data-i18n="· 最近 60 行">· 最近 60 行</span></summary><pre id="calculation-log" tabindex="0"></pre></details>
+              <p id="calculation-freshness" class="muted"></p>
+              <p class="muted"><span data-i18n="只读 · 当前节点每 10 秒刷新 · 页面隐藏时暂停">只读 · 当前节点每 10 秒刷新 · 页面隐藏时暂停</span></p>
+            </section>
+          </div></div>
+          <div id="node-parameters" role="tabpanel" aria-labelledby="tab-parameters" hidden>
+            <label><span data-i18n="计算目录">计算目录</span><select id="parameter-calculation"></select></label>
+            <p id="parameter-empty" class="muted" hidden><span data-i18n="尚未生成 INCAR、KPOINTS 或 POSCAR。">尚未生成 INCAR、KPOINTS 或 POSCAR。</span></p>
+            <div id="parameter-files">
+              <h3>INCAR</h3><pre id="parameter-incar" class="document" tabindex="0"></pre>
+              <h3>KPOINTS</h3><pre id="parameter-kpoints" class="document" tabindex="0"></pre>
+              <h3><span data-i18n="晶胞参数 · POSCAR">晶胞参数 · POSCAR</span></h3>
+              <p id="parameter-lattice-message" class="muted"></p>
+              <dl id="parameter-lattice" class="calculation-metrics" hidden></dl>
+            </div>
+          </div>
+          <div id="node-evidence" role="tabpanel" aria-labelledby="tab-evidence" hidden>
+            <div id="evidence-viewer">
+              <div class="evidence-toolbar">
+                <label><span data-i18n="证据文件">证据文件</span><select id="document"></select></label>
+                <div class="controls"><button id="document-source" type="button" aria-pressed="false"><span data-i18n="原文">原文</span></button><a id="document-download" download><span data-i18n="下载">下载</span></a><button id="expand-evidence" type="button"><span data-i18n="放大 ↗">放大 ↗</span></button></div>
+              </div>
+              <div id="document-content" class="evidence-content"></div>
+            </div>
+          </div>
+          <div id="visuals" class="visuals"></div>
+        </section>
+        <section class="trace-panel">
+          <div class="section-head"><h2><span data-i18n="Agent 事件">Agent 事件</span></h2><a id="weave-link" target="_blank" rel="noopener" hidden><span data-i18n="Weave 时间轴 ↗">Weave 时间轴 ↗</span></a><button id="all-traces"><span data-i18n="全部会话">全部会话</span></button></div>
+          <p class="muted"><span data-i18n="按父子会话分组，同级按开始时间从早到晚排列。点击时间条检查会话；区间包含等待时间。">按父子会话分组，同级按开始时间从早到晚排列。点击时间条检查会话；区间包含等待时间。</span></p><div id="timeline" class="timeline"></div>
+          <label><span data-i18n="选择会话">选择会话</span><select id="conversation"></select></label>
+          <button id="older" hidden><span data-i18n="加载更早事件">加载更早事件</span></button>
+          <div id="trace" class="trace" aria-live="polite"></div>
+        </section>
+      </div>
+      <section id="report-section"><div class="section-head"><h2><span data-i18n="最终报告">最终报告</span></h2><a id="report-link" target="_blank" rel="noopener"><span data-i18n="打开文件 ↗">打开文件 ↗</span></a></div><article id="report" class="report"></article></section>
+      <details class="log"><summary><span data-i18n="运行日志">运行日志</span></summary><pre id="log"></pre></details>
+    </div>
+    </div>
+  </main>
+  <dialog id="evidence-dialog" aria-labelledby="evidence-title">
+    <div class="section-head"><h2 id="evidence-title"><span data-i18n="证据文件">证据文件</span></h2><button id="close-evidence" type="button" aria-label="关闭放大视图" data-i18n-aria-label="关闭放大视图"><span data-i18n="关闭 ×">关闭 ×</span></button></div>
+    <div id="evidence-dialog-body"></div>
+  </dialog>
+  <dialog id="delete-dialog" aria-labelledby="delete-title">
+    <form id="delete-form">
+      <h2 id="delete-title"><span data-i18n="删除此任务？">删除此任务？</span></h2>
+      <p><span data-i18n="将永久删除">将永久删除</span> <strong id="delete-name"></strong> <span data-i18n="的工作区、结构、计算产物和记录，无法撤销。运行中的任务需要先停止。">的工作区、结构、计算产物和记录，无法撤销。运行中的任务需要先停止。</span></p>
+      <p id="delete-error" role="alert"></p>
+      <div class="dialog-actions"><button id="cancel-delete" type="button"><span data-i18n="取消">取消</span></button><button id="confirm-delete" class="danger" type="submit"><span data-i18n="确认删除">确认删除</span></button></div>
+    </form>
+  </dialog>
+  <dialog id="settings-dialog" aria-labelledby="settings-title">
+    <header class="settings-heading"><h2 id="settings-title"><span data-i18n="设置">设置</span></h2><button id="close-settings" type="button" aria-label="关闭设置" data-i18n-aria-label="关闭设置">×</button></header>
+    <form id="settings-form">
+      <div class="settings-layout">
+        <nav id="settings-nav" aria-label="模型设置" data-i18n-aria-label="模型设置"></nav>
+        <section class="settings-content">
+          <h3 id="settings-agent-title"><span data-i18n="Agent 模型">Agent 模型</span></h3>
+          <label class="settings-mode"><span data-i18n="配置方式">配置方式</span><select id="settings-mode"><option value="all" data-i18n="全部 Agent 使用相同配置">全部 Agent 使用相同配置</option><option value="individual" data-i18n="按 Agent 分别配置">按 Agent 分别配置</option></select></label>
+          <p class="muted"><span data-i18n="留空沿用服务端配置；自定义时请完整填写三项。">留空沿用服务端配置；自定义时请完整填写三项。</span></p>
+          <label>Base URL<input id="settings-url" type="url" placeholder="https://your-provider.example/v1" autocomplete="off"></label>
+          <label>API Key<input id="settings-key" type="password" placeholder="输入 API Key" autocomplete="off" data-i18n-placeholder="输入 API Key"></label>
+          <label>Model<input id="settings-model" placeholder="供应商要求的完整模型标识" autocomplete="off" spellcheck="false" data-i18n-placeholder="供应商要求的完整模型标识"></label>
+          <p class="settings-note"><span data-i18n="仅用于之后启动的新任务，不影响运行中的任务。设置仅保留在当前页面，刷新后清除；API 协议与高级参数沿用服务端配置。">仅用于之后启动的新任务，不影响运行中的任务。设置仅保留在当前页面，刷新后清除；API 协议与高级参数沿用服务端配置。</span></p>
+          <p id="settings-error" role="alert"></p>
+        </section>
+      </div>
+      <footer class="settings-footer"><button id="reset-settings" type="button"><span data-i18n="恢复服务端默认">恢复服务端默认</span></button><button class="primary" type="submit"><span data-i18n="保存设置">保存设置</span></button></footer>
+    </form>
+  </dialog>
+  <script src="/static/translations.js"></script>
+  <script src="/static/model-settings.js"></script>
+  <script src="/static/calculation-monitor.js"></script>
+  <script src="/static/app.js"></script>
+</body>
+</html>

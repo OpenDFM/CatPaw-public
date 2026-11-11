@@ -1,0 +1,38 @@
+SURFACE_ENERGY:
+  description: Surface energy workflow template for a slab compared against a bulk reference.
+  methodology:
+    use_when:
+    - The user asks for surface energy, surface formation energy, or cleavage/surface stability of a specified facet.
+    - A bulk reference energy is needed to normalize the slab total energy.
+    decomposition_policy:
+    - Create a `bulk_opt` node for the optimized bulk reference.
+    - Create one dependent `slab_opt` node for the surface slab energy.
+    - Do not create separate structure-preparation, cleavage, energy-extraction, or reporting nodes.
+    - The slab node is a surface-energy modeling task, not a generic adsorption-style slab task.
+    node_boundary_rules:
+    - Use separate nodes because the bulk and slab have different physical models and task contexts.
+    - Build the slab from the optimized bulk reference when available.
+    - If the user specifies a nonstandard surface-energy convention, preserve it as qualitative context for downstream agents instead of evaluating it in the DAG.
+    evidence_requirements:
+    - Bulk total energy per structural unit from the `bulk_opt` node.
+    - Slab total energy from the `slab_opt` node.
+    - Number of structural units represented by the slab.
+    - Surface area from the in-plane slab lattice vectors.
+    downstream_boundary:
+    - Detailed slab thickness, symmetry, relaxation, vacuum, and fixed-layer rules belong to the ModelingWorker skill.
+    - Formula evaluation, unit conversion, and final explanation belong to Reporter using node evidence.
+  worked_example:
+    user_goal: Compute the surface energy of a metal (111) facet.
+    canonical_dag:
+    - node_id: bulk_opt
+      task_type: bulk_opt
+      purpose: Optimize the parent bulk and provide the bulk energy reference.
+      depends_on: []
+    - node_id: slab_opt
+      task_type: slab_opt
+      purpose: Build and optimize the requested facet slab from the optimized bulk.
+      depends_on:
+      - bulk_opt
+    notes:
+    - This example is illustrative; do not copy the node names blindly.
+    - Do not add a final `surface_energy_report` node.

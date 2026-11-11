@@ -1,0 +1,11 @@
+{
+  "case_id": "H2O_bader",
+  "category": "bader_charge",
+  "description": "Perform Bader charge analysis on a gas-phase H2O molecule.",
+  "workspace": "bader_charge/bench_H2O_bader",
+  "user_prompt": "Perform Bader charge analysis on a gas-phase H2O molecule in a vacuum box. Report the Bader net charge (in electrons) for O atom and H atoms.",
+  "benchmark_result": {
+    "O_bader_charge": null,
+    "H_bader_charge": null
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "case_id": "NiO_100_bader",
+  "category": "bader_charge",
+  "description": "Perform Bader charge analysis on the NiO rock salt (100) surface.",
+  "workspace": "bader_charge/bench_NiO_100_bader",
+  "user_prompt": "Perform Bader charge analysis on the NiO (100) surface (rock salt structure, Fm-3m). Report the Bader net charge (in electrons) for a bulk-like Ni atom in the slab.",
+
+  "tags": {
+    "is_magnetic": true,
+    "needs_dft+u": true,
+    "modeling_difficulty": "M2",
+    "correction_difficulty": "P3",
+    "workflow_complexity": "W2"
+  },
+
+  "acceptance_criteria": {
+    "Ni_bulk_like_bader_charge": {
+      "value": 1.27,
+      "unit": "e",
+      "tolerance": 0.2,
+      "tolerance_type": "absolute"
+    }
+  },
+
+  "method": {
+    "references": [
+      "Pasti, Dobrota, Migas, Johansson & Skorodumova, arXiv:2108.08578 (2021); publ. Phys. Chem. Chem. Phys. 25, 7974 (2023)"
+    ],
+    "modeling": "Rock-salt NiO (Fm-3m); non-polar (100) slab (>= 4 NiO layers, vacuum >= 15 Angstrom).",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "magnetism": "ISPIN=2",
+      "dft+u": "U(Ni 3d) = 6.5 eV, U(O 2p) = 9 eV; J = 1 eV for both (recommended)",
+      "kpoints": ">= 6x6x1 (2x2x1 slab)",
+      "smearing": "ISMEAR=0, SIGMA=0.05",
+      "precision": "PREC=Accurate, ENCUT >= 500 eV"
+    },
+    "rationale": "Value from Pasti et al. 2021: they report pristine bulk NiO Ni Bader = +1.27 e; this bulk value is used as a reference for a bulk-like interior Ni in a (100) slab. The key_parameters are the recommended VASP protocol. Tolerance +/-0.2 e absolute."
+  }
+}

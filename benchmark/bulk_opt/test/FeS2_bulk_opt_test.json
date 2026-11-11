@@ -1,0 +1,10 @@
+{
+  "case_id": "FeS2_bulk_opt",
+  "category": "bulk_opt",
+  "description": "Optimize the cubic Pa-3 bulk structure of iron disulfide.",
+  "workspace": "bulk_opt/bench_FeS2_bulk_opt",
+  "user_prompt": "Optimize the cubic (Pa-3) bulk structure of iron disulfide (FeS2). Report the final converged energy and lattice constant.",
+  "benchmark_result": {
+    "energy_per_formula_unit": null
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "case_id": "Pt_111_dband",
+  "category": "d_band_center",
+  "description": "Calculate the d-band center of the Pt(111) surface from projected density of states.",
+  "workspace": "d_band_center/bench_Pt_111_dband",
+  "user_prompt": "Calculate the d-band center of the Pt(111) surface (FCC, Fm-3m). Extract the d-band center (in eV relative to the Fermi level) from the surface Pt atoms' d-orbital projected DOS and report the final value.",
+
+  "tags": {
+    "is_magnetic": false,
+    "needs_dft+u": false,
+    "modeling_difficulty": "M2",
+    "correction_difficulty": "P1",
+    "workflow_complexity": "W2"
+  },
+
+  "acceptance_criteria": {
+    "d_band_center": {
+      "value": -2.25,
+      "unit": "eV",
+      "tolerance": 0.4,
+      "tolerance_type": "absolute"
+    }
+  },
+
+  "method": {
+    "references": [
+      "Ruban, Hammer, Stoltze, Skriver, and Norskov, J. Mol. Catal. A: Chem. 115, 421-429 (1997).",
+      "Hammer and Norskov, Adv. Catal. 45, 71-129 (2000).",
+      "Takigawa, Shimizu, Tsuda, and Takakusagi, RSC Adv. 6, 52587-52595 (2016)."
+    ],
+    "modeling": "Use a clean close-packed Pt(111) slab and project the DOS on top-layer Pt atoms only.",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "magnetism": "ISPIN=1",
+      "kpoints": ">= 9x9x1 (2x2x1 slab)",
+      "smearing": "ISMEAR=0 SIGMA=0.05",
+      "precision": "PREC=Accurate; LORBIT=11; NEDOS >= 2001"
+    },
+    "rationale": "The -2.25 eV target is the clean Pt close-packed-surface diagonal d-band center from the Ruban/Hammer/Norskov tables and the canonical Pt(111) reference in the Hammer-Norskov d-band model. The quantity is the surface-atom d-DOS centroid relative to E_F, matching the benchmark full_d_band_centers_rel_fermi_eV convention. This is a surface Pt value, not the bulk Pt d-band center. The 0.4 eV absolute tolerance covers PAW projection, smearing, k-point convergence, and DOS integration-window differences."
+  }
+}

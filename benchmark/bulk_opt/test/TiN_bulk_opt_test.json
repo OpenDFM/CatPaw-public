@@ -1,0 +1,10 @@
+{
+  "case_id": "TiN_bulk_opt",
+  "category": "bulk_opt",
+  "description": "Optimize the cubic Fm-3m bulk structure of titanium nitride.",
+  "workspace": "bulk_opt/bench_TiN_bulk_opt",
+  "user_prompt": "Optimize the cubic (Fm-3m) bulk structure of titanium nitride (TiN). Report the final converged energy and lattice constant.",
+  "benchmark_result": {
+    "energy_per_formula_unit": null
+  }
+}

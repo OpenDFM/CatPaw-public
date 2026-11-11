@@ -1,0 +1,40 @@
+{
+  "case_id": "CH3OH_at_CeO2_111_adsorption",
+  "category": "adsorption_energy",
+  "description": "Calculate the adsorption energy of CH3OH (methanol) on the CeO2(111) surface.",
+  "workspace": "adsorption_energy/bench_CH3OH_at_CeO2_111_adsorption",
+  "user_prompt": "Calculate the adsorption energy of methanol CH3OH on the CeO2(111) fluorite surface (Fm-3m). Note that on stoichiometric CeO2(111) methanol adsorbs dissociatively. Report the final adsorption energy Eads (in eV), defined as Eads = E(slab+CH3OH) - E(slab) - E(CH3OH), referenced to the intact gas-phase methanol molecule.",
+
+  "tags": {
+    "is_magnetic": false,
+    "needs_dft+u": true,
+    "modeling_difficulty": "M3",
+    "correction_difficulty": "P2",
+    "workflow_complexity": "W3"
+  },
+
+  "acceptance_criteria": {
+    "Eads": {
+      "value": -0.69,
+      "unit": "eV",
+      "tolerance": 0.2,
+      "tolerance_type": "absolute"
+    }
+  },
+
+  "method": {
+    "references": [
+      "Kropp & Paier, J. Phys. Chem. C 118, 23690 (2014)"
+    ],
+    "modeling": "Stoichiometric fluorite CeO2(111) slab with at least 4 layers and a 3x3x1 supercell; use the dissociative final state with CH3O bound atop a surface Ce4+ and H transferred to a neighboring lattice O. Reference the adsorption energy to the clean stoichiometric slab plus intact gas-phase CH3OH.",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "magnetism": "ISPIN=1",
+      "dft+u": "Ueff(Ce 4f) = 4.5 eV (recommended)",
+      "kpoints": ">= 2x2x1 (3x3x1 slab)",
+      "smearing": "ISMEAR=0, SIGMA=0.05 (slab)",
+      "precision": "PREC=Accurate, ENCUT = 520 eV"
+    },
+    "rationale": "Value is the electronic PBE+U adsorption energy for structure A1 in Kropp & Paier 2014 (9-layer 4x4x1 slab, ENCUT = 600 eV). The final state is dissociative methoxide plus surface hydroxyl, while the gas reference remains intact CH3OH. The benchmark uses an absolute tolerance of +/-0.20 eV."
+  }
+}

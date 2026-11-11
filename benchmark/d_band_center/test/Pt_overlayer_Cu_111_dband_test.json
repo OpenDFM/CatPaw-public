@@ -1,0 +1,10 @@
+{
+  "case_id": "Pt_overlayer_Cu_111_dband",
+  "category": "d_band_center",
+  "description": "Calculate the d-band center of a pseudomorphic Pt monolayer overlayer on Cu(111).",
+  "workspace": "d_band_center/bench_Pt_overlayer_Cu_111_dband",
+  "user_prompt": "Build a Cu(111) surface slab and deposit a pseudomorphic monolayer of Pt on top of it (a full Pt overlayer coherent with the Cu lattice). Extract the d-band center (in eV relative to the Fermi level) from the Pt overlayer atoms' d-orbital projected DOS and report the final value.",
+  "benchmark_result": {
+    "d_band_center": null
+  }
+}

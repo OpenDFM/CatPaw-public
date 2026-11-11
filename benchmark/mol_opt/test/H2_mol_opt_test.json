@@ -1,0 +1,10 @@
+{
+  "case_id": "H2_mol_opt",
+  "category": "mol_opt",
+  "description": "Optimize the geometry of a hydrogen molecule.",
+  "workspace": "mol_opt/bench_H2_mol_opt",
+  "user_prompt": "Optimize the geometry of a hydrogen molecule, then report the final energy and H-H bond length.",
+  "benchmark_result": {
+    "bond_length": null
+  }
+}

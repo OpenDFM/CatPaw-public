@@ -1,0 +1,10 @@
+{
+  "case_id": "WC_001_dband",
+  "category": "d_band_center",
+  "description": "Calculate the d-band center of the W-terminated hexagonal WC(001) basal surface from projected density of states.",
+  "workspace": "d_band_center/bench_WC_001_dband",
+  "user_prompt": "Calculate the d-band center of tungsten carbide on its WC(001) basal surface (hexagonal structure, P-6m2), using the tungsten-terminated surface. Extract the d-band center (in eV relative to the Fermi level) from the surface W atoms' d-orbital projected DOS and report the final value.",
+  "benchmark_result": {
+    "d_band_center": null
+  }
+}

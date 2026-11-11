@@ -1,0 +1,10 @@
+{
+  "case_id": "Mo2C_100_slab_opt",
+  "category": "slab_opt",
+  "description": "Surface Optimization of the (100) Surface of Orthorhombic Mo2C (beta-Mo2C, Pbcn) and Surface Energy Calculation",
+  "workspace": "slab_opt/bench_Mo2C_100_slab_opt",
+  "user_prompt": "Optimize the (100) surface of orthorhombic molybdenum carbide beta-Mo2C (Pbcn) and calculate the surface energy. Report the final surface energy in J/m^2.",
+  "benchmark_result": {
+    "surface_energy": null
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "case_id": "MnO2_110_slab_opt",
+  "category": "slab_opt",
+  "description": "Surface Optimization of the (110) Surface of beta-MnO2 (Rutile, P4_2/mnm) and Surface Energy Calculation",
+  "workspace": "slab_opt/bench_MnO2_110_slab_opt",
+  "user_prompt": "Optimize the (110) surface of beta-MnO2 (rutile structure, P4_2/mnm) and calculate the surface energy. Report the final surface energy in J/m^2.",
+  "tags": {
+    "is_magnetic": true,
+    "needs_dft+u": true,
+    "modeling_difficulty": "M2",
+    "correction_difficulty": "P3",
+    "workflow_complexity": "W2"
+  },
+  "acceptance_criteria": {
+    "surface_energy": {
+      "value": 0.62,
+      "unit": "J/m^2",
+      "tolerance": 0.2,
+      "tolerance_type": "absolute"
+    }
+  },
+  "method": {
+    "references": [
+      "Tompsett, Parker & Islam, J. Am. Chem. Soc. 136, 1418 (2014)",
+      "Oxford & Chaka, J. Phys. Chem. C 115, 16992 (2011)",
+      "Kitchaev et al., Phys. Rev. B 93, 045132 (2016)"
+    ],
+    "modeling": "Rutile beta-MnO2 (P4_2/mnm); symmetric (110) slab, vacuum > 20 A, ionic positions relaxed.",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "magnetism": "ISPIN=2",
+      "dft+u": "U(Mn 3d)=6.1 eV，J=1.0 eV（U−J=5.1 eV）",
+      "kpoints": ">= 4x4x1 (slab)",
+      "smearing": "ISMEAR=0, SIGMA=0.05",
+      "precision": "ENCUT >= 450 eV (slab)"
+    },
+    "rationale": "Value 0.62 J/m^2 is the relaxed PBE+U beta-MnO2(110) surface energy from Tompsett et al. 2014. Oxford & Chaka 2011 give 0.83 J/m^2 for the same facet at plain PBE-GGA (no Hubbard U). The tolerance is +/-0.20 J/m^2. beta-MnO2's true magnetic structure is an incommensurate spiral; DFT surface studies use a collinear high-spin Mn^4+ approximation, so ISPIN=2 is required."
+  }
+}

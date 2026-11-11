@@ -1,0 +1,10 @@
+{
+  "case_id": "CuO_111_bader",
+  "category": "bader_charge",
+  "description": "Perform Bader charge analysis on the Cu-terminated CuO tenorite (111) surface.",
+  "workspace": "bader_charge/bench_CuO_111_bader",
+  "user_prompt": "Perform Bader charge analysis on the Cu-terminated CuO (111) surface (tenorite, C2/c). Report the Bader net charge (in electrons) for an outermost surface-layer Cu atom.",
+  "benchmark_result": {
+    "Cu_surface_bader_charge": null
+  }
+}

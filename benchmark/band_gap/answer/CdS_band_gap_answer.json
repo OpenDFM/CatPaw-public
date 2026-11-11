@@ -1,0 +1,40 @@
+{
+  "case_id": "CdS_band_gap",
+  "category": "band_gap",
+  "description": "Calculate the PBE+U band gap of bulk CdS (wurtzite). PBE severely underestimates the gap.",
+  "workspace": "band_gap/bench_CdS_band_gap",
+  "user_prompt": "Calculate the band gap of bulk CdS (wurtzite structure, P6_3mc) and report its value in eV.",
+
+  "tags": {
+    "is_magnetic": false,
+    "needs_dft+u": true,
+    "modeling_difficulty": "M1",
+    "correction_difficulty": "P2",
+    "workflow_complexity": "W2"
+  },
+
+  "acceptance_criteria": {
+    "band_gap": {
+      "value": 2.40,
+      "unit": "eV",
+      "tolerance": 0.2,
+      "tolerance_type": "absolute"
+    }
+  },
+
+  "method": {
+    "references": [
+      "Biswas, Meher & Kaushik, arXiv:2106.08875 (2021)"
+    ],
+    "modeling": "Use bulk wurtzite CdS in the P6_3mc structure and report the direct Gamma-point band gap.",
+    "key_parameters": {
+      "functional": "PBE(PAW)+U",
+      "magnetism": "ISPIN=1",
+      "dft+u": "Ueff(Cd 4d)=4.5 eV, Ueff(S 3p)=4.2 eV",
+      "kpoints": ">=8x8x6 (bulk)",
+      "smearing": "ISMEAR=0, SIGMA=0.05",
+      "precision": "ENCUT >= 400 eV, PREC=Accurate"
+    },
+    "rationale": "The scored value is the GGA+U direct Gamma-point gap reported for wurtzite CdS with Ud(Cd 4d)=4.5 eV and Up(S 3p)=4.2 eV. The same work reports a plain PBE-GGA gap of 1.10 eV, illustrating the severe PBE underestimate relative to the experimental gap near 2.42 eV. The absolute tolerance covers VASP-versus-QE implementation differences, relaxed-geometry sensitivity, and k-point convergence."
+  }
+}

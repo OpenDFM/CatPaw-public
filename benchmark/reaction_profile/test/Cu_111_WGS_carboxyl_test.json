@@ -1,0 +1,10 @@
+{
+  "case_id": "Cu_111_WGS_carboxyl",
+  "category": "reaction_profile",
+  "description": "Compute the overall electronic reaction energy of the water-gas shift reaction on Cu(111) via the associative carboxyl mechanism.",
+  "workspace": "reaction_profile/bench_Cu_111_WGS_carboxyl",
+  "user_prompt": "Compute the water-gas shift (WGS) reaction profile (CO + H2O -> CO2 + H2) on the Cu(111) FCC surface (space group Fm-3m) via the associative carboxyl mechanism. The carboxyl path consists of five elementary thermodynamic steps: (1) CO adsorption: CO(g) + * -> *CO; (2) H2O dissociation: H2O(g) + 2* -> *OH + *H; (3) carboxyl formation: *CO + *OH -> *COOH + *; (4) carboxyl decomposition: *COOH -> CO2(g) + *H; (5) H2 evolution: 2*H -> H2(g) + 2*. Report the overall electronic reaction energy delta_E_total (in eV) for CO(g) + H2O(g) -> CO2(g) + H2(g).",
+  "benchmark_result": {
+    "delta_E_total": null
+  }
+}

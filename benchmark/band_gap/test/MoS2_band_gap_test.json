@@ -1,0 +1,10 @@
+{
+  "case_id": "MoS2_band_gap",
+  "category": "band_gap",
+  "description": "Calculate the PBE+vdW band gap of bulk 2H-MoS2.",
+  "workspace": "band_gap/bench_MoS2_band_gap",
+  "user_prompt": "Calculate the band gap of bulk MoS2 (2H phase, P6_3/mmc) and report its value in eV.",
+  "benchmark_result": {
+    "band_gap": null
+  }
+}

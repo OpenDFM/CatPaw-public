@@ -1,0 +1,10 @@
+{
+  "case_id": "Pt_111_ORR",
+  "category": "reaction_profile",
+  "description": "Compute the free-energy reaction profile and theoretical overpotential of the oxygen reduction reaction (ORR) on the Pt(111) FCC surface via the associative mechanism, under the Computational Hydrogen Electrode (CHE) model.",
+  "workspace": "reaction_profile/bench_Pt_111_ORR",
+  "user_prompt": "Compute the oxygen reduction reaction (ORR) reaction profile on the Pt(111) FCC surface (space group Fm-3m) via the associative mechanism (O2 -> *OOH -> *O -> *OH -> H2O) under the Computational Hydrogen Electrode (CHE) model. Build the CHE free-energy ladder for the four proton-coupled electron-transfer steps at U = 1.23 V vs RHE and identify the potential-determining step. Report the free energy of the potential-determining PCET step, delta_G_rds = max(delta_G_1..4) (in eV).",
+  "benchmark_result": {
+    "delta_G_rds": null
+  }
+}

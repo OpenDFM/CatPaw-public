@@ -1,0 +1,10 @@
+{
+  "case_id": "Pt_111_CO_oxidation",
+  "category": "reaction_profile",
+  "description": "Compute the electronic-energy reaction profile of thermal CO oxidation (CO + 1/2 O2 -> CO2) on the Pt(111) FCC surface via the Langmuir-Hinshelwood mechanism.",
+  "workspace": "reaction_profile/bench_Pt_111_CO_oxidation",
+  "user_prompt": "Compute the Langmuir-Hinshelwood reaction profile of thermal CO oxidation (CO + 1/2 O2 -> CO2) on the Pt(111) FCC surface (space group Fm-3m). The mechanism proceeds via separate CO and O adsorption from the gas phase followed by surface combination of *CO + *O to release gas-phase CO2. Use gas-phase electronic references, and build the adsorption and surface-combination steps as intermediate context. Report the overall electronic reaction energy delta_E_total (in eV) for CO(g) + 1/2 O2(g) -> CO2(g).",
+  "benchmark_result": {
+    "delta_E_total": null
+  }
+}

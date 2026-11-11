@@ -1,0 +1,42 @@
+{
+  "case_id": "MoS2_band_gap",
+  "category": "band_gap",
+  "description": "Calculate the PBE+vdW band gap of bulk 2H-MoS2.",
+  "workspace": "band_gap/bench_MoS2_band_gap",
+  "user_prompt": "Calculate the band gap of bulk MoS2 (2H phase, P6_3/mmc) and report its value in eV.",
+
+  "tags": {
+    "is_magnetic": false,
+    "needs_dft+u": false,
+    "modeling_difficulty": "M1",
+    "correction_difficulty": "P2",
+    "workflow_complexity": "W2"
+  },
+
+  "acceptance_criteria": {
+    "band_gap": {
+      "value": 0.92,
+      "unit": "eV",
+      "tolerance": 0.2,
+      "tolerance_type": "absolute"
+    }
+  },
+
+  "method": {
+    "references": [
+      "Ramasubramaniam, Naveh & Towe, Phys. Rev. B 84, 205325 (2011)",
+      "Han et al., Phys. Rev. B 84, 045409 (2011)",
+      "Mak, Lee, Hone, Shan & Heinz, Phys. Rev. Lett. 105, 136805 (2010)"
+    ],
+    "modeling": "Use bulk 2H-MoS2 in the P6_3/mmc structure and report the indirect fundamental gap from the valence-band maximum at Gamma to the conduction-band minimum along Gamma-K.",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "magnetism": "ISPIN=1",
+      "kpoints": ">=12x12x4 (bulk)",
+      "smearing": "ISMEAR=0, SIGMA=0.05",
+      "precision": "ENCUT >= 400 eV, PREC=Accurate",
+      "vdw": "Grimme D2/D3"
+    },
+    "rationale": "The scored value is the 0.92 eV indirect PBE-D2 gap reported by Ramasubramaniam et al. for relaxed bulk MoS2; the same work reports 0.87 eV at experimental lattice parameters and shows that plain PBE overexpands c and gives the wrong conduction-band minimum location. Han et al. independently report a bulk indirect gap of about 0.9 eV and the same Gamma-to-Gamma-K gap character. Mak et al. provide the experimental thickness trend and bulk indirect-gap context, so this benchmark scores the semilocal PBE+vdW underestimate rather than the experimental optical gap."
+  }
+}

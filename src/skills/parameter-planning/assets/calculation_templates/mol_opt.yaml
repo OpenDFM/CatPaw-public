@@ -1,0 +1,25 @@
+mol_opt:
+  description: 'Used for structural optimization of isolated gas-phase molecules or zero-dimensional clusters. Core principle: place in a sufficiently large vacuum box, and never change cell volume.'
+  pre_requisite_checks:
+  - You must read initial POSCAR cell parameters, compute the molecule's maximum extent in X, Y, Z directions, and verify the distance from molecule edge to box boundary is greater than 15 A. If insufficient, ParamWorker must request ModelingWorker rebuilding or automatic cell expansion to avoid periodic-image interactions.
+  - Check POSCAR center position and ensure the molecule is as close as possible to the geometric center of the cell.
+  incar_rules:
+    mandatory:
+      ISIF: 2
+      IBRION: 1
+      NSW: 300
+      NELM: 400
+      ISYM: 0
+      EDIFF: 1e-5
+      EDIFFG: -0.05
+    dynamic_logic:
+    - Use PotcarEncutEvaluator to choose ENCUT from pseudopotential ENMAX evidence.
+    - 'ISPIN is auto-detected by CreateIncar and usually does not need to be passed by ParamWorker. Explicit ISPIN=2 is needed only in these cases: the system is O2 (triplet ground state) or a known radical.'
+    - For closed-shell molecules (for example H2, H2O, CO, CO2, N2), setting ISPIN=2 is forbidden; otherwise the calculation may diverge or converge to an incorrect electronic state.
+    - ISIF=2 must be set, and ISIF=3 is forbidden.
+  kpoints_rules:
+    strategy: Gamma-only
+    instructions: Because this is an isolated system in a large periodic box, K points must be fixed to Gamma-only [1, 1, 1]. This greatly saves computational resources and is physically correct.
+  audit_criteria:
+  - INCAR must use ISIF=2.
+  - KPOINTS must be Gamma-only [1, 1, 1].

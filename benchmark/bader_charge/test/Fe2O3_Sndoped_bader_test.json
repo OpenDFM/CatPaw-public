@@ -1,0 +1,10 @@
+{
+  "case_id": "Fe2O3_Sndoped_bader",
+  "category": "bader_charge",
+  "description": "Perform Bader charge analysis on Sn-substituted alpha-Fe2O3 (hematite) bulk, where one Fe atom in a supercell is replaced by Sn.",
+  "workspace": "bader_charge/bench_Fe2O3_Sndoped_bader",
+  "user_prompt": "Perform Bader charge analysis on Sn-doped alpha-Fe2O3 (hematite structure, R-3c) bulk, where one Fe atom in a supercell is substituted by Sn. Report the Bader net charge (in electrons) for the Sn dopant atom.",
+  "benchmark_result": {
+    "Sn_bader_charge": null
+  }
+}

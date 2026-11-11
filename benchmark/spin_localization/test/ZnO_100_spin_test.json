@@ -1,0 +1,11 @@
+{
+  "case_id": "ZnO_100_spin",
+  "category": "spin_localization",
+  "description": "Analyze spin density of the ZnO wurtzite (100) surface. This is a negative control for clean surfaces.",
+  "workspace": "spin_localization/bench_ZnO_100_spin",
+  "user_prompt": "Perform spin density analysis on the ZnO (100) surface (wurtzite structure, P6_3mc). Determine whether the system has unpaired electrons. If unpaired electrons are present, identify the atom carrying the majority of the spin density by its element and report its magnetic moment; otherwise report that there is no spin-carrying element and report the maximum residual site magnetic moment.",
+  "benchmark_result": {
+    "element": null,
+    "magmom": null
+  }
+}

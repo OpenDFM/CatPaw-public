@@ -1,0 +1,10 @@
+{
+  "case_id": "CO_mol_opt",
+  "category": "mol_opt",
+  "description": "Optimize the geometry of a carbon monoxide molecule.",
+  "workspace": "mol_opt/bench_CO_mol_opt",
+  "user_prompt": "Optimize the geometry of a carbon monoxide molecule, then report the final energy and C-O bond length.",
+  "benchmark_result": {
+    "bond_length": null
+  }
+}

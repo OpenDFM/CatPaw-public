@@ -1,0 +1,10 @@
+{
+  "case_id": "NiO_100_bader",
+  "category": "bader_charge",
+  "description": "Perform Bader charge analysis on the NiO rock salt (100) surface.",
+  "workspace": "bader_charge/bench_NiO_100_bader",
+  "user_prompt": "Perform Bader charge analysis on the NiO (100) surface (rock salt structure, Fm-3m). Report the Bader net charge (in electrons) for a bulk-like Ni atom in the slab.",
+  "benchmark_result": {
+    "Ni_bulk_like_bader_charge": null
+  }
+}

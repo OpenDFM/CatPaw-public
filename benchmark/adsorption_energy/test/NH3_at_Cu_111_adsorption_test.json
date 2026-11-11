@@ -1,0 +1,10 @@
+{
+  "case_id": "NH3_at_Cu_111_adsorption",
+  "category": "adsorption_energy",
+  "description": "Calculate the adsorption energy of NH3 on the Cu(111) surface.",
+  "workspace": "adsorption_energy/bench_NH3_at_Cu_111_adsorption",
+  "user_prompt": "Calculate the adsorption energy of NH3 on the Cu(111) surface (Fm-3m). Report the final adsorption energy Eads (in eV), defined as Eads = E(slab+NH3) - E(slab) - E(NH3).",
+  "benchmark_result": {
+    "Eads": null
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "case_id": "N2_at_Co_001_adsorption",
+  "category": "adsorption_energy",
+  "description": "Calculate the adsorption energy of N2 on the Co(001) basal surface.",
+  "workspace": "adsorption_energy/bench_N2_at_Co_001_adsorption",
+  "user_prompt": "Calculate the adsorption energy of N2 on the Co(001) HCP basal surface (P6_3/mmc). Report the final adsorption energy Eads (in eV), defined as Eads = E(slab+N2) - E(slab) - E(N2).",
+  "benchmark_result": {
+    "Eads": null
+  }
+}

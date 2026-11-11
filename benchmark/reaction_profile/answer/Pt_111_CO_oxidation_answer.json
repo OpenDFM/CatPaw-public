@@ -1,0 +1,37 @@
+{
+  "case_id": "Pt_111_CO_oxidation",
+  "category": "reaction_profile",
+  "description": "Compute the electronic-energy reaction profile of thermal CO oxidation (CO + 1/2 O2 -> CO2) on the Pt(111) FCC surface via the Langmuir-Hinshelwood mechanism.",
+  "workspace": "reaction_profile/bench_Pt_111_CO_oxidation",
+  "user_prompt": "Compute the Langmuir-Hinshelwood reaction profile of thermal CO oxidation (CO + 1/2 O2 -> CO2) on the Pt(111) FCC surface (space group Fm-3m). The mechanism proceeds via separate CO and O adsorption from the gas phase followed by surface combination of *CO + *O to release gas-phase CO2. Use gas-phase electronic references, and build the adsorption and surface-combination steps as intermediate context. Report the overall electronic reaction energy delta_E_total (in eV) for CO(g) + 1/2 O2(g) -> CO2(g).",
+  "tags": {
+    "is_magnetic": true,
+    "needs_dft+u": false,
+    "modeling_difficulty": "M3",
+    "correction_difficulty": "P2",
+    "workflow_complexity": "W3"
+  },
+  "acceptance_criteria": {
+    "delta_E_total": {
+      "value": -3.41,
+      "unit": "eV",
+      "tolerance": 0.3,
+      "tolerance_type": "absolute"
+    }
+  },
+  "method": {
+    "references": [
+      "Eichler & Hafner, Surf. Sci. 433-435, 58-62 (1999)",
+      "NIST Chemistry WebBook, NIST Standard Reference Database 69"
+    ],
+    "modeling": "Use a Pt(111) slab with at least 4 layers, vacuum >= 15 Angstrom, and a 2x2x1 or larger surface cell; follow the Langmuir-Hinshelwood path through *CO, *O, and CO2(g), with triplet O2 as the gas reference.",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "magnetism": "ISPIN=1 for Pt slabs; ISPIN=2 for triplet O2",
+      "kpoints": ">= 6x6x1 (2x2x1 slab)",
+      "smearing": "ISMEAR=1, SIGMA=0.1",
+      "precision": "PREC=Accurate, ENCUT >= 450 eV"
+    },
+    "rationale": "Eichler and Hafner report the GGA gas-phase CO oxidation heat of reaction as 3.41 eV, written here in the exothermic reaction-energy convention as delta_E_total = -3.41 eV. For the closed Langmuir-Hinshelwood cycle, the Pt slab, *CO, and *O intermediates cancel, so the stepwise surface profile must telescope to this same gas-reference value. NIST gives the experimental thermochemical reaction energy near -2.93 eV; the more exothermic GGA value is retained because the benchmark metric follows the cited electronic DFT convention, with tolerance covering PW91/PBE and gas-reference differences."
+  }
+}

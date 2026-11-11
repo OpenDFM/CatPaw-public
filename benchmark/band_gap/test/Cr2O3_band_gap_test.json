@@ -1,0 +1,10 @@
+{
+  "case_id": "Cr2O3_band_gap",
+  "category": "band_gap",
+  "description": "Calculate the DFT+U band gap of bulk corundum Cr2O3 with antiferromagnetic ordering.",
+  "workspace": "band_gap/bench_Cr2O3_band_gap",
+  "user_prompt": "Calculate the band gap of bulk Cr2O3 (corundum structure, R-3c) and report its value in eV.",
+  "benchmark_result": {
+    "band_gap": null
+  }
+}

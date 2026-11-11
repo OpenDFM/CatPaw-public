@@ -1,0 +1,41 @@
+{
+  "case_id": "Cu_111_WGS_carboxyl",
+  "category": "reaction_profile",
+  "description": "Compute the overall electronic reaction energy of the water-gas shift reaction on Cu(111) via the associative carboxyl mechanism.",
+  "workspace": "reaction_profile/bench_Cu_111_WGS_carboxyl",
+  "user_prompt": "Compute the water-gas shift (WGS) reaction profile (CO + H2O -> CO2 + H2) on the Cu(111) FCC surface (space group Fm-3m) via the associative carboxyl mechanism. The carboxyl path consists of five elementary thermodynamic steps: (1) CO adsorption: CO(g) + * -> *CO; (2) H2O dissociation: H2O(g) + 2* -> *OH + *H; (3) carboxyl formation: *CO + *OH -> *COOH + *; (4) carboxyl decomposition: *COOH -> CO2(g) + *H; (5) H2 evolution: 2*H -> H2(g) + 2*. Report the overall electronic reaction energy delta_E_total (in eV) for CO(g) + H2O(g) -> CO2(g) + H2(g).",
+
+  "tags": {
+    "is_magnetic": false,
+    "needs_dft+u": false,
+    "modeling_difficulty": "M3",
+    "correction_difficulty": "P1",
+    "workflow_complexity": "W3"
+  },
+
+  "acceptance_criteria": {
+    "delta_E_total": {
+      "value": -0.85,
+      "unit": "eV",
+      "tolerance": 0.2,
+      "tolerance_type": "absolute"
+    }
+  },
+
+  "method": {
+    "references": [
+      "Gokhale, Dumesic & Mavrikakis, J. Am. Chem. Soc. 130, 1402 (2008)",
+      "Jurado, Morales-García, Viñes & Illas, ACS Catal. 12, 15658-15667 (2022)"
+    ],
+    "modeling": "Use a Cu(111) slab with at least 4 layers, vacuum >= 15 Angstrom, and a 3x3x1 or larger surface cell; follow the associative carboxyl path through *CO, *OH, *H, and *COOH intermediates.",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "magnetism": "ISPIN=1",
+      "dft+u": "none",
+      "kpoints": ">= 4x4x1 (3x3x1 slab)",
+      "smearing": "ISMEAR=1, SIGMA=0.1",
+      "precision": "PREC=Accurate, ENCUT >= 450 eV"
+    },
+    "rationale": "The scored value is the net WGS reaction energy delta_E_total = E(CO2,g) + E(H2,g) - E(CO,g) - E(H2O,g), which is surface-independent when the carboxyl-cycle intermediates telescope. Jurado et al. report a PBE gas-phase reverse WGS reaction energy of +0.85 eV before empirical gas-phase energy corrections, corresponding to delta_E_total = -0.85 eV for the forward WGS reaction. Gokhale et al. define the Cu(111) carboxyl mechanism and provide the surface-step thermochemistry, but individual adsorption and elementary-step energies are not scored when delta_E_total is the final benchmark metric."
+  }
+}

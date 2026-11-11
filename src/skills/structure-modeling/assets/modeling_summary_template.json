@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "workspace": "/abs/path/to/active_node_dir",
+  "structures": [
+    {
+      "subdirectory": "slab_opt",
+      "poscar_path": "/abs/path/to/active_node_dir/slab_opt/POSCAR",
+      "poscar_source": "user|upstream|local_database|cloud|modeler_tool|molecule_builder",
+      "content": "short physical description",
+      "structure_kind": "bulk|slab|molecule|cluster|surface_adsorbate|defective_slab|doped_slab|copied_upstream",
+      "calculation_intent": "optimize_structure|fixed_structure_energy|dos_input|charge_input|reference_structure|unknown",
+      "task_type_hint": "bulk_opt|slab_opt|mol_opt|scf|dos_calc|null",
+      "atom_count": 64,
+      "provenance": {
+        "source_path": null,
+        "source_id": null,
+        "operation": "surface_build|adsorption|vacancy|doping|molecule_box|copy_upstream"
+      }
+    }
+  ],
+  "shared_modeling_context": {
+    "material": "Pt",
+    "surface": "(111)",
+    "supercell": "2x2",
+    "periodic_image_distance_angstrom": null,
+    "vacuum_angstrom": 15,
+    "fixed_layers": "none for standard surface-energy slabs; task-specific constraints otherwise",
+    "comparison_group": "same slab basis"
+  }
+}

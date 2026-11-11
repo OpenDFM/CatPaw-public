@@ -1,0 +1,40 @@
+{
+  "case_id": "RuO2_110_dband",
+  "category": "d_band_center",
+  "description": "Calculate the d-band center of the RuO2(110) surface from projected density of states.",
+  "workspace": "d_band_center/bench_RuO2_110_dband",
+  "user_prompt": "Calculate the d-band center of the RuO2(110) surface (rutile structure, P4_2/mnm). RuO2 is a metallic (conductive) oxide, so treat it with plain PBE and do not apply a Hubbard U correction to Ru. Extract the d-band center (in eV relative to the Fermi level) from the surface Ru atoms' d-orbital projected DOS and report the final value.",
+
+  "tags": {
+    "is_magnetic": false,
+    "needs_dft+u": false,
+    "modeling_difficulty": "M2",
+    "correction_difficulty": "P1",
+    "workflow_complexity": "W2"
+  },
+
+  "acceptance_criteria": {
+    "d_band_center": {
+      "value": -1.76,
+      "unit": "eV",
+      "tolerance": 0.4,
+      "tolerance_type": "absolute"
+    }
+  },
+
+  "method": {
+    "references": [
+      "Ping, Liu, Zheng, Song, Guo, Chen, and Wei, Nat. Commun. 15, 2501 (2024)."
+    ],
+    "modeling": "Use a rutile RuO2(110) slab and project the DOS on surface Ru atoms, preferably the coordinatively unsaturated top-layer Ru sites.",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "magnetism": "ISPIN=1",
+      "dft+u": "none",
+      "kpoints": ">= 4x4x1 (slab)",
+      "smearing": "ISMEAR=0 SIGMA=0.05",
+      "precision": "PREC=Accurate; LORBIT=11; NEDOS >= 2001"
+    },
+    "rationale": "Ping et al. report the pristine RuO2(110) surface Ru 4d band center as -1.759 eV at plain PBE, with the surface O 2p center at -3.365 eV as a useful consistency check. Their calculations use VASP/PAW/GGA-PBE without a Hubbard U, a four-layer Ru-O slab, top two layers relaxed, and 2x2x1/4x4x1 k-point meshes for optimization/DOS. The scored quantity is the surface Ru 4d centroid relative to E_F, matching the benchmark full_d_band_centers_rel_fermi_eV convention. The 0.4 eV absolute tolerance covers CUS-vs-bridge or surface-Ru averaging choices, smearing, k-point convergence, and DOS integration-window differences."
+  }
+}

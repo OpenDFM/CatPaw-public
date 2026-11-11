@@ -1,0 +1,36 @@
+{
+  "case_id": "TiN_bulk_opt",
+  "category": "bulk_opt",
+  "description": "Optimize the cubic Fm-3m bulk structure of titanium nitride.",
+  "workspace": "bulk_opt/bench_TiN_bulk_opt",
+  "user_prompt": "Optimize the cubic (Fm-3m) bulk structure of titanium nitride (TiN). Report the final converged energy and lattice constant.",
+  "tags": {
+    "is_magnetic": false,
+    "needs_dft+u": false,
+    "modeling_difficulty": "M1",
+    "correction_difficulty": "P2",
+    "workflow_complexity": "W1"
+  },
+  "acceptance_criteria": {
+    "energy_per_formula_unit": {
+      "value": -19.663,
+      "unit": "eV/f.u.",
+      "tolerance": 0.5,
+      "tolerance_type": "absolute"
+    }
+  },
+  "method": {
+    "references": [
+      "Jain, Ong, Hautier, Chen, Richards, Dacek, Cholia, Gunter, Skinner, Ceder & Persson, APL Mater. 1, 011002 (2013)"
+    ],
+    "modeling": "Rock-salt TiN conventional cubic bulk cell with space group Fm-3m; TiN formula unit is one Ti and one N atom.",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "magnetism": "ISPIN=1",
+      "kpoints": ">= 6x6x6 (bulk)",
+      "smearing": "ISMEAR=1, SIGMA=0.2",
+      "precision": "ENCUT >= 450 eV"
+    },
+    "rationale": "The target energy is the Materials Project mp-492 GGA final energy per atom (-9.8314 eV/atom) multiplied by two atoms per TiN formula unit. Only the total energy is scored; the lattice constant is left as a diagnostic because the accepted energy is tied to MP PAW/PBE conventions. TiN is metallic in this MP calculation and uses Ti_pv/N PAW potentials; the +/-0.5 eV/f.u. absolute tolerance covers PAW dataset, cutoff, and smearing differences while still flagging qualitatively wrong bulk calculations."
+  }
+}

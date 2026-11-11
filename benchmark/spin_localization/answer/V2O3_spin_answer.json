@@ -1,0 +1,42 @@
+{
+  "case_id": "V2O3_spin",
+  "category": "spin_localization",
+  "description": "Analyze spin density of bulk V2O3 (corundum, R-3c).",
+  "workspace": "spin_localization/bench_V2O3_spin",
+  "user_prompt": "Perform spin density analysis on bulk V2O3 (corundum structure, R-3c). Determine whether the system has unpaired electrons. If unpaired electrons are present, identify the atom carrying the majority of the spin density by its element and report its magnetic moment; otherwise report that there is no spin-carrying element and report the maximum residual site magnetic moment.",
+  "tags": {
+    "is_magnetic": true,
+    "needs_dft+u": true,
+    "modeling_difficulty": "M1",
+    "correction_difficulty": "P3",
+    "workflow_complexity": "W2"
+  },
+  "acceptance_criteria": {
+    "element": {
+      "value": "V",
+      "tolerance_type": "exact"
+    },
+    "magmom": {
+      "value": 1.7,
+      "unit": "uB",
+      "tolerance": 0.3,
+      "tolerance_type": "absolute",
+      "magnitude": true
+    }
+  },
+  "method": {
+    "references": [
+      "Ezhov, Anisimov, Khomskii & Sawatzky, Phys. Rev. Lett. 83, 4136 (1999)"
+    ],
+    "modeling": "Bulk V2O3 in the corundum structure (R-3c) primitive cell. AFM Mott insulator: every V is V3+ (3d2, EgEg high-spin S=1) and carries a local moment, so the cell total is ~0 by AFM cancellation and the scored quantity is the per-V moment magnitude, not the total.",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "magnetism": "ISPIN=2",
+      "dft+u": "U(V 3d)=3.4 eV (recommended)",
+      "kpoints": ">= 6x6x6 (bulk)",
+      "smearing": "ISMEAR=0, SIGMA=0.05",
+      "precision": "PREC=Accurate, LORBIT=11"
+    },
+    "rationale": "Value 1.7 uB from Ezhov et al. 1999, whose LDA+U gives ~1.7 uB per V nearly the same across all magnetic structures studied (also matching the high-temperature susceptibility moment; neutron diffraction gives a smaller ordered moment of 1.2 uB). Note their LDA+U is the rotationally-invariant (Liechtenstein) scheme with U=2.8 eV, J=0.93 eV, not a single Dudarev U_eff; the recommended Dudarev U(V 3d)~3.4 eV here is a separate VASP-protocol choice. Tolerance 0.3 uB (absolute) covers this U-scheme/U-value sensitivity and the typical inter-method scatter for transition-metal cation localised moments."
+  }
+}

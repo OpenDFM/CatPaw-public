@@ -1,0 +1,36 @@
+{
+  "case_id": "Al_bulk_opt",
+  "category": "bulk_opt",
+  "description": "Optimize the cubic Fm-3m bulk structure of aluminum.",
+  "workspace": "bulk_opt/bench_Al_bulk_opt",
+  "user_prompt": "Optimize the cubic (Fm-3m) bulk structure of aluminum (Al). Report the final converged energy and lattice constant.",
+  "tags": {
+    "is_magnetic": false,
+    "needs_dft+u": false,
+    "modeling_difficulty": "M1",
+    "correction_difficulty": "P1",
+    "workflow_complexity": "W1"
+  },
+  "acceptance_criteria": {
+    "energy_per_formula_unit": {
+      "value": -3.745,
+      "unit": "eV/f.u.",
+      "tolerance": 0.5,
+      "tolerance_type": "absolute"
+    }
+  },
+  "method": {
+    "references": [
+      "Jain, Ong, Hautier, Chen, Richards, Dacek, Cholia, Gunter, Skinner, Ceder & Persson, APL Mater. 1, 011002 (2013)"
+    ],
+    "modeling": "fcc Al conventional cubic bulk cell with space group Fm-3m; Al formula unit is one atom.",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "magnetism": "ISPIN=1",
+      "kpoints": ">= 6x6x6 (bulk)",
+      "smearing": "ISMEAR=1, SIGMA=0.2",
+      "precision": "ENCUT >= 450 eV"
+    },
+    "rationale": "The target energy is the Materials Project mp-134 PBE energy per atom, equal to energy per formula unit for elemental Al. Only the total energy is scored; the lattice constant is left as a diagnostic because the accepted energy is tied to MP PAW/PBE conventions. The +/-0.5 eV/f.u. absolute tolerance covers PAW dataset, cutoff, and smearing differences while still flagging qualitatively wrong bulk calculations."
+  }
+}

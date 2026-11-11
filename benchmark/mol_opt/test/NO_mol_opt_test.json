@@ -1,0 +1,10 @@
+{
+  "case_id": "NO_mol_opt",
+  "category": "mol_opt",
+  "description": "Optimize the geometry of a nitric oxide molecule in its doublet ground state.",
+  "workspace": "mol_opt/bench_NO_mol_opt",
+  "user_prompt": "Optimize the geometry of a nitric oxide molecule, then report the final energy and N-O bond length.",
+  "benchmark_result": {
+    "bond_length": null
+  }
+}

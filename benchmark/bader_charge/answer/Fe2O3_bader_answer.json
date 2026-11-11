@@ -1,0 +1,46 @@
+{
+  "case_id": "Fe2O3_bader",
+  "category": "bader_charge",
+  "description": "Perform Bader charge analysis on bulk alpha-Fe2O3 (hematite).",
+  "workspace": "bader_charge/bench_Fe2O3_bader",
+  "user_prompt": "Perform Bader charge analysis on bulk alpha-Fe2O3 (hematite structure, R-3c). Report the Bader net charge (in electrons) for Fe atoms and O atoms.",
+
+  "tags": {
+    "is_magnetic": true,
+    "needs_dft+u": true,
+    "modeling_difficulty": "M1",
+    "correction_difficulty": "P3",
+    "workflow_complexity": "W2"
+  },
+
+  "acceptance_criteria": {
+    "Fe_bader_charge": {
+      "value": 1.72,
+      "unit": "e",
+      "tolerance": 0.2,
+      "tolerance_type": "absolute"
+    },
+    "O_bader_charge": {
+      "value": -1.15,
+      "unit": "e",
+      "tolerance": 0.2,
+      "tolerance_type": "absolute"
+    }
+  },
+
+  "method": {
+    "references": [
+      "Pan, Ao & Qin, RSC Adv. 10, 23263 (2020)"
+    ],
+    "modeling": "Corundum-type alpha-Fe2O3 (R-3c); 10-atom rhombohedral primitive cell.",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "magnetism": "ISPIN=2",
+      "dft+u": "Ueff(Fe 3d) = 4.3 eV (recommended)",
+      "kpoints": ">= 6x6x6 (bulk)",
+      "smearing": "ISMEAR=0, SIGMA=0.05",
+      "precision": "PREC=Accurate, ENCUT >= 500 eV"
+    },
+    "rationale": "Values from Pan, Ao & Qin 2020 (spin-polarized PBE+U, Dudarev U-J=4.3 eV on Fe 3d, AFM): for pristine bulk hematite they report the Fe atom loses 1.72 e and the O atom obtains 1.15 e by Bader analysis. The key_parameters are the recommended VASP protocol. Tolerance +/-0.20 e absolute (bulk); residual U-value / PAW-valence dependence stays within it."
+  }
+}

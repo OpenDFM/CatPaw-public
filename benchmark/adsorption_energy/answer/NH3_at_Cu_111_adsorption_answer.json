@@ -1,0 +1,39 @@
+{
+  "case_id": "NH3_at_Cu_111_adsorption",
+  "category": "adsorption_energy",
+  "description": "Adsorption Energy of NH3 on Cu(111) Surface (FCC Fm-3m, non-magnetic, PBE)",
+  "workspace": "adsorption_energy/bench_NH3_at_Cu_111_adsorption",
+  "user_prompt": "Calculate the adsorption energy of NH3 on the Cu(111) surface (Fm-3m). Report the final adsorption energy Eads (in eV), defined as Eads = E(slab+NH3) - E(slab) - E(NH3).",
+
+  "tags": {
+    "is_magnetic": false,
+    "needs_dft+u": false,
+    "modeling_difficulty": "M3",
+    "correction_difficulty": "P1",
+    "workflow_complexity": "W3"
+  },
+
+  "acceptance_criteria": {
+    "Eads": {
+      "value": -0.46,
+      "unit": "eV",
+      "tolerance": 0.2,
+      "tolerance_type": "absolute"
+    }
+  },
+
+  "method": {
+    "references": [
+      "Jiang, Qin & Fang, Chem. Phys. 445, 59 (2014)"
+    ],
+    "modeling": "Cu(111) slab with at least 4 layers, vacuum >= 15 Angstrom, and a 3x3x1 or larger surface supercell; adsorb molecular NH3 N-down at an atop Cu site. Reference Eads to the clean Cu(111) slab plus isolated gas-phase NH3.",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "magnetism": "ISPIN=1",
+      "kpoints": ">= 4x4x1 (3x3x1 slab)",
+      "smearing": "ISMEAR=1, SIGMA=0.1 (slab)",
+      "precision": "PREC=Accurate, ENCUT >= 450 eV"
+    },
+    "rationale": "Value follows the reported molecular NH3 adsorption energy on clean Cu(111) in Jiang et al., using this benchmark's negative Eads convention. The intended final state is weak N-down molecular adsorption near an atop Cu site. The +/-0.20 eV absolute tolerance covers PW91/PBE differences, coverage, site sensitivity, and dipole-correction details."
+  }
+}

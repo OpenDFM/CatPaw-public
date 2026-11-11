@@ -1,0 +1,40 @@
+{
+  "case_id": "Pd_bulk_dband",
+  "category": "d_band_center",
+  "description": "Calculate the d-band center of bulk Pd (FCC, Fm-3m) from projected density of states.",
+  "workspace": "d_band_center/bench_Pd_bulk_dband",
+  "user_prompt": "Calculate the d-band center of bulk palladium Pd (FCC, Fm-3m). Extract the d-band center (in eV relative to the Fermi level) from the Pd d-orbital projected DOS and report the final d-band center value.",
+
+  "tags": {
+    "is_magnetic": false,
+    "needs_dft+u": false,
+    "modeling_difficulty": "M1",
+    "correction_difficulty": "P1",
+    "workflow_complexity": "W2"
+  },
+
+  "acceptance_criteria": {
+    "d_band_center": {
+      "value": -2.30,
+      "unit": "eV",
+      "tolerance": 0.4,
+      "tolerance_type": "absolute"
+    }
+  },
+
+  "method": {
+    "references": [
+      "Yu, Degradations and Improvements in PEM Fuel Cell Materials: A Computational Study, Caltech Ph.D. thesis (2012).",
+      "Golio et al., ACS Catal. 14, 11014-11025 (2024)."
+    ],
+    "modeling": "Use bulk FCC Pd and project the DOS on an equivalent Pd atom in the primitive cell.",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "magnetism": "ISPIN=1",
+      "kpoints": ">= 12x12x12 (bulk)",
+      "smearing": "ISMEAR=-5 or ISMEAR=0 SIGMA=0.05",
+      "precision": "PREC=Accurate; LORBIT=11; NEDOS >= 2001"
+    },
+    "rationale": "Yu reports the bulk Pd d-sum band center from a three-dimensional crystal calculation as 2.30 eV below E_F; the benchmark value is therefore written as -2.30 eV. This is the bulk Pd d-orbital projection requested by the prompt, not a Pd(111) surface d-band center. Golio et al. summarize literature DFT Pd d-band centers spanning roughly -2.64 to -2.02 eV, so the target is within the expected projection/integration spread. The 0.4 eV absolute tolerance covers smearing choice, k-point convergence, PAW projection, and DOS integration-window differences."
+  }
+}

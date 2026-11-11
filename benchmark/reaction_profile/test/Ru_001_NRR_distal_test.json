@@ -1,0 +1,10 @@
+{
+  "case_id": "Ru_001_NRR_distal",
+  "category": "reaction_profile",
+  "description": "Compute the free-energy reaction profile of the nitrogen reduction reaction (NRR) on the Ru(001) HCP basal surface via the distal mechanism, under the Computational Hydrogen Electrode (CHE) model.",
+  "workspace": "reaction_profile/bench_Ru_001_NRR_distal",
+  "user_prompt": "Compute the nitrogen reduction reaction (NRR) free-energy profile on the flat Ru(001) HCP basal surface (space group P6_3/mmc) via the associative distal mechanism under the Computational Hydrogen Electrode (CHE) model. The pathway begins with end-on N2 chemisorption, followed by six PCET steps proceeding through *NNH, *NNH2, *N, *NH, and *NH2 intermediates, with NH3 released after the third and sixth PCET steps. Build the CHE free-energy ladder at U = 0 V vs RHE and identify the potential-determining step. Report the free energy of the potential-determining PCET step, delta_G_rds = max(delta_G_1..6) (in eV), evaluated over the six PCET steps only.",
+  "benchmark_result": {
+    "delta_G_rds": null
+  }
+}

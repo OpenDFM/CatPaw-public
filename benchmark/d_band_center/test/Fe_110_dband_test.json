@@ -1,0 +1,10 @@
+{
+  "case_id": "Fe_110_dband",
+  "category": "d_band_center",
+  "description": "Calculate the d-band center of the Fe(110) surface from projected density of states.",
+  "workspace": "d_band_center/bench_Fe_110_dband",
+  "user_prompt": "Calculate the d-band center of the Fe(110) surface (BCC, Im-3m). Extract the d-band center (in eV relative to the Fermi level) from the surface Fe atoms' d-orbital projected DOS and report the final value.",
+  "benchmark_result": {
+    "d_band_center": null
+  }
+}

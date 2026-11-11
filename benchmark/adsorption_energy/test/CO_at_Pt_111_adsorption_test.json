@@ -1,0 +1,10 @@
+{
+  "case_id": "CO_at_Pt_111_adsorption",
+  "category": "adsorption_energy",
+  "description": "Calculate the adsorption energy of CO on the Pt(111) surface at the top site.",
+  "workspace": "adsorption_energy/bench_CO_at_Pt_111_adsorption",
+  "user_prompt": "Calculate the adsorption energy of CO on the Pt(111) surface (FCC, Fm-3m) at the top site. Report the final adsorption energy Eads (in eV), defined as Eads = E(slab+CO) - E(slab) - E(CO).",
+  "benchmark_result": {
+    "Eads": null
+  }
+}

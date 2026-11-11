@@ -1,0 +1,40 @@
+{
+  "case_id": "ZnO_100_spin",
+  "category": "spin_localization",
+  "description": "Analyze spin density of the ZnO wurtzite (100) surface. This is a negative control for clean surfaces.",
+  "workspace": "spin_localization/bench_ZnO_100_spin",
+  "user_prompt": "Perform spin density analysis on the ZnO (100) surface (wurtzite structure, P6_3mc). Determine whether the system has unpaired electrons. If unpaired electrons are present, identify the atom carrying the majority of the spin density by its element and report its magnetic moment; otherwise report that there is no spin-carrying element and report the maximum residual site magnetic moment.",
+  "tags": {
+    "is_magnetic": false,
+    "needs_dft+u": false,
+    "modeling_difficulty": "M2",
+    "correction_difficulty": "P1",
+    "workflow_complexity": "W2"
+  },
+  "acceptance_criteria": {
+    "element": {
+      "value": "none",
+      "tolerance_type": "exact"
+    },
+    "magmom": {
+      "value": 0.0,
+      "unit": "uB",
+      "tolerance": 0.1,
+      "tolerance_type": "absolute"
+    }
+  },
+  "method": {
+    "references": [
+      "Meyer & Marx, Phys. Rev. B 67, 035403 (2003)"
+    ],
+    "modeling": "Wurtzite ZnO (100) prismatic surface; 4-5 layer slab with the bottom layers fixed, vacuum >= 15 A. The surface relaxes into Zn-O dimer rows.",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "magnetism": "ISPIN=2",
+      "kpoints": ">= 4x4x1 (slab)",
+      "smearing": "ISMEAR=0, SIGMA=0.05",
+      "precision": "PREC=Accurate, LORBIT=11"
+    },
+    "rationale": "Negative control: wurtzite ZnO is a closed-shell semiconductor (Zn2+ 3d10, O2- 2p6), and the relaxed non-polar (100) surface forms Zn-O dimer rows, so the total moment and every site moment are zero; Meyer & Marx 2003 establishes the closed-shell relaxed structure and stability of this surface. ISPIN=2 must be enabled so the agent verifies rather than assumes the non-magnetic ground state, and must report 'no unpaired electrons'. Tolerance +/-0.10 uB absorbs the VASP magnetisation-integration noise floor."
+  }
+}

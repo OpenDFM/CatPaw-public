@@ -1,0 +1,10 @@
+{
+  "case_id": "O3_spin",
+  "category": "spin_localization",
+  "description": "Analyze spin density of a gas-phase O3 (ozone) molecule. This is a negative control for molecules.",
+  "workspace": "spin_localization/bench_O3_spin",
+  "user_prompt": "Perform spin density analysis on a gas-phase O3 (ozone) molecule in a vacuum box. Determine whether the system has unpaired electrons and report the total magnetic moment of the molecule.",
+  "benchmark_result": {
+    "total_magmom": null
+  }
+}

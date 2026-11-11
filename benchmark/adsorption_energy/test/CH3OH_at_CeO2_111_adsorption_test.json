@@ -1,0 +1,10 @@
+{
+  "case_id": "CH3OH_at_CeO2_111_adsorption",
+  "category": "adsorption_energy",
+  "description": "Calculate the adsorption energy of CH3OH (methanol) on the CeO2(111) surface.",
+  "workspace": "adsorption_energy/bench_CH3OH_at_CeO2_111_adsorption",
+  "user_prompt": "Calculate the adsorption energy of methanol CH3OH on the CeO2(111) fluorite surface (Fm-3m). Note that on stoichiometric CeO2(111) methanol adsorbs dissociatively. Report the final adsorption energy Eads (in eV), defined as Eads = E(slab+CH3OH) - E(slab) - E(CH3OH), referenced to the intact gas-phase methanol molecule.",
+  "benchmark_result": {
+    "Eads": null
+  }
+}

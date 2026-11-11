@@ -1,0 +1,23 @@
+bulk_opt:
+  description: Used for full-parameter optimization of 3D periodic crystals (bulk cell relaxation).
+  incar_rules:
+    mandatory:
+      ISIF: 3
+      IBRION: 1
+      NSW: 300
+      NELM: 400
+      EDIFF: 1e-5
+      EDIFFG: -0.03
+    dynamic_logic:
+    - If in the previous run the relaxed lattice-parameter change (|opt - exp| / exp) exceeds 2%, or severe structural distortion occurs, force ISYM=0 in the next submission to remove symmetry constraints.
+    - Use PotcarEncutEvaluator to choose ENCUT from pseudopotential ENMAX evidence.
+  kpoints_rules:
+    strategy: Gamma-centered Monkhorst-Pack
+    recommended_grid:
+    - 5
+    - 5
+    - 5
+    instructions: 'If lattice constants a, b, and c differ substantially, adjust inversely (for example, if a is longer, Ka can be reduced appropriately), while keeping total density comparable to 5x5x5. CreateKpoints has built-in empirical rule k = 20 / cell length, so custom_grid is usually unnecessary. Note: K-point count directly affects compute cost; do not manually densify without physical justification.'
+  audit_criteria:
+  - INCAR must use ISIF=3.
+  - KPOINTS and POTCAR must be non-empty before submission.

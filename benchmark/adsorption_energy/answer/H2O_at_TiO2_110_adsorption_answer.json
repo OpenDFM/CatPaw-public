@@ -1,0 +1,41 @@
+{
+  "case_id": "H2O_at_TiO2_110_adsorption",
+  "category": "adsorption_energy",
+  "description": "Calculate the molecular adsorption energy of H2O on the TiO2(110) surface.",
+  "workspace": "adsorption_energy/bench_H2O_at_TiO2_110_adsorption",
+  "user_prompt": "Calculate the molecular adsorption energy of intact H2O on the stoichiometric TiO2(110) rutile surface (P4_2/mnm) at a fivefold-coordinated Ti site. Report the final adsorption energy Eads (in eV), defined as Eads = E(slab+H2O) - E(slab) - E(H2O).",
+
+  "tags": {
+    "is_magnetic": false,
+    "needs_dft+u": true,
+    "modeling_difficulty": "M3",
+    "correction_difficulty": "P2",
+    "workflow_complexity": "W3"
+  },
+
+  "acceptance_criteria": {
+    "Eads": {
+      "value": -0.87,
+      "unit": "eV",
+      "tolerance": 0.2,
+      "tolerance_type": "absolute"
+    }
+  },
+
+  "method": {
+    "references": [
+      "Lindan, Harrison & Gillan, Phys. Rev. Lett. 80, 762 (1998)",
+      "Morgan & Watson, Surf. Sci. 601, 5034 (2007)"
+    ],
+    "modeling": "Stoichiometric rutile TiO2(110) slab with at least 4 layers, vacuum >= 15 Angstrom, and a 3x2x1 or larger surface supercell; adsorb intact H2O through O at a fivefold-coordinated Ti site. Reference the adsorption energy to the clean stoichiometric slab plus gas-phase H2O.",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "magnetism": "ISPIN=1",
+      "dft+u": "Ueff(Ti 3d) = 4.2 eV (recommended)",
+      "kpoints": ">= 3x3x1 (3x2x1 slab)",
+      "smearing": "ISMEAR=0, SIGMA=0.05",
+      "precision": "PREC=Accurate, ENCUT >= 500 eV"
+    },
+    "rationale": "Value is the half-monolayer molecular adsorption energy E_M from Lindan et al. 1998, converted from their positive binding-energy convention to the negative Eads convention used by this benchmark. The final state is intact H2O bound O-down at a fivefold Ti site; a dissociated OH + H final state is not the target for this prompt. The reference value was computed with PW91 rather than PBE+U, so the +/-0.20 eV absolute tolerance covers PW91-to-PBE(+U), coverage, slab-size, and orientation differences."
+  }
+}

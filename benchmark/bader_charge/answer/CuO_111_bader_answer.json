@@ -1,0 +1,40 @@
+{
+  "case_id": "CuO_111_bader",
+  "category": "bader_charge",
+  "description": "Perform Bader charge analysis on the Cu-terminated CuO tenorite (111) surface.",
+  "workspace": "bader_charge/bench_CuO_111_bader",
+  "user_prompt": "Perform Bader charge analysis on the Cu-terminated CuO (111) surface (tenorite, C2/c). Report the Bader net charge (in electrons) for an outermost surface-layer Cu atom.",
+
+  "tags": {
+    "is_magnetic": true,
+    "needs_dft+u": true,
+    "modeling_difficulty": "M2",
+    "correction_difficulty": "P3",
+    "workflow_complexity": "W2"
+  },
+
+  "acceptance_criteria": {
+    "Cu_surface_bader_charge": {
+      "value": 0.5,
+      "unit": "e",
+      "tolerance": 0.2,
+      "tolerance_type": "absolute"
+    }
+  },
+
+  "method": {
+    "references": [
+      "Bogenrieder, Bessner, Engstfeld & Jacob, J. Phys. Chem. C 128, 9693 (2024)"
+    ],
+    "modeling": "Tenorite CuO (C2/c); symmetric Cu-terminated CuO(111) slab, more than 4 CuO layers, vacuum >= 15 Angstrom. Report an outermost (2-coordinated) surface Cu.",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "magnetism": "ISPIN=2",
+      "dft+u": "Ueff(Cu 3d) = 7~8 eV (recommended)",
+      "kpoints": ">= 6x6x1 (slab)",
+      "smearing": "ISMEAR=0, SIGMA=0.05",
+      "precision": "PREC=Accurate, ENCUT >= 500 eV"
+    },
+    "rationale": "Value from Bogenrieder et al. 2024 (spin-polarized PBE+U, Dudarev U=8 eV on Cu 3d, AFM): bulk/interior Cu is +1.1 e, but the coordinatively-unsaturated (2-coordinated) outermost Cu on the Cu-terminated CuO(111) surface is reduced to about +0.5 e (Cu2+ -> Cu+). The key_parameters are the recommended VASP protocol. Tolerance +/-0.20 e absolute absorbs the U-value / PAW-valence dependence."
+  }
+}

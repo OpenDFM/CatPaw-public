@@ -1,0 +1,40 @@
+{
+  "case_id": "CO_at_Pt_111_adsorption",
+  "category": "adsorption_energy",
+  "description": "Calculate the adsorption energy of CO on the Pt(111) surface at the top site.",
+  "workspace": "adsorption_energy/bench_CO_at_Pt_111_adsorption",
+  "user_prompt": "Calculate the adsorption energy of CO on the Pt(111) surface (FCC, Fm-3m) at the top site. Report the final adsorption energy Eads (in eV), defined as Eads = E(slab+CO) - E(slab) - E(CO).",
+
+  "tags": {
+    "is_magnetic": false,
+    "needs_dft+u": false,
+    "modeling_difficulty": "M3",
+    "correction_difficulty": "P1",
+    "workflow_complexity": "W3"
+  },
+
+  "acceptance_criteria": {
+    "Eads": {
+      "value": -1.45,
+      "unit": "eV",
+      "tolerance": 0.2,
+      "tolerance_type": "absolute"
+    }
+  },
+
+  "method": {
+    "references": [
+      "Hammer, Morikawa & Norskov, Phys. Rev. Lett. 76, 2141 (1996)",
+      "Feibelman, Hammer, Norskov, Wagner, Scheffler, Stumpf, Watwe & Dumesic, J. Phys. Chem. B 105, 4018 (2001)"
+    ],
+    "modeling": "Pt(111) slab with at least 4 layers, vacuum >= 15 Angstrom, and a 3x3x1 or larger surface supercell; adsorb CO C-down on a top Pt atom. Reference the adsorption energy to the clean Pt(111) slab plus gas-phase CO.",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "magnetism": "ISPIN=1",
+      "kpoints": ">= 3x3x1 (3x3x1 slab)",
+      "smearing": "ISMEAR=1, SIGMA=0.1 (slab)",
+      "precision": "PREC=Accurate, ENCUT >= 450 eV"
+    },
+    "rationale": "Value is the electronic adsorption energy for top-site CO on Pt(111), written in the negative Eads convention used by this benchmark. The final state is C-down CO bound to an atop Pt atom; Feibelman et al. 2001 documents that semilocal DFT can favor the fcc hollow site, so a hollow-site relaxation is not the target for this prompt. The +/-0.20 eV absolute tolerance covers coverage, k-mesh, slab-thickness, and PBE/PW91 implementation differences."
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "case_id": "H2O_mol_opt",
+  "category": "mol_opt",
+  "description": "Optimize the geometry of a water molecule.",
+  "workspace": "mol_opt/bench_H2O_mol_opt",
+  "user_prompt": "Optimize the geometry of a water molecule, then report the final energy and O-H bond length.",
+  "benchmark_result": {
+    "bond_length": null
+  }
+}

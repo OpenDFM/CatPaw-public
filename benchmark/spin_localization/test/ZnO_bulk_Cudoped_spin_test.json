@@ -1,0 +1,11 @@
+{
+  "case_id": "ZnO_bulk_Cudoped_spin",
+  "category": "spin_localization",
+  "description": "Analyze spin density of Cu-doped bulk ZnO.",
+  "workspace": "spin_localization/bench_ZnO_bulk_Cudoped_spin",
+  "user_prompt": "Perform spin density analysis on a relatively large supercell of bulk ZnO (wurtzite structure, P6_3mc), where one Zn atom is substituted by Cu. Determine whether the system has unpaired electrons. If unpaired electrons are present, identify the atom carrying the majority of the spin density by its element and report its magnetic moment; otherwise report that there is no spin-carrying element and report the maximum residual site magnetic moment.",
+  "benchmark_result": {
+    "element": null,
+    "magmom": null
+  }
+}

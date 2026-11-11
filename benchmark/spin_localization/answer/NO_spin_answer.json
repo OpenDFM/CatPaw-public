@@ -1,0 +1,40 @@
+{
+  "case_id": "NO_spin",
+  "category": "spin_localization",
+  "description": "Analyze spin density of a gas-phase NO molecule.",
+  "workspace": "spin_localization/bench_NO_spin",
+  "user_prompt": "Perform spin density analysis on a gas-phase NO molecule in a vacuum box. Determine whether the system has unpaired electrons and report the total magnetic moment of the molecule.",
+
+  "tags": {
+    "is_magnetic": true,
+    "needs_dft+u": false,
+    "modeling_difficulty": "M1",
+    "correction_difficulty": "P2",
+    "workflow_complexity": "W2"
+  },
+
+  "acceptance_criteria": {
+    "total_magmom": {
+      "value": 1.0,
+      "unit": "uB",
+      "tolerance": 0.1,
+      "tolerance_type": "absolute"
+    }
+  },
+
+  "method": {
+    "references": [
+      "Huber & Herzberg, Molecular Spectra and Molecular Structure IV: Constants of Diatomic Molecules, Van Nostrand Reinhold (1979)",
+      "NIST Chemistry WebBook, NIST Standard Reference Database 69 (NO, X^2Pi ground state)"
+    ],
+    "modeling": "Single NO molecule in a cubic vacuum box >= 12 A, Gamma-only. Initialise MAGMOM with both atoms spin-up so ISPIN=2 converges to the S=1/2 doublet.",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "magnetism": "ISPIN=2",
+      "kpoints": "Gamma-only",
+      "smearing": "ISMEAR=0, SIGMA=0.01",
+      "precision": "PREC=Accurate, ENCUT >= 520 eV, LORBIT=11"
+    },
+    "rationale": "NO has the experimentally established X^2Pi doublet ground state (11 valence electrons, odd, S=1/2; Huber & Herzberg, NIST WebBook), so the total magnetic moment is fixed at 1.0 uB = 2S by spin multiplicity rather than by any DFT-computed number; this is the scored metric. Per-atom site moments are deliberately not scored: the single unpaired electron sits in the diffuse 2pi* SOMO, and the VASP LORBIT projection integrates only inside each Wigner-Seitz sphere while the pi* density leaks into the interstitial region, so the N/O split is scheme-dependent and has no clean reference value. Tolerance 0.1 uB absorbs the magnetisation-integration noise floor."
+  }
+}

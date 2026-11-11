@@ -1,0 +1,10 @@
+{
+  "case_id": "CeO2_111_MVK_CO",
+  "category": "reaction_profile",
+  "description": "Compute the overall electronic reaction energy of thermal CO oxidation on CeO2(111) via the Mars-van Krevelen mechanism.",
+  "workspace": "reaction_profile/bench_CeO2_111_MVK_CO",
+  "user_prompt": "Compute the Mars-van Krevelen (MVK) reaction profile of thermal CO oxidation (CO + 1/2 O2 -> CO2) on the CeO2(111) fluorite surface (space group Fm-3m). The MVK mechanism comprises two elementary steps: (i) CO(g) abstracts a surface lattice O to form CO2(g), leaving an oxygen vacancy V_O on the reduced surface (two Ce^4+ are reduced to Ce^3+); (ii) 1/2 O2(g) refills V_O to restore the stoichiometric surface. Report the overall electronic reaction energy delta_E_total (in eV) for CO(g) + 1/2 O2(g) -> CO2(g).",
+  "benchmark_result": {
+    "delta_E_total": null
+  }
+}

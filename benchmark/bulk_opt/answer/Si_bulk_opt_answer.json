@@ -1,0 +1,36 @@
+{
+  "case_id": "Si_bulk_opt",
+  "category": "bulk_opt",
+  "description": "Optimize the cubic Fd-3m bulk structure of silicon.",
+  "workspace": "bulk_opt/bench_Si_bulk_opt",
+  "user_prompt": "Optimize the cubic (Fd-3m) bulk structure of silicon (Si). Report the final converged energy and lattice constant.",
+  "tags": {
+    "is_magnetic": false,
+    "needs_dft+u": false,
+    "modeling_difficulty": "M1",
+    "correction_difficulty": "P1",
+    "workflow_complexity": "W1"
+  },
+  "acceptance_criteria": {
+    "energy_per_formula_unit": {
+      "value": -5.423,
+      "unit": "eV/f.u.",
+      "tolerance": 0.5,
+      "tolerance_type": "absolute"
+    }
+  },
+  "method": {
+    "references": [
+      "Jain, Ong, Hautier, Chen, Richards, Dacek, Cholia, Gunter, Skinner, Ceder & Persson, APL Mater. 1, 011002 (2013)"
+    ],
+    "modeling": "Diamond Si conventional cubic bulk cell with space group Fd-3m; Si formula unit is one atom.",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "magnetism": "ISPIN=1",
+      "kpoints": ">= 6x6x6 (bulk)",
+      "smearing": "ISMEAR=0, SIGMA=0.05",
+      "precision": "ENCUT >= 450 eV"
+    },
+    "rationale": "The target energy is the Materials Project mp-149 GGA final energy per atom (-5.4234 eV/atom), equal to energy per formula unit for elemental Si. Only the total energy is scored; the lattice constant is left as a diagnostic because the accepted energy is tied to MP PAW/PBE conventions. Si is a semiconductor, so metallic Methfessel-Paxton smearing should be avoided; the +/-0.5 eV/f.u. absolute tolerance covers PAW dataset, cutoff, and smearing differences while still flagging qualitatively wrong bulk calculations."
+  }
+}

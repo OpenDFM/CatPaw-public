@@ -1,0 +1,8 @@
+# Force LF for files consumed by Linux HPC tooling (sbatch, bash scripts, VASP inputs).
+# Without this, Windows editors / git autocrlf silently inject CRLF, which sbatch rejects.
+*.template text eol=lf
+*.sh text eol=lf
+*.sbatch text eol=lf
+*.py text eol=lf
+src/skills/**/scripts/*.py text eol=lf
+src/skills/**/assets/** text eol=lf

@@ -1,0 +1,37 @@
+{
+  "case_id": "Co_001_slab_opt",
+  "category": "slab_opt",
+  "description": "Surface Optimization of the (001) Surface of Co (Hexagonal, P6_3/mmc) and Surface Energy Calculation",
+  "workspace": "slab_opt/bench_Co_001_slab_opt",
+  "user_prompt": "Optimize the (001) surface of cobalt Co (hexagonal, P6_3/mmc) and calculate the surface energy. Report the final surface energy in J/m^2.",
+  "tags": {
+    "is_magnetic": true,
+    "needs_dft+u": false,
+    "modeling_difficulty": "M2",
+    "correction_difficulty": "P2",
+    "workflow_complexity": "W2"
+  },
+  "acceptance_criteria": {
+    "surface_energy": {
+      "value": 2.10,
+      "unit": "J/m^2",
+      "tolerance": 0.3,
+      "tolerance_type": "absolute"
+    }
+  },
+
+  "method": {
+    "references": [
+      "Lin, Liu, Fan & Li, J. Phys. Chem. C 124, 11005 (2020)",
+      "Tyson & Miller, Surf. Sci. 62, 267 (1977)"
+    ],
+    "modeling": "hcp Co (P6_3/mmc), ferromagnetic, (001) basal plane; symmetric slab (>= 5-7 layers, converged), vacuum >= 15 A, surface relaxed.",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "magnetism": "ISPIN=2",
+      "kpoints": ">= 3x3x1 (slab)",
+      "smearing": "ISMEAR=1, SIGMA=0.2"
+    },
+    "rationale": "Value 2.10 J/m^2 (= 131 meV/A^2) is the spin-polarized PBE Co(001) surface energy from Lin et al. 2020 (VASP, PAW-PBE, ferromagnetic). Co must be ferromagnetic (ISPIN=2); a nonmagnetic calculation gives the wrong lattice and surface energy. PBE underestimates the experimental ~2.55 J/m^2 (Tyson & Miller 1977), so the case is graded against the PBE value, not experiment. Tolerance +/-0.30 J/m^2 (absolute) covers PBE inter-setup scatter (slab thickness, k-mesh, pseudopotential); larger deviations usually signal an unconverged slab."
+  }
+}

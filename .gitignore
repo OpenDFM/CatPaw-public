@@ -1,0 +1,75 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# jupyter notebook in the root
+*.ipynb
+
+# workspace vscode settings
+.vscode
+
+# memory
+.codex
+AGENTS.md
+.claude
+CLAUDE.md
+.agents
+
+# ignore sensitive files
+.env
+config.yaml
+
+# common log and cache folders
+logs
+tmp
+results
+.cache
+.DS_Store/
+
+# DFT related tools
+src/tools/vaspkit.1.5.1/
+src/tools/lobster-5.1.1/
+src/tools/potpaw_PBE2010/
+src/tools/bader
+src/skills/result-analysis/scripts/bader
+
+# scripts
+test_benchmark_new_ver.sh
+
+# workspace contents (keep the directory itself via .gitkeep)
+workspace/*
+!workspace/.gitkeep
+workspace_react/
+
+# openhands persistence files
+.conversations/
+
+# playground files
+playground/
+ReAct/
+
+# paper files
+paper/
+benchmark_reference
+benchmark/ablation/
+benchmark/case_study/
+
+# database
+database/model_library/
+database/potcars/
+database/
+
+# memory
+/memory/
+/memory_modeling/
+/memory_parameter/
+src/memory/*.jsonl
+src/memory/index_metadata.json
+src/memory/.memory.lock

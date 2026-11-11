@@ -1,0 +1,40 @@
+{
+  "case_id": "Cr2O3_band_gap",
+  "category": "band_gap",
+  "description": "Calculate the DFT+U band gap of bulk corundum Cr2O3 with antiferromagnetic ordering.",
+  "workspace": "band_gap/bench_Cr2O3_band_gap",
+  "user_prompt": "Calculate the band gap of bulk Cr2O3 (corundum structure, R-3c) and report its value in eV.",
+
+  "tags": {
+    "is_magnetic": true,
+    "needs_dft+u": true,
+    "modeling_difficulty": "M1",
+    "correction_difficulty": "P3",
+    "workflow_complexity": "W2"
+  },
+
+  "acceptance_criteria": {
+    "band_gap": {
+      "value": 2.6,
+      "unit": "eV",
+      "tolerance": 0.2,
+      "tolerance_type": "absolute"
+    }
+  },
+
+  "method": {
+    "references": [
+      "Rohrbach, Hafner & Kresse, Phys. Rev. B 70, 125426 (2004)"
+    ],
+    "modeling": "Use bulk alpha-Cr2O3 in the corundum structure with antiferromagnetic +-+- Cr-layer stacking along the hexagonal c axis.",
+    "key_parameters": {
+      "functional": "PW91(PAW)",
+      "magnetism": "ISPIN=2",
+      "dft+u": "Liechtenstein U(Cr 3d)=5 eV, J(Cr 3d)=1 eV; alternative Dudarev Ueff(Cr 3d)=4 eV",
+      "kpoints": ">=8x8x8 (bulk)",
+      "smearing": "ISMEAR=0, SIGMA=0.05",
+      "precision": "ENCUT >= 500 eV, PREC=Accurate"
+    },
+    "rationale": "The scored value is the 2.6 eV band-edge gap reported by Rohrbach et al. for antiferromagnetic corundum Cr2O3 using PW91-based GGA+U with U=5 eV and J=1 eV on Cr 3d. The same table reports 1.2 eV in the uncorrected GGA limit and 3.4 eV experimentally, so this benchmark is pinned to the DFT+U Ueff=4 eV convention rather than to the optical experimental gap. The absolute tolerance covers U implementation details, relaxed-geometry sensitivity, and DOS/band sampling differences."
+  }
+}

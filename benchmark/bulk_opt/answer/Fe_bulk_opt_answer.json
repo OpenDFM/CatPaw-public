@@ -1,0 +1,36 @@
+{
+  "case_id": "Fe_bulk_opt",
+  "category": "bulk_opt",
+  "description": "Optimize the cubic Im-3m bulk structure of ferromagnetic iron.",
+  "workspace": "bulk_opt/bench_Fe_bulk_opt",
+  "user_prompt": "Optimize the cubic (Im-3m) bulk structure of iron (Fe). Report the final converged energy and lattice constant.",
+  "tags": {
+    "is_magnetic": true,
+    "needs_dft+u": false,
+    "modeling_difficulty": "M1",
+    "correction_difficulty": "P2",
+    "workflow_complexity": "W1"
+  },
+  "acceptance_criteria": {
+    "energy_per_formula_unit": {
+      "value": -8.47,
+      "unit": "eV/f.u.",
+      "tolerance": 0.5,
+      "tolerance_type": "absolute"
+    }
+  },
+  "method": {
+    "references": [
+      "Jain, Ong, Hautier, Chen, Richards, Dacek, Cholia, Gunter, Skinner, Ceder & Persson, APL Mater. 1, 011002 (2013)"
+    ],
+    "modeling": "bcc Fe conventional cubic bulk cell with space group Im-3m; Fe formula unit is one atom.",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "magnetism": "ISPIN=2, ferromagnetic ordering",
+      "kpoints": ">= 6x6x6 (bulk)",
+      "smearing": "ISMEAR=1, SIGMA=0.2",
+      "precision": "ENCUT >= 450 eV"
+    },
+    "rationale": "The target energy is the Materials Project mp-13 PBE energy per atom, equal to energy per formula unit for elemental Fe. Only the total energy is scored; the lattice constant is left as a diagnostic because the accepted energy is tied to MP PAW/PBE conventions. Ferromagnetic spin polarization is required for bcc Fe; the +/-0.5 eV/f.u. absolute tolerance covers PAW dataset, cutoff, smearing, and magnetic initialization differences while still flagging qualitatively wrong bulk calculations."
+  }
+}

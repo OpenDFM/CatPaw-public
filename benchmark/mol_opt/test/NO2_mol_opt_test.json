@@ -1,0 +1,10 @@
+{
+  "case_id": "NO2_mol_opt",
+  "category": "mol_opt",
+  "description": "Optimize the geometry of a nitrogen dioxide molecule in its doublet ground state.",
+  "workspace": "mol_opt/bench_NO2_mol_opt",
+  "user_prompt": "Optimize the geometry of a nitrogen dioxide molecule, then report the final energy and N-O bond length.",
+  "benchmark_result": {
+    "bond_length": null
+  }
+}

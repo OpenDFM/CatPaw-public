@@ -1,0 +1,10 @@
+{
+  "case_id": "H_at_Ni_111_adsorption",
+  "category": "adsorption_energy",
+  "description": "Calculate the adsorption energy of atomic H on the Ni(111) ferromagnetic surface.",
+  "workspace": "adsorption_energy/bench_H_at_Ni_111_adsorption",
+  "user_prompt": "Calculate the adsorption energy of atomic hydrogen H on the Ni(111) surface (FCC, Fm-3m). Report the final adsorption energy Eads (in eV), defined as Eads = E(slab+H) - E(slab) - E(H).",
+  "benchmark_result": {
+    "Eads": null
+  }
+}

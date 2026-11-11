@@ -1,0 +1,38 @@
+{
+  "case_id": "Pt_111_ORR",
+  "category": "reaction_profile",
+  "description": "Compute the potential-determining free-energy step of the oxygen reduction reaction on Pt(111) under the Computational Hydrogen Electrode model.",
+  "workspace": "reaction_profile/bench_Pt_111_ORR",
+  "user_prompt": "Compute the oxygen reduction reaction (ORR) reaction profile on the Pt(111) FCC surface (space group Fm-3m) via the associative mechanism (O2 -> *OOH -> *O -> *OH -> H2O) under the Computational Hydrogen Electrode (CHE) model. Build the CHE free-energy ladder for the four proton-coupled electron-transfer steps at U = 1.23 V vs RHE and identify the potential-determining step. Report the free energy of the potential-determining PCET step, delta_G_rds = max(delta_G_1..4) (in eV).",
+  "tags": {
+    "is_magnetic": true,
+    "needs_dft+u": false,
+    "modeling_difficulty": "M3",
+    "correction_difficulty": "P2",
+    "workflow_complexity": "W3"
+  },
+  "acceptance_criteria": {
+    "delta_G_rds": {
+      "value": 0.45,
+      "unit": "eV",
+      "tolerance": 0.2,
+      "tolerance_type": "absolute"
+    }
+  },
+  "method": {
+    "references": [
+      "Norskov, Rossmeisl, Logadottir, Lindqvist, Kitchin, Bligaard & Jonsson, J. Phys. Chem. B 108, 17886 (2004)",
+      "Kulkarni, Siahrostami, Patel & Norskov, Chem. Rev. 118, 2302 (2018)"
+    ],
+    "modeling": "Use a Pt(111) slab with at least 4 layers, vacuum >= 15 Angstrom, and a 2x2x1 or larger surface cell; follow the associative ORR pathway through *OOH, *O, and *OH with triplet O2 as the initial state. Build the CHE free-energy ladder at U = 1.23 V vs RHE and identify delta_G_rds from the four PCET steps.",
+    "key_parameters": {
+      "functional": "RPBE(PAW)",
+      "magnetism": "ISPIN=1 for Pt slabs; ISPIN=2 for triplet O2",
+      "kpoints": ">= 3x3x1 (2x2x1 slab)",
+      "smearing": "ISMEAR=1, SIGMA=0.1",
+      "precision": "PREC=Accurate, ENCUT >= 450 eV",
+      "free_energy_corrections": "CHE with ZPE and entropy corrections at 298 K"
+    },
+    "rationale": "Norskov et al. report an uphill free-energy step of 0.45 eV for O* reduction to OH* on Pt(111) at U = 1.23 V; this value is used as the reference delta_G_rds. The corresponding limiting potential and theoretical overpotential are derived quantities, U_L = 1.23 V - delta_G_rds/e = 0.78 V and eta = delta_G_rds/e = 0.45 V, while the benchmark scores only delta_G_rds. Kulkarni et al. give a later ORR volcano review value near 0.4 V for Pt(111), and the +/-0.20 eV tolerance covers this literature spread and CHE correction choices."
+  }
+}

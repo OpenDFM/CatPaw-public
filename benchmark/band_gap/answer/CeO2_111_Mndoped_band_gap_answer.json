@@ -1,0 +1,40 @@
+{
+  "case_id": "CeO2_111_Mndoped_band_gap",
+  "category": "band_gap",
+  "description": "Calculate the band gap of Mn-doped CeO2 (111) surface. Mn substitution at Ce site introduces Mn 3d mid-gap states and narrows the effective gap. PBE severely underestimates the gap.",
+  "workspace": "band_gap/bench_CeO2_111_Mndoped_band_gap",
+  "user_prompt": "Calculate the band gap of Mn-doped CeO2 (111) surface (cubic, Fm-3m), where one Ce atom at surface is substituted by Mn, and report its value in eV.",
+
+  "tags": {
+    "is_magnetic": true,
+    "needs_dft+u": true,
+    "modeling_difficulty": "M3",
+    "correction_difficulty": "P3",
+    "workflow_complexity": "W2"
+  },
+
+  "acceptance_criteria": {
+    "band_gap": {
+      "value": 0.31,
+      "unit": "eV",
+      "tolerance": 0.2,
+      "tolerance_type": "absolute"
+    }
+  },
+
+  "method": {
+    "references": [
+      "Cen, Liu, Wu, Wang & Weng, Phys. Chem. Chem. Phys. 14, 5769-5777 (2012)"
+    ],
+    "modeling": "Use a CeO2(111) slab with one surface Ce atom substituted by Mn; the reference work used a 3x3x1 nine-layer slab with about 15 A vacuum.",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "magnetism": "ISPIN=2",
+      "dft+u": "Ueff(Ce 4f)=5.0 eV, Ueff(Mn 3d)=4.5 eV",
+      "kpoints": ">=3x3x1 (3x3x1 slab)",
+      "smearing": "ISMEAR=0, SIGMA=0.05",
+      "precision": "ENCUT >= 480 eV, PREC=Accurate"
+    },
+    "rationale": "The scored value is the 0.31 eV position relative to the Fermi level of the unfilled Mn 3d-O 2p gap state A reported by Cen et al. at Ueff(Mn 3d)=4.5 eV with Ueff(Ce 4f)=5.0 eV. The same work reports approximately 0.5 eV for the energy interval from the valence-band maximum (VBM) to this unoccupied dopant state in the Mn-substituted CeO2(111) slab; the retained 0.31 eV target is the Fermi-referenced state position. Cen et al. used PW91+U rather than PBE+U, so the wide absolute tolerance covers PW91/PBE differences, Mn oxidation-state initialization, O 2p hole localization, and slab/DOS sampling sensitivity."
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "case_id": "MgO_bader",
+  "category": "bader_charge",
+  "description": "Perform Bader charge analysis on bulk MgO (rock salt).",
+  "workspace": "bader_charge/bench_MgO_bader",
+  "user_prompt": "Perform Bader charge analysis on bulk MgO (rock salt structure, Fm-3m). Report the Bader net charge (in electrons) for Mg atoms and O atoms.",
+  "benchmark_result": {
+    "Mg_bader_charge": null,
+    "O_bader_charge": null
+  }
+}

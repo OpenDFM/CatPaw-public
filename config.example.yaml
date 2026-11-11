@@ -1,0 +1,110 @@
+# CatPaw configuration example.
+#
+# Copy this file to config.yaml for local use. Relative paths are resolved from
+# the repository root. Replace any value with an absolute path when the resource
+# lives outside the checkout.
+paths:
+  database_dir: database
+  model_library_dir: database/model_library
+  potcar_dir: database/potcars
+  memory_dir: memory
+  workspace_root: workspace
+
+# Maximum concurrent DAG nodes; human review runs nodes serially.
+workflow:
+  max_node_parallel: 2
+
+materials_project:
+  api_key: replace-with-materials-project-api-key
+
+llm:
+  api: chat_completions
+  # 0 means unlimited attempts for retryable API errors.
+  num_retries: 0
+  retry_min_wait: 60
+  retry_max_wait: 1800
+
+# Real keys belong only in ignored config.yaml.
+# Each agent can also set api: responses or chat_completions.
+# For DeepSeek-V4 served by SGLang, add to each agent:
+#   extra_body:
+#     chat_template_kwargs:
+#       thinking: true
+agents:
+  supervisor: &default_agent
+    url: https://api.openai.com/v1
+    api_key: replace-with-api-key
+    model: openai/gpt-5.5
+  coordinator:
+    <<: *default_agent
+  modeling_worker:
+    <<: *default_agent
+  modeling_validator:
+    <<: *default_agent
+  param_worker:
+    <<: *default_agent
+  param_validator:
+    <<: *default_agent
+  calculation_runner:
+    <<: *default_agent
+  analyzer:
+    <<: *default_agent
+  reporter:
+    <<: *default_agent
+
+# Weave observes execution; scientific state remains in the workspace.
+weave:
+  enabled: true
+  project: your-team/catpaw
+  api_key: replace-with-wandb-api-key
+
+hpc:
+  slurm_partition: intel
+  # Required for deterministic CPU planning. Profiles are checked in order;
+  # the final catch-all must use max_atoms: null.
+  cores_per_node: 72
+  nodes_per_job: 1
+  resource_profiles:
+    small:
+      max_atoms: 20
+      total_cpus: 24
+      kpar: 1
+      ncore: 4
+      omp_threads: 1
+    medium:
+      max_atoms: 50
+      total_cpus: 36
+      kpar: 1
+      ncore: 6
+      omp_threads: 1
+    large:
+      max_atoms: 100
+      total_cpus: 72
+      kpar: 1
+      ncore: 9
+      omp_threads: 1
+    very_large:
+      max_atoms: 200
+      total_cpus: 72
+      kpar: 1
+      ncore: 9
+      omp_threads: 1
+    fallback:
+      max_atoms: null
+      total_cpus: 72
+      kpar: 1
+      ncore: 12
+      omp_threads: 1
+  module_purge: true
+  module_loads: openmpi/5.0.7, vasp/6.3.2
+  submit_module_purge: true
+  submit_module_loads: openmpi/5.0.7, vasp/6.3.2
+  sbatch_export: ALL
+  ld_library_path:
+  vasp_command: mpirun -n {{TOTAL_CPUS}} vasp_std
+
+# Enable each category independently. Disabled categories expose no tools or prompt instructions.
+memory:
+  dag: false
+  modeling: false
+  parameter: false

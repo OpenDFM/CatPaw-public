@@ -1,0 +1,10 @@
+{
+  "case_id": "Fe_bulk_opt",
+  "category": "bulk_opt",
+  "description": "Optimize the cubic Im-3m bulk structure of ferromagnetic iron.",
+  "workspace": "bulk_opt/bench_Fe_bulk_opt",
+  "user_prompt": "Optimize the cubic (Im-3m) bulk structure of iron (Fe). Report the final converged energy and lattice constant.",
+  "benchmark_result": {
+    "energy_per_formula_unit": null
+  }
+}

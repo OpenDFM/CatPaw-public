@@ -1,0 +1,10 @@
+{
+  "case_id": "O_at_Rh_111_adsorption",
+  "category": "adsorption_energy",
+  "description": "Calculate the adsorption energy of atomic O on the Rh(111) surface at the fcc hollow site.",
+  "workspace": "adsorption_energy/bench_O_at_Rh_111_adsorption",
+  "user_prompt": "Calculate the adsorption energy of atomic oxygen O on the Rh(111) surface (Fm-3m). Report the final adsorption energy Eads (in eV), defined as Eads = E(slab+O) - E(slab) - E(O).",
+  "benchmark_result": {
+    "Eads": null
+  }
+}

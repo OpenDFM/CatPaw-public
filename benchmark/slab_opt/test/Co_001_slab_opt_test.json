@@ -1,0 +1,10 @@
+{
+  "case_id": "Co_001_slab_opt",
+  "category": "slab_opt",
+  "description": "Surface Optimization of the (001) Surface of Co (Hexagonal, P6_3/mmc) and Surface Energy Calculation",
+  "workspace": "slab_opt/bench_Co_001_slab_opt",
+  "user_prompt": "Optimize the (001) surface of cobalt Co (hexagonal, P6_3/mmc) and calculate the surface energy. Report the final surface energy in J/m^2.",
+  "benchmark_result": {
+    "surface_energy": null
+  }
+}

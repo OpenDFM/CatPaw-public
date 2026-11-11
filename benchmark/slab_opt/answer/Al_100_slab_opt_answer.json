@@ -1,0 +1,37 @@
+{
+  "case_id": "Al_100_slab_opt",
+  "category": "slab_opt",
+  "description": "Surface Optimization of the (100) Surface of Al (Cubic, Fm-3m) and Surface Energy Calculation",
+  "workspace": "slab_opt/bench_Al_100_slab_opt",
+  "user_prompt": "Optimize the (100) surface of aluminum Al (cubic, Fm-3m) and calculate the surface energy. Report the final surface energy in J/m^2.",
+  "tags": {
+    "is_magnetic": false,
+    "needs_dft+u": false,
+    "modeling_difficulty": "M2",
+    "correction_difficulty": "P1",
+    "workflow_complexity": "W2"
+  },
+  "acceptance_criteria": {
+    "surface_energy": {
+      "value": 0.86,
+      "unit": "J/m^2",
+      "tolerance": 0.2,
+      "tolerance_type": "absolute"
+    }
+  },
+
+  "method": {
+    "references": [
+      "Singh-Miller & Marzari, Phys. Rev. B 80, 235407 (2009)",
+      "Tyson & Miller, Surf. Sci. 62, 267 (1977)"
+    ],
+    "modeling": "fcc Al (Fm-3m) (100) surface; symmetric slab (>= 6-7 layers), vacuum >= 15 A, surface fully relaxed.",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "magnetism": "ISPIN=1",
+      "kpoints": ">= 3x3x1 (slab)",
+      "smearing": "ISMEAR=1, SIGMA=0.2"
+    },
+    "rationale": "Value 0.86 J/m^2 is the relaxed Al(100) PBE surface energy from Singh-Miller & Marzari 2009 (plane-wave PBE, Quantum ESPRESSO; their Table III, alongside Al(111)=0.67 and Al(110)=0.93). PBE substantially underestimates surface energy versus the experimental ~1.14 J/m^2 (Tyson & Miller 1977), so the case is graded against the PBE value, not experiment. Metallic Al requires Methfessel-Paxton smearing. Tolerance +/-0.20 J/m^2 (absolute) covers inter-setup PBE scatter (slab thickness, k-mesh, pseudopotential); larger deviations usually signal an unconverged slab."
+  }
+}

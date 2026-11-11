@@ -1,0 +1,38 @@
+{
+  "case_id": "graphite_bulk_opt",
+  "category": "bulk_opt",
+  "description": "Optimize the hexagonal P6_3/mmc bulk structure of graphite with a van der Waals correction.",
+  "workspace": "bulk_opt/bench_graphite_bulk_opt",
+  "user_prompt": "Optimize the hexagonal (P6_3/mmc) bulk structure of graphite. Report the final converged energy and lattice constants (a and c).",
+  "tags": {
+    "is_magnetic": false,
+    "needs_dft+u": false,
+    "modeling_difficulty": "M1",
+    "correction_difficulty": "P2",
+    "workflow_complexity": "W1"
+  },
+  "acceptance_criteria": {
+    "energy_per_formula_unit": {
+      "value": -9.22,
+      "unit": "eV/f.u.",
+      "tolerance": 0.5,
+      "tolerance_type": "absolute"
+    }
+  },
+  "method": {
+    "references": [
+      "Jain, Ong, Hautier, Chen, Richards, Dacek, Cholia, Gunter, Skinner, Ceder & Persson, APL Mater. 1, 011002 (2013)",
+      "Trucano & Chen, Nature 258, 136-137 (1975)"
+    ],
+    "modeling": "AB-stacked graphite hexagonal bulk cell with space group P6_3/mmc; elemental carbon formula unit is one atom.",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "vdw_correction": "DFT-D3",
+      "magnetism": "ISPIN=1",
+      "kpoints": ">= 6x6x6 (bulk)",
+      "smearing": "ISMEAR=1, SIGMA=0.2",
+      "precision": "ENCUT >= 450 eV"
+    },
+    "rationale": "The target energy is the Materials Project mp-48 GGA final energy per atom, equal to energy per formula unit for elemental carbon. Only the total energy is scored; the vdW correction is retained to recover the interlayer spacing against the Trucano-Chen graphite structure, while MP's plain GGA lattice constant c is only a diagnostic. The +/-0.5 eV/f.u. absolute tolerance covers PAW dataset, cutoff, smearing, and modest dispersion-correction energy shifts while still flagging wrong carbon allotropes."
+  }
+}

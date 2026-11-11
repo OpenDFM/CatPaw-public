@@ -1,0 +1,10 @@
+{
+  "case_id": "Al_100_slab_opt",
+  "category": "slab_opt",
+  "description": "Surface Optimization of the (100) Surface of Al (Cubic, Fm-3m) and Surface Energy Calculation",
+  "workspace": "slab_opt/bench_Al_100_slab_opt",
+  "user_prompt": "Optimize the (100) surface of aluminum Al (cubic, Fm-3m) and calculate the surface energy. Report the final surface energy in J/m^2.",
+  "benchmark_result": {
+    "surface_energy": null
+  }
+}

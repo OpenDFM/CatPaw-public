@@ -1,0 +1,10 @@
+{
+  "case_id": "MgO_100_slab_opt",
+  "category": "slab_opt",
+  "description": "Surface Optimization of the (100) Surface of MgO (Cubic, Fm-3m) and Surface Energy Calculation",
+  "workspace": "slab_opt/bench_MgO_100_slab_opt",
+  "user_prompt": "Optimize the (100) surface of magnesium oxide MgO (cubic, Fm-3m) and calculate the surface energy. Report the final surface energy in J/m^2.",
+  "benchmark_result": {
+    "surface_energy": null
+  }
+}

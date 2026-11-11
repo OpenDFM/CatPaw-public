@@ -1,0 +1,309 @@
+{
+    "_meta": {
+        "description": "DFT+U Hubbard parameter database with tiered multi-source values; supports anion-context-dependent U selection",
+        "format": "Per element: {L, tier, source, default: {U, J}, contexts: {anion: {U, J}}}",
+        "tier_policy": {
+            "1": "Official Materials Project MPRelaxSet parameters (Jain 2011); used automatically",
+            "2": "MIT RelaxSet / pymatgen built-in parameters; used automatically with explicit source labeling",
+            "3": "Literature-recommended values; used automatically, with a report-level reminder to verify system suitability"
+        },
+        "sources": {
+            "MP": "Materials Project MPRelaxSet — Jain et al., PRB 84, 045115 (2011)",
+            "MIT": "MIT RelaxSet — pymatgen MITRelaxSet.yaml (Wang, Maxisch, Ceder 2006 framework)",
+            "Dudarev_1998": "Dudarev et al., PRB 57, 1505 (1998) — SIC-LSDA fitting",
+            "Anisimov_1997": "Anisimov et al., J. Phys.: Condens. Matter 9, 767 (1997)",
+            "Lutfalla_2011": "Lutfalla et al., J. Chem. Theory Comput. 7, 2218 (2011) — U fitting for transition-metal oxide systems",
+            "Hu_Metiu_2011": "Hu & Metiu, J. Phys. Chem. C 115, 5841 (2011) — catalysis on TiO2/CeO2/ZnO",
+            "Cococcioni_2005": "Cococcioni & de Gironcoli, PRB 71, 035105 (2005) — linear-response method",
+            "empirical_4f": "Empirical estimates for 4f rare-earth elements (non-MP official; for reference only)"
+        },
+        "notes": [
+            "L: angular momentum quantum number (2=d, 3=f, -1=no U applied)",
+            "LDAUTYPE=2 (Dudarev simplified scheme), U_eff = U - J",
+            "The anion key in contexts should match the most electronegative bonded element in the system",
+            "If the system anion is absent from contexts, use default",
+            "Tier-3 U values may differ by approximately ±1-2 eV across literature sources; system-specific validation is essential"
+        ]
+    },
+
+    "V":  {
+        "L": 2, "tier": 1,
+        "source": "MP",
+        "default": {"U": 3.25, "J": 0.0},
+        "contexts": {
+            "O": {"U": 3.25, "J": 0.0},
+            "F": {"U": 3.25, "J": 0.0}
+        }
+    },
+    "Cr": {
+        "L": 2, "tier": 1,
+        "source": "MP",
+        "default": {"U": 3.7, "J": 0.0},
+        "contexts": {
+            "O": {"U": 3.7, "J": 0.0},
+            "F": {"U": 3.7, "J": 0.0}
+        }
+    },
+    "Mn": {
+        "L": 2, "tier": 1,
+        "source": "MP",
+        "default": {"U": 3.9, "J": 0.0},
+        "contexts": {
+            "O": {"U": 3.9, "J": 0.0},
+            "F": {"U": 3.9, "J": 0.0},
+            "S": {"U": 2.5, "J": 0.0}
+        }
+    },
+    "Fe": {
+        "L": 2, "tier": 1,
+        "source": "MP",
+        "default": {"U": 5.3, "J": 0.0},
+        "contexts": {
+            "O": {"U": 5.3, "J": 0.0},
+            "F": {"U": 5.3, "J": 0.0},
+            "S": {"U": 1.9, "J": 0.0}
+        }
+    },
+    "Co": {
+        "L": 2, "tier": 1,
+        "source": "MP",
+        "default": {"U": 3.32, "J": 0.0},
+        "contexts": {
+            "O": {"U": 3.32, "J": 0.0},
+            "F": {"U": 3.32, "J": 0.0}
+        }
+    },
+    "Ni": {
+        "L": 2, "tier": 1,
+        "source": "MP",
+        "default": {"U": 6.2, "J": 0.0},
+        "contexts": {
+            "O": {"U": 6.2, "J": 0.0},
+            "F": {"U": 6.2, "J": 0.0}
+        }
+    },
+    "Mo": {
+        "L": 2, "tier": 1,
+        "source": "MP",
+        "default": {"U": 4.38, "J": 0.0},
+        "contexts": {
+            "O": {"U": 4.38, "J": 0.0},
+            "F": {"U": 4.38, "J": 0.0}
+        }
+    },
+    "W":  {
+        "L": 2, "tier": 1,
+        "source": "MP",
+        "default": {"U": 6.2, "J": 0.0},
+        "contexts": {
+            "O": {"U": 6.2, "J": 0.0},
+            "F": {"U": 6.2, "J": 0.0}
+        }
+    },
+
+    "Cu": {
+        "L": 2, "tier": 2,
+        "source": "MIT",
+        "default": {"U": 4.0, "J": 0.0},
+        "contexts": {
+            "O": {"U": 4.0, "J": 0.0},
+            "F": {"U": 4.0, "J": 0.0}
+        }
+    },
+    "Nb": {
+        "L": 2, "tier": 2,
+        "source": "MIT",
+        "default": {"U": 1.5, "J": 0.0},
+        "contexts": {
+            "O": {"U": 1.5, "J": 0.0},
+            "F": {"U": 1.5, "J": 0.0}
+        }
+    },
+    "Ag": {
+        "L": 2, "tier": 2,
+        "source": "MIT",
+        "default": {"U": 1.5, "J": 0.0},
+        "contexts": {
+            "O": {"U": 1.5, "J": 0.0},
+            "F": {"U": 1.5, "J": 0.0}
+        }
+    },
+    "Re": {
+        "L": 2, "tier": 2,
+        "source": "MIT",
+        "default": {"U": 2.0, "J": 0.0},
+        "contexts": {
+            "O": {"U": 2.0, "J": 0.0},
+            "F": {"U": 2.0, "J": 0.0}
+        }
+    },
+    "Ta": {
+        "L": 2, "tier": 2,
+        "source": "MIT",
+        "default": {"U": 2.0, "J": 0.0},
+        "contexts": {
+            "O": {"U": 2.0, "J": 0.0},
+            "F": {"U": 2.0, "J": 0.0}
+        }
+    },
+
+    "Sc": {
+        "L": 2, "tier": 3,
+        "source": "Cococcioni_2005",
+        "default": {"U": 2.5, "J": 0.0},
+        "contexts": {
+            "O": {"U": 2.5, "J": 0.0}
+        }
+    },
+    "Ti": {
+        "L": 2, "tier": 3,
+        "source": "Hu_Metiu_2011",
+        "default": {"U": 3.5, "J": 0.0},
+        "contexts": {
+            "O": {"U": 3.5, "J": 0.0}
+        }
+    },
+    "Zn": {
+        "L": 2, "tier": 3,
+        "source": "Hu_Metiu_2011",
+        "default": {"U": 7.5, "J": 0.0},
+        "contexts": {
+            "O": {"U": 7.5, "J": 0.0}
+        }
+    },
+    "Zr": {
+        "L": 2, "tier": 3,
+        "source": "Lutfalla_2011",
+        "default": {"U": 4.0, "J": 0.0},
+        "contexts": {
+            "O": {"U": 4.0, "J": 0.0}
+        }
+    },
+    "Ru": {
+        "L": 2, "tier": 3,
+        "source": "Lutfalla_2011",
+        "default": {"U": 3.0, "J": 0.0},
+        "contexts": {
+            "O": {"U": 3.0, "J": 0.0}
+        }
+    },
+    "Rh": {
+        "L": 2, "tier": 3,
+        "source": "Lutfalla_2011",
+        "default": {"U": 3.5, "J": 0.0},
+        "contexts": {
+            "O": {"U": 3.5, "J": 0.0}
+        }
+    },
+    "Pd": {
+        "L": 2, "tier": 3,
+        "source": "Lutfalla_2011",
+        "default": {"U": 3.0, "J": 0.0},
+        "contexts": {
+            "O": {"U": 3.0, "J": 0.0}
+        }
+    },
+    "Hf": {
+        "L": 2, "tier": 3,
+        "source": "Lutfalla_2011",
+        "default": {"U": 4.0, "J": 0.0},
+        "contexts": {
+            "O": {"U": 4.0, "J": 0.0}
+        }
+    },
+    "Ir": {
+        "L": 2, "tier": 3,
+        "source": "Lutfalla_2011",
+        "default": {"U": 2.0, "J": 0.0},
+        "contexts": {
+            "O": {"U": 2.0, "J": 0.0}
+        }
+    },
+    "Pt": {
+        "L": 2, "tier": 3,
+        "source": "Anisimov_1997",
+        "default": {"U": 2.0, "J": 0.0},
+        "contexts": {
+            "O": {"U": 2.0, "J": 0.0}
+        }
+    },
+
+    "Ce": {
+        "L": 3, "tier": 3,
+        "source": "empirical_4f",
+        "default": {"U": 5.0, "J": 1.0},
+        "contexts": {}
+    },
+    "Pr": {
+        "L": 3, "tier": 3,
+        "source": "empirical_4f",
+        "default": {"U": 5.0, "J": 1.0},
+        "contexts": {}
+    },
+    "Nd": {
+        "L": 3, "tier": 3,
+        "source": "empirical_4f",
+        "default": {"U": 5.0, "J": 1.0},
+        "contexts": {}
+    },
+    "Sm": {
+        "L": 3, "tier": 3,
+        "source": "empirical_4f",
+        "default": {"U": 5.0, "J": 1.0},
+        "contexts": {}
+    },
+    "Eu": {
+        "L": 3, "tier": 3,
+        "source": "empirical_4f",
+        "default": {"U": 5.0, "J": 1.0},
+        "contexts": {}
+    },
+    "Gd": {
+        "L": 3, "tier": 3,
+        "source": "empirical_4f",
+        "default": {"U": 5.0, "J": 1.0},
+        "contexts": {}
+    },
+    "Tb": {
+        "L": 3, "tier": 3,
+        "source": "empirical_4f",
+        "default": {"U": 5.0, "J": 1.0},
+        "contexts": {}
+    },
+    "Dy": {
+        "L": 3, "tier": 3,
+        "source": "empirical_4f",
+        "default": {"U": 5.0, "J": 1.0},
+        "contexts": {}
+    },
+    "Ho": {
+        "L": 3, "tier": 3,
+        "source": "empirical_4f",
+        "default": {"U": 5.0, "J": 1.0},
+        "contexts": {}
+    },
+    "Er": {
+        "L": 3, "tier": 3,
+        "source": "empirical_4f",
+        "default": {"U": 5.0, "J": 1.0},
+        "contexts": {}
+    },
+    "Tm": {
+        "L": 3, "tier": 3,
+        "source": "empirical_4f",
+        "default": {"U": 5.0, "J": 1.0},
+        "contexts": {}
+    },
+    "Yb": {
+        "L": 3, "tier": 3,
+        "source": "empirical_4f",
+        "default": {"U": 5.0, "J": 1.0},
+        "contexts": {}
+    },
+    "Lu": {
+        "L": 3, "tier": 3,
+        "source": "empirical_4f",
+        "default": {"U": 5.0, "J": 1.0},
+        "contexts": {}
+    }
+}

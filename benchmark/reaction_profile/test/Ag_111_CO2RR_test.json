@@ -1,0 +1,10 @@
+{
+  "case_id": "Ag_111_CO2RR",
+  "category": "reaction_profile",
+  "description": "Compute the potential-determining free-energy step of the two-electron CO2 reduction reaction (CO2 -> CO) on Ag(111), under the Computational Hydrogen Electrode (CHE) model.",
+  "workspace": "reaction_profile/bench_Ag_111_CO2RR",
+  "user_prompt": "Compute the CO2 reduction reaction (CO2RR) free-energy profile from CO2(g) to CO(g) on the Ag(111) FCC surface (space group Fm-3m) under the Computational Hydrogen Electrode (CHE) model at U = 0 V vs RHE. The two-electron pathway proceeds through *COOH and *CO intermediates via two proton-coupled electron-transfer (PCET) steps, followed by a non-electrochemical CO desorption step. Build the CHE free-energy ladder for the two PCET steps and identify the potential-determining step. Report the free energy of the potential-determining PCET step, delta_G_rds = max(delta_G_1, delta_G_2) (in eV), evaluated over the two PCET steps only; do not include the CO desorption step when identifying the potential-determining step.",
+  "benchmark_result": {
+    "delta_G_rds": null
+  }
+}

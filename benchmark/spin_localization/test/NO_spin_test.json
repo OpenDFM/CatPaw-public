@@ -1,0 +1,10 @@
+{
+  "case_id": "NO_spin",
+  "category": "spin_localization",
+  "description": "Analyze spin density of a gas-phase NO molecule.",
+  "workspace": "spin_localization/bench_NO_spin",
+  "user_prompt": "Perform spin density analysis on a gas-phase NO molecule in a vacuum box. Determine whether the system has unpaired electrons and report the total magnetic moment of the molecule.",
+  "benchmark_result": {
+    "total_magmom": null
+  }
+}

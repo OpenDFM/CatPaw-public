@@ -1,0 +1,11 @@
+{
+  "case_id": "CaF2_bader",
+  "category": "bader_charge",
+  "description": "Perform Bader charge analysis on bulk CaF2 (fluorite).",
+  "workspace": "bader_charge/bench_CaF2_bader",
+  "user_prompt": "Perform Bader charge analysis on bulk CaF2 (fluorite structure, Fm-3m). Report the Bader net charge (in electrons) for Ca atoms and F atoms.",
+  "benchmark_result": {
+    "Ca_bader_charge": null,
+    "F_bader_charge": null
+  }
+}

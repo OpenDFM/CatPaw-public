@@ -1,0 +1,36 @@
+{
+  "case_id": "NO_mol_opt",
+  "category": "mol_opt",
+  "description": "Optimize the geometry of a nitric oxide molecule in its doublet ground state.",
+  "workspace": "mol_opt/bench_NO_mol_opt",
+  "user_prompt": "Optimize the geometry of a nitric oxide molecule, then report the final energy and N-O bond length.",
+  "tags": {
+    "is_magnetic": true,
+    "needs_dft+u": false,
+    "modeling_difficulty": "M1",
+    "correction_difficulty": "P2",
+    "workflow_complexity": "W1"
+  },
+  "acceptance_criteria": {
+    "bond_length": {
+      "value": 1.169,
+      "unit": "angstrom",
+      "tolerance": 0.02,
+      "tolerance_type": "absolute"
+    }
+  },
+  "method": {
+    "references": [
+      "Han, AIP Advances 12, 125009 (2022)"
+    ],
+    "modeling": "Gas-phase NO molecule in its doublet ground state, in a cubic box with at least 12 Angstrom vacuum separation.",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "magnetism": "ISPIN=2",
+      "kpoints": "Gamma-only",
+      "smearing": "ISMEAR=0, SIGMA=0.05",
+      "precision": "ENCUT >= 450 eV"
+    },
+    "rationale": "The target N-O bond length is the PAW/PBE value reported by Han (2022) for the doublet NO ground state. The reference uses a 600 eV cutoff and a 23 x 22 x 21 Angstrom molecular cell. Only the N-O bond length is scored because the absolute molecular total energy is sensitive to PAW dataset, cell conventions, and spin setup. The +/-0.02 Angstrom tolerance covers ordinary PAW/PBE setup and relaxation-threshold differences."
+  }
+}

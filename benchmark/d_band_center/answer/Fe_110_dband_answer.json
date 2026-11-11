@@ -1,0 +1,39 @@
+{
+  "case_id": "Fe_110_dband",
+  "category": "d_band_center",
+  "description": "Calculate the d-band center of the Fe(110) surface from projected density of states.",
+  "workspace": "d_band_center/bench_Fe_110_dband",
+  "user_prompt": "Calculate the d-band center of the Fe(110) surface (BCC, Im-3m). Extract the d-band center (in eV relative to the Fermi level) from the surface Fe atoms' d-orbital projected DOS and report the final value.",
+
+  "tags": {
+    "is_magnetic": true,
+    "needs_dft+u": false,
+    "modeling_difficulty": "M2",
+    "correction_difficulty": "P2",
+    "workflow_complexity": "W2"
+  },
+
+  "acceptance_criteria": {
+    "d_band_center": {
+      "value": -0.69,
+      "unit": "eV",
+      "tolerance": 0.4,
+      "tolerance_type": "absolute"
+    }
+  },
+
+  "method": {
+    "references": [
+      "Bhattacharjee, Waghmare, and Lee, Sci. Rep. 6, 35916 (2016)."
+    ],
+    "modeling": "Use a ferromagnetic BCC Fe(110) slab and project the DOS on top-layer Fe atoms only.",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "magnetism": "ISPIN=2",
+      "kpoints": ">= 6x6x1 (2x2x1 slab)",
+      "smearing": "ISMEAR=0 SIGMA=0.05",
+      "precision": "ENCUT >= 450 eV; PREC=Accurate; LORBIT=11; NEDOS >= 2001"
+    },
+    "rationale": "Bhattacharjee et al. report full first-moment d-band centers for ferromagnetic Fe(110) as epsilon_d_up = -1.86 eV and epsilon_d_down = +0.48 eV relative to E_F. Their reference calculation used a 4-layer, 4x4 Fe(110) slab with a 3x3x1 k-mesh; the key_parameters above give a compact benchmark protocol with comparable k-point density. The target value is the arithmetic mean of the two spin-resolved d-band centers reported by Bhattacharjee et al., (-1.86 + 0.48) / 2 = -0.69 eV. The 0.4 eV absolute tolerance covers spin-averaging convention, slab thickness, magnetic moment convergence, and DOS integration-window differences."
+  }
+}

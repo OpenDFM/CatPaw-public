@@ -1,0 +1,40 @@
+{
+  "case_id": "Si_band_gap",
+  "category": "band_gap",
+  "description": "Calculate the PBE band gap of bulk silicon in the cubic diamond structure.",
+  "workspace": "band_gap/bench_Si_band_gap",
+  "user_prompt": "Calculate the band gap of bulk silicon Si (cubic, Fd-3m) and report its value in eV.",
+
+  "tags": {
+    "is_magnetic": false,
+    "needs_dft+u": false,
+    "modeling_difficulty": "M1",
+    "correction_difficulty": "P1",
+    "workflow_complexity": "W2"
+  },
+
+  "acceptance_criteria": {
+    "band_gap": {
+      "value": 0.61,
+      "unit": "eV",
+      "tolerance": 0.2,
+      "tolerance_type": "absolute"
+    }
+  },
+
+  "method": {
+    "references": [
+      "Ma et al., Commun. Phys. 5, 165 (2022)"
+    ],
+    "modeling": "Use bulk silicon in the cubic diamond Fd-3m structure and report the indirect fundamental gap from the valence-band maximum at Gamma to the conduction-band minimum near X.",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "magnetism": "ISPIN=1",
+      "dft+u": "none",
+      "kpoints": ">=12x12x12 (bulk)",
+      "smearing": "ISMEAR=0, SIGMA=0.05",
+      "precision": "ENCUT >= 400 eV, PREC=Accurate"
+    },
+    "rationale": "The scored value is the 0.61 eV PBE band gap reported by Ma et al. for bulk silicon in VASP; the same work reports an HSE gap of 1.14 eV and notes consistency with the experimental room-temperature gap near 1.13 eV. This case intentionally scores the semilocal PBE underestimate. The absolute tolerance covers k-point resolution of the off-symmetry conduction-band minimum, relaxed-lattice sensitivity, and ordinary cutoff convergence."
+  }
+}

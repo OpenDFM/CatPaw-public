@@ -1,0 +1,40 @@
+{
+  "case_id": "Fe2O3_Sndoped_bader",
+  "category": "bader_charge",
+  "description": "Perform Bader charge analysis on Sn-substituted alpha-Fe2O3 (hematite) bulk.",
+  "workspace": "bader_charge/bench_Fe2O3_Sndoped_bader",
+  "user_prompt": "Perform Bader charge analysis on Sn-doped alpha-Fe2O3 (hematite structure, R-3c) bulk, where one Fe atom in a supercell is substituted by Sn. Report the Bader net charge (in electrons) for the Sn dopant atom.",
+
+  "tags": {
+    "is_magnetic": true,
+    "needs_dft+u": true,
+    "modeling_difficulty": "M3",
+    "correction_difficulty": "P3",
+    "workflow_complexity": "W2"
+  },
+
+  "acceptance_criteria": {
+    "Sn_bader_charge": {
+      "value": 2.28,
+      "unit": "e",
+      "tolerance": 0.20,
+      "tolerance_type": "absolute"
+    }
+  },
+
+  "method": {
+    "references": [
+      "Pan, Ao & Qin, RSC Adv. 10, 23263 (2020)"
+    ],
+    "modeling": "2x2x1 hexagonal supercell of alpha-Fe2O3 (R-3c, 120 atoms) with one Fe substituted by Sn.",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "magnetism": "ISPIN=2",
+      "dft+u": "Ueff(Fe 3d) = 4.3 eV (recommended); no U on Sn",
+      "kpoints": ">= 4x4x1 (2x2x1 bulk supercell)",
+      "smearing": "ISMEAR=0, SIGMA=0.05",
+      "precision": "PREC=Accurate, ENCUT >= 500 eV"
+    },
+    "rationale": "Value from Pan, Ao & Qin 2020: in a 120-atom Sn-substituted supercell they report the Sn atom provides about 2.28 e to the lattice by Bader analysis. The key_parameters are the recommended VASP protocol. Tolerance +/-0.20 e absolute."
+  }
+}

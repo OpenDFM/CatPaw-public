@@ -1,0 +1,10 @@
+{
+  "case_id": "RuO2_110_dband",
+  "category": "d_band_center",
+  "description": "Calculate the d-band center of the RuO2(110) surface from projected density of states.",
+  "workspace": "d_band_center/bench_RuO2_110_dband",
+  "user_prompt": "Calculate the d-band center of the RuO2(110) surface (rutile structure, P4_2/mnm). RuO2 is a metallic (conductive) oxide, so treat it with plain PBE and do not apply a Hubbard U correction to Ru. Extract the d-band center (in eV relative to the Fermi level) from the surface Ru atoms' d-orbital projected DOS and report the final value.",
+  "benchmark_result": {
+    "d_band_center": null
+  }
+}

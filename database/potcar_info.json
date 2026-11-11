@@ -1,0 +1,1142 @@
+{
+  "Ac": [
+    {
+      "tag": "Ac",
+      "ZVAL": 11.0,
+      "ENMAX": 172.237,
+      "EAUG": 543.281,
+      "RWIGS_ang": 1.535,
+      "LEXCH": "PE",
+      "valence_config": "",
+      "titel": "PAW_PBE Ac 06Sep2000"
+    }
+  ],
+  "Ag": [
+    {
+      "tag": "Ag",
+      "ZVAL": 11.0,
+      "ENMAX": 249.846,
+      "EAUG": 412.496,
+      "RWIGS_ang": 1.503,
+      "LEXCH": "PE",
+      "valence_config": "s1 d10",
+      "titel": "PAW_PBE Ag 06Sep2000"
+    }
+  ],
+  "Al": [
+    {
+      "tag": "Al",
+      "ZVAL": 3.0,
+      "ENMAX": 240.3,
+      "EAUG": 291.052,
+      "RWIGS_ang": 1.402,
+      "LEXCH": "PE",
+      "valence_config": "s2p1",
+      "titel": "PAW_PBE Al 04Jan2001"
+    }
+  ],
+  "Am": [
+    {
+      "tag": "Am",
+      "ZVAL": 17.0,
+      "ENMAX": 255.875,
+      "EAUG": 456.748,
+      "RWIGS_ang": 1.588,
+      "LEXCH": "PE",
+      "valence_config": "[Xe,5d,4f]",
+      "titel": "PAW_PBE Am 08May2007"
+    }
+  ],
+  "Ar": [
+    {
+      "tag": "Ar",
+      "ZVAL": 8.0,
+      "ENMAX": 266.393,
+      "EAUG": 482.93,
+      "RWIGS_ang": 0.953,
+      "LEXCH": "PE",
+      "valence_config": "s2p6",
+      "titel": "PAW_PBE Ar 07Sep2000"
+    }
+  ],
+  "As": [
+    {
+      "tag": "As",
+      "ZVAL": 5.0,
+      "ENMAX": 208.68,
+      "EAUG": 462.758,
+      "RWIGS_ang": 1.217,
+      "LEXCH": "PE",
+      "valence_config": "s2p3",
+      "titel": "PAW_PBE As 06Sep2000"
+    }
+  ],
+  "At": [
+    {
+      "tag": "At",
+      "ZVAL": 7.0,
+      "ENMAX": 161.43,
+      "EAUG": 341.769,
+      "RWIGS_ang": 1.635,
+      "LEXCH": "PE",
+      "valence_config": "",
+      "titel": "PAW At 21May2007"
+    }
+  ],
+  "Au": [
+    {
+      "tag": "Au",
+      "ZVAL": 11.0,
+      "ENMAX": 229.948,
+      "EAUG": 356.67,
+      "RWIGS_ang": 1.503,
+      "LEXCH": "PE",
+      "valence_config": "s1d10",
+      "titel": "PAW_PBE Au 06Sep2000"
+    }
+  ],
+  "B": [
+    {
+      "tag": "B",
+      "ZVAL": 3.0,
+      "ENMAX": 318.606,
+      "EAUG": 535.514,
+      "RWIGS_ang": 0.905,
+      "LEXCH": "PE",
+      "valence_config": "s2p1",
+      "titel": "PAW_PBE B 06Sep2000"
+    }
+  ],
+  "Ba": [
+    {
+      "tag": "Ba_sv",
+      "ZVAL": 10.0,
+      "ENMAX": 187.21,
+      "EAUG": 351.165,
+      "RWIGS_ang": 1.979,
+      "LEXCH": "PE",
+      "valence_config": "5s5p6s",
+      "titel": "PAW_PBE Ba_sv 06Sep2000"
+    }
+  ],
+  "Be": [
+    {
+      "tag": "Be",
+      "ZVAL": 2.0,
+      "ENMAX": 247.544,
+      "EAUG": 318.781,
+      "RWIGS_ang": 0.995,
+      "LEXCH": "PE",
+      "valence_config": "s2p0",
+      "titel": "PAW_PBE Be 06Sep2000"
+    }
+  ],
+  "Bi": [
+    {
+      "tag": "Bi",
+      "ZVAL": 5.0,
+      "ENMAX": 105.037,
+      "EAUG": 265.427,
+      "RWIGS_ang": 1.635,
+      "LEXCH": "PE",
+      "valence_config": "",
+      "titel": "PAW_PBE Bi 08Apr2002"
+    }
+  ],
+  "Br": [
+    {
+      "tag": "Br",
+      "ZVAL": 7.0,
+      "ENMAX": 216.264,
+      "EAUG": 503.852,
+      "RWIGS_ang": 1.164,
+      "LEXCH": "PE",
+      "valence_config": "s2p5",
+      "titel": "PAW_PBE Br 06Sep2000"
+    }
+  ],
+  "C": [
+    {
+      "tag": "C",
+      "ZVAL": 4.0,
+      "ENMAX": 400.0,
+      "EAUG": 644.873,
+      "RWIGS_ang": 0.863,
+      "LEXCH": "PE",
+      "valence_config": "s2p2",
+      "titel": "PAW_PBE C 08Apr2002"
+    }
+  ],
+  "Ca": [
+    {
+      "tag": "Ca",
+      "ZVAL": 2.0,
+      "ENMAX": 102.755,
+      "EAUG": 171.791,
+      "RWIGS_ang": 1.947,
+      "LEXCH": "PE",
+      "valence_config": "s2d0.01",
+      "titel": "PAW_PBE Ca 06Sep2000"
+    }
+  ],
+  "Cd": [
+    {
+      "tag": "Cd",
+      "ZVAL": 12.0,
+      "ENMAX": 274.342,
+      "EAUG": 456.106,
+      "RWIGS_ang": 1.577,
+      "LEXCH": "PE",
+      "valence_config": "s2 d10",
+      "titel": "PAW_PBE Cd 06Sep2000"
+    }
+  ],
+  "Ce": [
+    {
+      "tag": "Ce",
+      "ZVAL": 12.0,
+      "ENMAX": 273.042,
+      "EAUG": 580.196,
+      "RWIGS_ang": 1.323,
+      "LEXCH": "PE",
+      "valence_config": "[core=Kr 4d10]",
+      "titel": "PAW_PBE Ce 23Dec2003"
+    }
+  ],
+  "Cl": [
+    {
+      "tag": "Cl",
+      "ZVAL": 7.0,
+      "ENMAX": 280.0,
+      "EAUG": 356.192,
+      "RWIGS_ang": 1.111,
+      "LEXCH": "PE",
+      "valence_config": "s2p5",
+      "titel": "PAW_PBE Cl 17Jan2003"
+    }
+  ],
+  "Co": [
+    {
+      "tag": "Co",
+      "ZVAL": 9.0,
+      "ENMAX": 267.969,
+      "EAUG": 477.818,
+      "RWIGS_ang": 1.302,
+      "LEXCH": "PE",
+      "valence_config": "d8 s1",
+      "titel": "PAW_PBE Co 06Sep2000"
+    }
+  ],
+  "Cr": [
+    {
+      "tag": "Cr",
+      "ZVAL": 6.0,
+      "ENMAX": 227.082,
+      "EAUG": 402.108,
+      "RWIGS_ang": 1.323,
+      "LEXCH": "PE",
+      "valence_config": "d5 s1",
+      "titel": "PAW_PBE Cr 06Sep2000"
+    }
+  ],
+  "Cs": [
+    {
+      "tag": "Cs_sv",
+      "ZVAL": 9.0,
+      "ENMAX": 220.318,
+      "EAUG": 407.933,
+      "RWIGS_ang": 1.323,
+      "LEXCH": "PE",
+      "valence_config": "5s5p6s",
+      "titel": "PAW_PBE Cs_sv 08Apr2002"
+    }
+  ],
+  "Cu": [
+    {
+      "tag": "Cu",
+      "ZVAL": 11.0,
+      "ENMAX": 273.214,
+      "EAUG": 516.456,
+      "RWIGS_ang": 1.312,
+      "LEXCH": "PE",
+      "valence_config": "d10 p1",
+      "titel": "PAW_PBE Cu 05Jan2001"
+    }
+  ],
+  "Dy": [
+    {
+      "tag": "Dy",
+      "ZVAL": 20.0,
+      "ENMAX": 255.467,
+      "EAUG": 525.608,
+      "RWIGS_ang": 1.482,
+      "LEXCH": "PE",
+      "valence_config": "[core=Xe4]",
+      "titel": "PAW_PBE Dy 23Dec2003"
+    }
+  ],
+  "Er": [
+    {
+      "tag": "Er",
+      "ZVAL": 22.0,
+      "ENMAX": 298.116,
+      "EAUG": 666.013,
+      "RWIGS_ang": 1.588,
+      "LEXCH": "PE",
+      "valence_config": "core=[Kr]4d10",
+      "titel": "PAW_PBE Er 01Sep2006"
+    }
+  ],
+  "Eu": [
+    {
+      "tag": "Eu",
+      "ZVAL": 17.0,
+      "ENMAX": 249.668,
+      "EAUG": 549.628,
+      "RWIGS_ang": 1.482,
+      "LEXCH": "PE",
+      "valence_config": "[core=Kr4d]",
+      "titel": "PAW_PBE Eu 23Dec2003"
+    }
+  ],
+  "F": [
+    {
+      "tag": "F",
+      "ZVAL": 7.0,
+      "ENMAX": 400.0,
+      "EAUG": 613.614,
+      "RWIGS_ang": 0.794,
+      "LEXCH": "PE",
+      "valence_config": "s2p5",
+      "titel": "PAW_PBE F 08Apr2002"
+    }
+  ],
+  "Fe": [
+    {
+      "tag": "Fe",
+      "ZVAL": 8.0,
+      "ENMAX": 267.883,
+      "EAUG": 511.368,
+      "RWIGS_ang": 1.302,
+      "LEXCH": "PE",
+      "valence_config": "d7 s1",
+      "titel": "PAW_PBE Fe 06Sep2000"
+    }
+  ],
+  "Fr": [
+    {
+      "tag": "Fr_sv",
+      "ZVAL": 9.0,
+      "ENMAX": 214.54,
+      "EAUG": 483.718,
+      "RWIGS_ang": 1.535,
+      "LEXCH": "PE",
+      "valence_config": "",
+      "titel": "PAW_PBE Fr_sv 29May2007"
+    }
+  ],
+  "Ga": [
+    {
+      "tag": "Ga",
+      "ZVAL": 3.0,
+      "ENMAX": 134.678,
+      "EAUG": 320.264,
+      "RWIGS_ang": 1.402,
+      "LEXCH": "PE",
+      "valence_config": "s2p1",
+      "titel": "PAW_PBE Ga 08Apr2002"
+    }
+  ],
+  "Gd": [
+    {
+      "tag": "Gd",
+      "ZVAL": 18.0,
+      "ENMAX": 256.472,
+      "EAUG": 537.243,
+      "RWIGS_ang": 1.482,
+      "LEXCH": "PE",
+      "valence_config": "[core=Xe4]",
+      "titel": "PAW_PBE Gd 23Dec2003"
+    }
+  ],
+  "Ge": [
+    {
+      "tag": "Ge",
+      "ZVAL": 4.0,
+      "ENMAX": 173.807,
+      "EAUG": 385.843,
+      "RWIGS_ang": 1.217,
+      "LEXCH": "PE",
+      "valence_config": "s2p2",
+      "titel": "PAW_PBE Ge 05Jan2001"
+    }
+  ],
+  "H": [
+    {
+      "tag": "H",
+      "ZVAL": 1.0,
+      "ENMAX": 250.0,
+      "EAUG": 400.0,
+      "RWIGS_ang": 0.37,
+      "LEXCH": "PE",
+      "valence_config": "ultrasoft test",
+      "titel": "PAW_PBE H 15Jun2001"
+    }
+  ],
+  "He": [
+    {
+      "tag": "He",
+      "ZVAL": 2.0,
+      "ENMAX": 478.896,
+      "EAUG": 1180.948,
+      "RWIGS_ang": 0.635,
+      "LEXCH": "PE",
+      "valence_config": "1s",
+      "titel": "PAW_PBE He 05Jan2001"
+    }
+  ],
+  "Hf": [
+    {
+      "tag": "Hf",
+      "ZVAL": 4.0,
+      "ENMAX": 220.333,
+      "EAUG": 335.116,
+      "RWIGS_ang": 1.614,
+      "LEXCH": "PE",
+      "valence_config": "6s5d",
+      "titel": "PAW_PBE Hf 20Jan2003"
+    }
+  ],
+  "Hg": [
+    {
+      "tag": "Hg",
+      "ZVAL": 12.0,
+      "ENMAX": 233.214,
+      "EAUG": 352.362,
+      "RWIGS_ang": 1.614,
+      "LEXCH": "PE",
+      "valence_config": "10s 2d fine mesh  91",
+      "titel": "PAW_PBE Hg 06Sep2000"
+    }
+  ],
+  "Ho": [
+    {
+      "tag": "Ho",
+      "ZVAL": 21.0,
+      "ENMAX": 257.168,
+      "EAUG": 520.433,
+      "RWIGS_ang": 1.588,
+      "LEXCH": "PE",
+      "valence_config": "[core=Xe4]",
+      "titel": "PAW_PBE Ho 23Dec2003"
+    }
+  ],
+  "I": [
+    {
+      "tag": "I",
+      "ZVAL": 7.0,
+      "ENMAX": 175.647,
+      "EAUG": 370.139,
+      "RWIGS_ang": 1.487,
+      "LEXCH": "PE",
+      "valence_config": "s2p5",
+      "titel": "PAW_PBE I 08Apr2002"
+    }
+  ],
+  "In": [
+    {
+      "tag": "In",
+      "ZVAL": 3.0,
+      "ENMAX": 95.934,
+      "EAUG": 237.125,
+      "RWIGS_ang": 1.677,
+      "LEXCH": "PE",
+      "valence_config": "s2p1",
+      "titel": "PAW_PBE In 08Apr2002"
+    }
+  ],
+  "Ir": [
+    {
+      "tag": "Ir",
+      "ZVAL": 9.0,
+      "ENMAX": 210.87,
+      "EAUG": 318.962,
+      "RWIGS_ang": 1.423,
+      "LEXCH": "PE",
+      "valence_config": "s1d8",
+      "titel": "PAW_PBE Ir 06Sep2000"
+    }
+  ],
+  "Kr": [
+    {
+      "tag": "Kr",
+      "ZVAL": 8.0,
+      "ENMAX": 185.26,
+      "EAUG": 334.95,
+      "RWIGS_ang": 1.323,
+      "LEXCH": "PE",
+      "valence_config": "s2p6",
+      "titel": "PAW_PBE Kr 07Sep2000"
+    }
+  ],
+  "K": [
+    {
+      "tag": "K_pv",
+      "ZVAL": 7.0,
+      "ENMAX": 116.731,
+      "EAUG": 291.424,
+      "RWIGS_ang": 2.275,
+      "LEXCH": "PE",
+      "valence_config": "p6s1",
+      "titel": "PAW_PBE K_pv 17Jan2003"
+    }
+  ],
+  "La": [
+    {
+      "tag": "La",
+      "ZVAL": 11.0,
+      "ENMAX": 219.313,
+      "EAUG": 583.575,
+      "RWIGS_ang": 1.535,
+      "LEXCH": "PE",
+      "valence_config": "[core=Kr4d]",
+      "titel": "PAW_PBE La 06Sep2000"
+    }
+  ],
+  "Li": [
+    {
+      "tag": "Li",
+      "ZVAL": 1.0,
+      "ENMAX": 140.0,
+      "EAUG": 331.638,
+      "RWIGS_ang": 1.376,
+      "LEXCH": "PE",
+      "valence_config": "s1p0",
+      "titel": "PAW_PBE Li 17Jan2003"
+    }
+  ],
+  "Lu": [
+    {
+      "tag": "Lu",
+      "ZVAL": 25.0,
+      "ENMAX": 255.695,
+      "EAUG": 568.657,
+      "RWIGS_ang": 1.588,
+      "LEXCH": "PE",
+      "valence_config": "[core=Xe4]",
+      "titel": "PAW_PBE Lu 23Dec2003"
+    }
+  ],
+  "Mg": [
+    {
+      "tag": "Mg",
+      "ZVAL": 2.0,
+      "ENMAX": 210.012,
+      "EAUG": 274.554,
+      "RWIGS_ang": 1.524,
+      "LEXCH": "PE",
+      "valence_config": "s2p0",
+      "titel": "PAW_PBE Mg 05Jan2001"
+    }
+  ],
+  "Mn": [
+    {
+      "tag": "Mn",
+      "ZVAL": 7.0,
+      "ENMAX": 269.865,
+      "EAUG": 500.711,
+      "RWIGS_ang": 1.323,
+      "LEXCH": "PE",
+      "valence_config": "d6 s1",
+      "titel": "PAW_PBE Mn 06Sep2000"
+    }
+  ],
+  "Mo": [
+    {
+      "tag": "Mo",
+      "ZVAL": 6.0,
+      "ENMAX": 224.584,
+      "EAUG": 345.278,
+      "RWIGS_ang": 1.455,
+      "LEXCH": "PE",
+      "valence_config": "4p5s4d",
+      "titel": "PAW_PBE Mo 08Apr2002"
+    }
+  ],
+  "N": [
+    {
+      "tag": "N",
+      "ZVAL": 5.0,
+      "ENMAX": 400.0,
+      "EAUG": 627.112,
+      "RWIGS_ang": 0.741,
+      "LEXCH": "PE",
+      "valence_config": "s2p3",
+      "titel": "PAW_PBE N 08Apr2002"
+    }
+  ],
+  "Na": [
+    {
+      "tag": "Na",
+      "ZVAL": 1.0,
+      "ENMAX": 101.968,
+      "EAUG": 250.695,
+      "RWIGS_ang": 1.757,
+      "LEXCH": "PE",
+      "valence_config": "s1p0",
+      "titel": "PAW_PBE Na 08Apr2002"
+    }
+  ],
+  "Nb": [
+    {
+      "tag": "Nb_pv",
+      "ZVAL": 11.0,
+      "ENMAX": 208.608,
+      "EAUG": 355.067,
+      "RWIGS_ang": 1.503,
+      "LEXCH": "PE",
+      "valence_config": "4p5s4d",
+      "titel": "PAW_PBE Nb_pv 08Apr2002"
+    }
+  ],
+  "Nd": [
+    {
+      "tag": "Nd",
+      "ZVAL": 14.0,
+      "ENMAX": 253.189,
+      "EAUG": 569.081,
+      "RWIGS_ang": 1.482,
+      "LEXCH": "PE",
+      "valence_config": "[core=Xe4]",
+      "titel": "PAW_PBE Nd 23Dec2003"
+    }
+  ],
+  "Ne": [
+    {
+      "tag": "Ne",
+      "ZVAL": 8.0,
+      "ENMAX": 343.606,
+      "EAUG": 589.427,
+      "RWIGS_ang": 0.794,
+      "LEXCH": "PE",
+      "valence_config": "s2p6",
+      "titel": "PAW_PBE Ne 05Jan2001"
+    }
+  ],
+  "Ni": [
+    {
+      "tag": "Ni",
+      "ZVAL": 10.0,
+      "ENMAX": 269.533,
+      "EAUG": 544.565,
+      "RWIGS_ang": 1.286,
+      "LEXCH": "PE",
+      "valence_config": "",
+      "titel": "PAW_PBE Ni 06Sep2000"
+    }
+  ],
+  "Np": [
+    {
+      "tag": "Np",
+      "ZVAL": 15.0,
+      "ENMAX": 254.369,
+      "EAUG": 464.44,
+      "RWIGS_ang": 1.588,
+      "LEXCH": "PE",
+      "valence_config": "[Xe,5d,4f]",
+      "titel": "PAW_PBE Np 06Sep2000"
+    }
+  ],
+  "O": [
+    {
+      "tag": "O",
+      "ZVAL": 6.0,
+      "ENMAX": 400.0,
+      "EAUG": 605.392,
+      "RWIGS_ang": 0.82,
+      "LEXCH": "PE",
+      "valence_config": "s2p4",
+      "titel": "PAW_PBE O 08Apr2002"
+    }
+  ],
+  "Os": [
+    {
+      "tag": "Os",
+      "ZVAL": 8.0,
+      "ENMAX": 228.022,
+      "EAUG": 365.08,
+      "RWIGS_ang": 1.413,
+      "LEXCH": "PE",
+      "valence_config": "6s5d",
+      "titel": "PAW_PBE Os 17Jan2003"
+    }
+  ],
+  "P": [
+    {
+      "tag": "P",
+      "ZVAL": 5.0,
+      "ENMAX": 270.0,
+      "EAUG": 342.924,
+      "RWIGS_ang": 1.233,
+      "LEXCH": "PE",
+      "valence_config": "s2p3",
+      "titel": "PAW_PBE P 17Jan2003"
+    }
+  ],
+  "Pa": [
+    {
+      "tag": "Pa",
+      "ZVAL": 13.0,
+      "ENMAX": 252.316,
+      "EAUG": 536.979,
+      "RWIGS_ang": 1.535,
+      "LEXCH": "PE",
+      "valence_config": "[Xe,5d,4f]",
+      "titel": "PAW_PBE Pa 07Sep2000"
+    }
+  ],
+  "Pb": [
+    {
+      "tag": "Pb",
+      "ZVAL": 4.0,
+      "ENMAX": 97.973,
+      "EAUG": 234.873,
+      "RWIGS_ang": 1.725,
+      "LEXCH": "PE",
+      "valence_config": "",
+      "titel": "PAW_PBE Pb 08Apr2002"
+    }
+  ],
+  "Pd": [
+    {
+      "tag": "Pd",
+      "ZVAL": 10.0,
+      "ENMAX": 250.925,
+      "EAUG": 416.23,
+      "RWIGS_ang": 1.434,
+      "LEXCH": "PE",
+      "valence_config": "s1 d9",
+      "titel": "PAW_PBE Pd 05Jan2001"
+    }
+  ],
+  "Pm": [
+    {
+      "tag": "Pm",
+      "ZVAL": 15.0,
+      "ENMAX": 258.627,
+      "EAUG": 562.152,
+      "RWIGS_ang": 1.482,
+      "LEXCH": "PE",
+      "valence_config": "[core=Xe4]",
+      "titel": "PAW_PBE Pm 23Dec2003"
+    }
+  ],
+  "Po": [
+    {
+      "tag": "Po",
+      "ZVAL": 6.0,
+      "ENMAX": 159.707,
+      "EAUG": 342.908,
+      "RWIGS_ang": 1.635,
+      "LEXCH": "PE",
+      "valence_config": "",
+      "titel": "PAW_PBE Po 10Feb2004"
+    }
+  ],
+  "Pr": [
+    {
+      "tag": "Pr",
+      "ZVAL": 13.0,
+      "ENMAX": 272.941,
+      "EAUG": 578.02,
+      "RWIGS_ang": 1.482,
+      "LEXCH": "PE",
+      "valence_config": "[core=Xe4]",
+      "titel": "PAW_PBE Pr 23Dec2003"
+    }
+  ],
+  "Pt": [
+    {
+      "tag": "Pt",
+      "ZVAL": 10.0,
+      "ENMAX": 230.283,
+      "EAUG": 358.966,
+      "RWIGS_ang": 1.455,
+      "LEXCH": "PE",
+      "valence_config": "s1d9",
+      "titel": "PAW_PBE Pt 05Jan2001"
+    }
+  ],
+  "Pu": [
+    {
+      "tag": "Pu",
+      "ZVAL": 16.0,
+      "ENMAX": 254.458,
+      "EAUG": 455.496,
+      "RWIGS_ang": 1.588,
+      "LEXCH": "PE",
+      "valence_config": "[Xe,5d,4f]",
+      "titel": "PAW_PBE Pu 06Sep2000"
+    }
+  ],
+  "Ra": [
+    {
+      "tag": "Ra_sv",
+      "ZVAL": 10.0,
+      "ENMAX": 237.367,
+      "EAUG": 544.886,
+      "RWIGS_ang": 1.535,
+      "LEXCH": "PE",
+      "valence_config": "",
+      "titel": "PAW_PBE Ra_sv 29May2007"
+    }
+  ],
+  "Rb": [
+    {
+      "tag": "Rb_pv",
+      "ZVAL": 7.0,
+      "ENMAX": 121.919,
+      "EAUG": 223.499,
+      "RWIGS_ang": 2.418,
+      "LEXCH": "PE",
+      "valence_config": "p6s1",
+      "titel": "PAW_PBE Rb_pv 06Sep2000"
+    }
+  ],
+  "Re": [
+    {
+      "tag": "Re",
+      "ZVAL": 7.0,
+      "ENMAX": 226.216,
+      "EAUG": 370.28,
+      "RWIGS_ang": 1.434,
+      "LEXCH": "PE",
+      "valence_config": "5p6s5d",
+      "titel": "PAW_PBE Re 17Jan2003"
+    }
+  ],
+  "Rh": [
+    {
+      "tag": "Rh",
+      "ZVAL": 9.0,
+      "ENMAX": 229.0,
+      "EAUG": 374.513,
+      "RWIGS_ang": 1.402,
+      "LEXCH": "PE",
+      "valence_config": "s1 d8",
+      "titel": "PAW_PBE Rh 06Sep2000"
+    }
+  ],
+  "Rn": [
+    {
+      "tag": "Rn",
+      "ZVAL": 8.0,
+      "ENMAX": 152.121,
+      "EAUG": 330.836,
+      "RWIGS_ang": 1.635,
+      "LEXCH": "PE",
+      "valence_config": "",
+      "titel": "PAW_PBE Rn 28Aug2006"
+    }
+  ],
+  "Ru": [
+    {
+      "tag": "Ru",
+      "ZVAL": 8.0,
+      "ENMAX": 213.276,
+      "EAUG": 333.494,
+      "RWIGS_ang": 1.402,
+      "LEXCH": "PE",
+      "valence_config": "s1 d7",
+      "titel": "PAW_PBE Ru 06Sep2000"
+    }
+  ],
+  "S": [
+    {
+      "tag": "S",
+      "ZVAL": 6.0,
+      "ENMAX": 280.0,
+      "EAUG": 335.092,
+      "RWIGS_ang": 1.164,
+      "LEXCH": "PE",
+      "valence_config": "s2p4",
+      "titel": "PAW_PBE S 17Jan2003"
+    }
+  ],
+  "Sb": [
+    {
+      "tag": "Sb",
+      "ZVAL": 5.0,
+      "ENMAX": 172.037,
+      "EAUG": 380.513,
+      "RWIGS_ang": 1.577,
+      "LEXCH": "PE",
+      "valence_config": "s2p3",
+      "titel": "PAW_PBE Sb 06Sep2000"
+    }
+  ],
+  "Sc": [
+    {
+      "tag": "Sc",
+      "ZVAL": 3.0,
+      "ENMAX": 154.763,
+      "EAUG": 301.784,
+      "RWIGS_ang": 1.588,
+      "LEXCH": "PE",
+      "valence_config": "3p4s3d",
+      "titel": "PAW_PBE Sc 04Feb2005"
+    }
+  ],
+  "Se": [
+    {
+      "tag": "Se",
+      "ZVAL": 6.0,
+      "ENMAX": 211.534,
+      "EAUG": 446.842,
+      "RWIGS_ang": 1.164,
+      "LEXCH": "PE",
+      "valence_config": "s2p4",
+      "titel": "PAW_PBE Se 06Sep2000"
+    }
+  ],
+  "Si": [
+    {
+      "tag": "Si",
+      "ZVAL": 4.0,
+      "ENMAX": 245.345,
+      "EAUG": 322.069,
+      "RWIGS_ang": 1.312,
+      "LEXCH": "PE",
+      "valence_config": "s2p2",
+      "titel": "PAW_PBE Si 05Jan2001"
+    }
+  ],
+  "Sm": [
+    {
+      "tag": "Sm",
+      "ZVAL": 16.0,
+      "ENMAX": 257.515,
+      "EAUG": 553.532,
+      "RWIGS_ang": 1.482,
+      "LEXCH": "PE",
+      "valence_config": "[core=Xe4]",
+      "titel": "PAW_PBE Sm 08Apr2002"
+    }
+  ],
+  "Sn": [
+    {
+      "tag": "Sn",
+      "ZVAL": 4.0,
+      "ENMAX": 103.236,
+      "EAUG": 263.585,
+      "RWIGS_ang": 1.566,
+      "LEXCH": "PE",
+      "valence_config": "s2p2",
+      "titel": "PAW_PBE Sn 08Apr2002"
+    }
+  ],
+  "Sr": [
+    {
+      "tag": "Sr_sv",
+      "ZVAL": 10.0,
+      "ENMAX": 229.282,
+      "EAUG": 366.804,
+      "RWIGS_ang": 2.138,
+      "LEXCH": "PE",
+      "valence_config": "4s4p5s",
+      "titel": "PAW_PBE Sr_sv 07Sep2000"
+    }
+  ],
+  "Ta": [
+    {
+      "tag": "Ta",
+      "ZVAL": 5.0,
+      "ENMAX": 223.667,
+      "EAUG": 332.075,
+      "RWIGS_ang": 1.503,
+      "LEXCH": "PE",
+      "valence_config": "6s5d",
+      "titel": "PAW_PBE Ta 17Jan2003"
+    }
+  ],
+  "Tb": [
+    {
+      "tag": "Tb",
+      "ZVAL": 19.0,
+      "ENMAX": 264.824,
+      "EAUG": 533.461,
+      "RWIGS_ang": 1.482,
+      "LEXCH": "PE",
+      "valence_config": "[core=Xe4]",
+      "titel": "PAW_PBE Tb 23Dec2003"
+    }
+  ],
+  "Tc": [
+    {
+      "tag": "Tc",
+      "ZVAL": 7.0,
+      "ENMAX": 228.694,
+      "EAUG": 384.541,
+      "RWIGS_ang": 1.455,
+      "LEXCH": "PE",
+      "valence_config": "4p5s4d",
+      "titel": "PAW_PBE Tc 17Jan2003"
+    }
+  ],
+  "Te": [
+    {
+      "tag": "Te",
+      "ZVAL": 6.0,
+      "ENMAX": 174.982,
+      "EAUG": 368.792,
+      "RWIGS_ang": 1.535,
+      "LEXCH": "PE",
+      "valence_config": "s2p4",
+      "titel": "PAW_PBE Te 08Apr2002"
+    }
+  ],
+  "Th": [
+    {
+      "tag": "Th",
+      "ZVAL": 12.0,
+      "ENMAX": 247.449,
+      "EAUG": 535.431,
+      "RWIGS_ang": 1.588,
+      "LEXCH": "PE",
+      "valence_config": "[Xe,5d,4f]",
+      "titel": "PAW_PBE Th 07Sep2000"
+    }
+  ],
+  "Ti": [
+    {
+      "tag": "Ti",
+      "ZVAL": 4.0,
+      "ENMAX": 178.33,
+      "EAUG": 328.883,
+      "RWIGS_ang": 1.323,
+      "LEXCH": "PE",
+      "valence_config": "d3 s1",
+      "titel": "PAW_PBE Ti 08Apr2002"
+    }
+  ],
+  "Tl": [
+    {
+      "tag": "Tl",
+      "ZVAL": 3.0,
+      "ENMAX": 90.14,
+      "EAUG": 237.028,
+      "RWIGS_ang": 1.725,
+      "LEXCH": "PE",
+      "valence_config": "",
+      "titel": "PAW_PBE Tl 08Apr2002"
+    }
+  ],
+  "Tm": [
+    {
+      "tag": "Tm",
+      "ZVAL": 23.0,
+      "ENMAX": 257.419,
+      "EAUG": 582.125,
+      "RWIGS_ang": 1.588,
+      "LEXCH": "PE",
+      "valence_config": "[core=Xe4]",
+      "titel": "PAW_PBE Tm 23Dec2003"
+    }
+  ],
+  "U": [
+    {
+      "tag": "U",
+      "ZVAL": 14.0,
+      "ENMAX": 252.616,
+      "EAUG": 526.41,
+      "RWIGS_ang": 1.588,
+      "LEXCH": "PE",
+      "valence_config": "[Xe,5d,4f]",
+      "titel": "PAW_PBE U 06Sep2000"
+    }
+  ],
+  "V": [
+    {
+      "tag": "V",
+      "ZVAL": 5.0,
+      "ENMAX": 192.543,
+      "EAUG": 358.662,
+      "RWIGS_ang": 1.323,
+      "LEXCH": "PE",
+      "valence_config": "p6 d4 s1",
+      "titel": "PAW_PBE V 08Apr2002"
+    }
+  ],
+  "W": [
+    {
+      "tag": "W",
+      "ZVAL": 6.0,
+      "ENMAX": 223.057,
+      "EAUG": 373.438,
+      "RWIGS_ang": 1.455,
+      "LEXCH": "PE",
+      "valence_config": "6s5d",
+      "titel": "PAW_PBE W 08Apr2002"
+    }
+  ],
+  "Xe": [
+    {
+      "tag": "Xe",
+      "ZVAL": 8.0,
+      "ENMAX": 153.098,
+      "EAUG": 218.469,
+      "RWIGS_ang": 1.323,
+      "LEXCH": "PE",
+      "valence_config": "s2p6",
+      "titel": "PAW_PBE Xe 07Sep2000"
+    }
+  ],
+  "Yb": [
+    {
+      "tag": "Yb",
+      "ZVAL": 24.0,
+      "ENMAX": 253.028,
+      "EAUG": 572.871,
+      "RWIGS_ang": 1.588,
+      "LEXCH": "PE",
+      "valence_config": "[core=Xe4]",
+      "titel": "PAW_PBE Yb 23Dec2003"
+    }
+  ],
+  "Y": [
+    {
+      "tag": "Y_sv",
+      "ZVAL": 11.0,
+      "ENMAX": 211.641,
+      "EAUG": 363.258,
+      "RWIGS_ang": 1.815,
+      "LEXCH": "PE",
+      "valence_config": "4s4p5s4d",
+      "titel": "PAW_PBE Y_sv 06Sep2000"
+    }
+  ],
+  "Zn": [
+    {
+      "tag": "Zn",
+      "ZVAL": 12.0,
+      "ENMAX": 276.727,
+      "EAUG": 575.892,
+      "RWIGS_ang": 1.27,
+      "LEXCH": "PE",
+      "valence_config": "d10 p2",
+      "titel": "PAW_PBE Zn 06Sep2000"
+    }
+  ],
+  "Zr": [
+    {
+      "tag": "Zr",
+      "ZVAL": 4.0,
+      "ENMAX": 154.632,
+      "EAUG": 243.217,
+      "RWIGS_ang": 1.625,
+      "LEXCH": "PE",
+      "valence_config": "5s4d5p",
+      "titel": "PAW_PBE Zr 08Apr2002"
+    }
+  ]
+}

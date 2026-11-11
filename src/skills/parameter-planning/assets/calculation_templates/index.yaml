@@ -1,0 +1,28 @@
+description: Calculation parameter templates for ParamWorker parameter_summary.json decisions.
+
+global_defaults:
+  description: The following parameters are automatically set by the CreateIncar tool for all task types. ParamWorker does not need to pass them via custom_params. To override, explicitly set them in custom_params.
+  ISMEAR: 0
+  SIGMA: 0.05
+  IVDW: 12
+  PREC: Accurate
+  LREAL: Auto
+  ALGO: Fast
+  ISPIN: Auto-detect
+
+templates:
+- task_type: bulk_opt
+  file: bulk_opt.yaml
+  description: Used for full-parameter optimization of 3D periodic crystals (bulk cell relaxation).
+- task_type: slab_opt
+  file: slab_opt.yaml
+  description: 'Used for structural optimization of 2D surface (slab) models and surface-adsorbate systems. Core principle: never change cell shape or volume, to preserve vacuum-layer stability.'
+- task_type: scf
+  file: scf.yaml
+  description: Used for high-precision self-consistent field (SCF) electronic-step calculations under fixed atomic coordinates and cell shape, to obtain accurate total energy, charge density (CHGCAR), and wavefunction (WAVECAR).
+- task_type: mol_opt
+  file: mol_opt.yaml
+  description: 'Used for structural optimization of isolated gas-phase molecules or zero-dimensional clusters. Core principle: place in a sufficiently large vacuum box, and never change cell volume.'
+- task_type: dos_calc
+  file: dos_calc.yaml
+  description: Used for non-self-consistent field (Non-SCF) calculations based on known accurate charge density, to obtain high-precision total DOS (TDOS) and projected DOS (PDOS).

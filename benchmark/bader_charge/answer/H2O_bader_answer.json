@@ -1,0 +1,46 @@
+{
+  "case_id": "H2O_bader",
+  "category": "bader_charge",
+  "description": "Perform Bader charge analysis on a gas-phase H2O molecule.",
+  "workspace": "bader_charge/bench_H2O_bader",
+  "user_prompt": "Perform Bader charge analysis on a gas-phase H2O molecule in a vacuum box. Report the Bader net charge (in electrons) for O atom and H atoms.",
+
+  "tags": {
+    "is_magnetic": false,
+    "needs_dft+u": false,
+    "modeling_difficulty": "M1",
+    "correction_difficulty": "P1",
+    "workflow_complexity": "W2"
+  },
+
+  "acceptance_criteria": {
+    "O_bader_charge": {
+      "value": -1.15,
+      "unit": "e",
+      "tolerance": 0.1,
+      "tolerance_type": "absolute"
+    },
+    "H_bader_charge": {
+      "value": 0.58,
+      "unit": "e",
+      "tolerance": 0.1,
+      "tolerance_type": "absolute"
+    }
+  },
+
+  "method": {
+    "references": [
+      "GPAW Bader charge tutorial (gpaw.readthedocs.io)",
+      "Tang, Sanville & Henkelman, J. Phys.: Condens. Matter 21, 084204 (2009)"
+    ],
+    "modeling": "Single H2O molecule centered in a >= 15 Angstrom cubic box; the two H are equivalent by C2v.",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "magnetism": "ISPIN=1",
+      "kpoints": "Gamma only",
+      "smearing": "ISMEAR=0, SIGMA=0.01",
+      "precision": "PREC=Accurate"
+    },
+    "rationale": "Values from the GPAW Bader tutorial reference H2O run: O Bader population 9.1505 e -> net -1.15 e, and 0.58 e transferred from each H -> H +0.58 e. The key_parameters are the recommended VASP protocol; the small functional/grid difference vs the GPAW reference stays within +/-0.10 e."
+  }
+}

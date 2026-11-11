@@ -1,0 +1,42 @@
+{
+  "case_id": "Ag_111_CO2RR",
+  "category": "reaction_profile",
+  "description": "Compute the potential-determining free-energy step of the two-electron CO2 reduction reaction (CO2 -> CO) on Ag(111), under the Computational Hydrogen Electrode (CHE) model.",
+  "workspace": "reaction_profile/bench_Ag_111_CO2RR",
+  "user_prompt": "Compute the CO2 reduction reaction (CO2RR) free-energy profile from CO2(g) to CO(g) on the Ag(111) FCC surface (space group Fm-3m) under the Computational Hydrogen Electrode (CHE) model at U = 0 V vs RHE. The two-electron pathway proceeds through *COOH and *CO intermediates via two proton-coupled electron-transfer (PCET) steps, followed by a non-electrochemical CO desorption step. Build the CHE free-energy ladder for the two PCET steps and identify the potential-determining step. Report the free energy of the potential-determining PCET step, delta_G_rds = max(delta_G_1, delta_G_2) (in eV), evaluated over the two PCET steps only; do not include the CO desorption step when identifying the potential-determining step.",
+
+  "tags": {
+    "is_magnetic": false,
+    "needs_dft+u": false,
+    "modeling_difficulty": "M3",
+    "correction_difficulty": "P1",
+    "workflow_complexity": "W3"
+  },
+
+  "acceptance_criteria": {
+    "delta_G_rds": {
+      "value": 1.25,
+      "unit": "eV",
+      "tolerance": 0.2,
+      "tolerance_type": "absolute"
+    }
+  },
+
+  "method": {
+    "references": [
+      "Back, Yeom & Jung, ACS Catal. 5, 5089 (2015)",
+      "Hansen, Varley, Peterson & Norskov, J. Phys. Chem. Lett. 4, 388 (2013)"
+    ],
+    "modeling": "Use a flat Ag(111) terrace slab with at least 4 layers, vacuum >= 15 Angstrom, and a 3x3x1 or larger surface cell; model *COOH as C-bound on an atop Ag site. Build the CHE free-energy ladder at U = 0 V vs RHE for CO2(g) -> *COOH -> *CO -> CO(g), and identify delta_G_rds from the two PCET steps only.",
+    "key_parameters": {
+      "functional": "RPBE(PAW)",
+      "magnetism": "ISPIN=1",
+      "dft+u": "none",
+      "kpoints": ">= 4x4x1 (3x3x1 slab)",
+      "smearing": "ISMEAR=1, SIGMA=0.1",
+      "precision": "PREC=Accurate, ENCUT >= 450 eV",
+      "free_energy_corrections": "CHE with ZPE and entropy corrections at 298 K"
+    },
+    "rationale": "Back et al. report G(*COOH) = 1.25 eV for the Ag facet site, represented by Ag(111), with free-energy corrections and approximate solvation corrections; this first PCET step sets delta_G_rds. The corresponding limiting potential is the derived quantity U_L = -delta_G_rds/e = -1.25 V vs RHE, while the benchmark scores only delta_G_rds. The +/-0.20 absolute tolerance covers RPBE/PBE implementation differences, solvation treatment, and *COOH orientation/site sensitivity; stepped Ag sites have smaller G(*COOH) values and are not the target."
+  }
+}

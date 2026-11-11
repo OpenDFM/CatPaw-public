@@ -1,0 +1,10 @@
+{
+  "case_id": "Cu_111_slab_opt",
+  "category": "slab_opt",
+  "description": "Surface Optimization of the (111) Surface of Cu (Cubic, Fm-3m) and Surface Energy Calculation",
+  "workspace": "slab_opt/bench_Cu_111_slab_opt",
+  "user_prompt": "Optimize the (111) surface of copper Cu (cubic, Fm-3m) and calculate the surface energy. Report the final surface energy in J/m^2.",
+  "benchmark_result": {
+    "surface_energy": null
+  }
+}

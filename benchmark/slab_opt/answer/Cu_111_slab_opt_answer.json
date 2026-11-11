@@ -1,0 +1,37 @@
+{
+  "case_id": "Cu_111_slab_opt",
+  "category": "slab_opt",
+  "description": "Surface Optimization of the (111) Surface of Cu (Cubic, Fm-3m) and Surface Energy Calculation",
+  "workspace": "slab_opt/bench_Cu_111_slab_opt",
+  "user_prompt": "Optimize the (111) surface of copper Cu (cubic, Fm-3m) and calculate the surface energy. Report the final surface energy in J/m^2.",
+  "tags": {
+    "is_magnetic": false,
+    "needs_dft+u": false,
+    "modeling_difficulty": "M2",
+    "correction_difficulty": "P1",
+    "workflow_complexity": "W2"
+  },
+  "acceptance_criteria": {
+    "surface_energy": {
+      "value": 1.33,
+      "unit": "J/m^2",
+      "tolerance": 0.2,
+      "tolerance_type": "absolute"
+    }
+  },
+
+  "method": {
+    "references": [
+      "Patra, Bates, Sun & Perdew, Proc. Natl. Acad. Sci. 114, E9188 (2017)",
+      "Tyson & Miller, Surf. Sci. 62, 267 (1977)"
+    ],
+    "modeling": "fcc Cu (Fm-3m), nonmagnetic, close-packed (111) surface; symmetric slab (>= 5-7 layers, converged), vacuum >= 15 A, surface relaxed.",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "magnetism": "ISPIN=1",
+      "kpoints": ">= 5x5x1 (slab)",
+      "smearing": "ISMEAR=1, SIGMA=0.2"
+    },
+    "rationale": "Value 1.33 J/m^2 is the PBE Cu(111) surface energy from Patra et al. 2017 (VASP, PAW-PBE; the same surface gives LDA 1.81, PBEsol 1.59, SCAN 1.49). PBE underestimates the experimental ~1.79 J/m^2 (Tyson & Miller 1977), so the case is graded against the PBE value, not experiment. Cu(111) is the close-packed, nonmagnetic fcc facet. Tolerance +/-0.20 J/m^2 (absolute) covers PBE inter-setup scatter (slab thickness, k-mesh, pseudopotential); larger deviations usually signal an unconverged slab."
+  }
+}

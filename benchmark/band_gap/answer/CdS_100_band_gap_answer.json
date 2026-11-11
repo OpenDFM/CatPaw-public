@@ -1,0 +1,42 @@
+{
+  "case_id": "CdS_100_band_gap",
+  "category": "band_gap",
+  "description": "Calculate the corrected band gap of the CdS wurtzite (100) prismatic surface. PBE severely underestimates the gap.",
+  "workspace": "band_gap/bench_CdS_100_band_gap",
+  "user_prompt": "Calculate the band gap of the CdS (100) surface (wurtzite structure, P6_3mc) and report its value in eV.",
+
+  "tags": {
+    "is_magnetic": false,
+    "needs_dft+u": true,
+    "modeling_difficulty": "M2",
+    "correction_difficulty": "P2",
+    "workflow_complexity": "W2"
+  },
+
+  "acceptance_criteria": {
+    "band_gap": {
+      "value": 2.23,
+      "unit": "eV",
+      "tolerance": 0.20,
+      "tolerance_type": "absolute"
+    }
+  },
+
+  "method": {
+    "references": [
+      "Giacopetti, Nevin, Comelli, Valentini, Nardelli & Satta, AIP Adv. 8, 065202 (2018)",
+      "Satta, CNR Short-Term Mobility Programme Report 2017-2052 (2017)",
+      "Biswas, Meher & Kaushik, arXiv:2106.08875 (2021)"
+    ],
+    "modeling": "Use the clean nonpolar wurtzite CdS (100) prismatic surface. Build a slab thick enough to recover a bulk-like interior and include at least 15 A vacuum.",
+    "key_parameters": {
+      "functional": "PBE(PAW)+U",
+      "magnetism": "ISPIN=1",
+      "dft+u": "Ueff(Cd 4d)=4.5 eV, Ueff(S 3p)=4.2 eV",
+      "kpoints": ">=6x6x1 (2x2x1 slab)",
+      "smearing": "ISMEAR=0, SIGMA=0.05",
+      "precision": "ENCUT >= 400 eV, PREC=Accurate"
+    },
+    "rationale": "The scored value is the ACBN0 clean-surface CdS gap reported for the CdS surface, while the recommended VASP protocol uses the same empirical Cd 4d and S 3p +U values as the bulk CdS case. Plain PBE/GGA gives a much smaller CdS gap near 1.1-1.2 eV and is not the benchmark target here. The wider tolerance covers ACBN0 versus fixed Dudarev PBE+U differences and residual slab-thickness/surface-relaxation sensitivity."
+  }
+}

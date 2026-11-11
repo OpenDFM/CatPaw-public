@@ -1,0 +1,39 @@
+{
+  "case_id": "TiO2_110_Ovac_slab_opt",
+  "category": "slab_opt",
+  "description": "Bridging Oxygen Vacancy Formation Energy on the Rutile TiO2(110) Surface (P4_2/mnm)",
+  "workspace": "slab_opt/bench_TiO2_110_Ovac_slab_opt",
+  "user_prompt": "Compute the formation energy of a bridging oxygen vacancy on the rutile TiO2(110) surface (P4_2/mnm). Optimize both the clean slab and the slab with one bridging O removed, then compute E_vf = E(defective) - E(clean) + 1/2 * E(O2). Report E_vf in eV.",
+  "tags": {
+    "is_magnetic": true,
+    "needs_dft+u": true,
+    "modeling_difficulty": "M3",
+    "correction_difficulty": "P3",
+    "workflow_complexity": "W3"
+  },
+  "acceptance_criteria": {
+    "vacancy_formation_energy": {
+      "value": 3.7,
+      "unit": "eV",
+      "tolerance": 0.3,
+      "tolerance_type": "absolute"
+    }
+  },
+  "method": {
+    "references": [
+      "Morgan & Watson, Surf. Sci. 601, 5034 (2007)",
+      "Morgan & Watson, J. Phys. Chem. C 113, 7322 (2009)",
+      "Kowalski, Camellone, Nair, Meyer & Marx, Phys. Rev. Lett. 105, 146405 (2010)"
+    ],
+    "modeling": "Rutile TiO2(110), non-polar stoichiometric termination; slab of >= 4 O-Ti-O trilayers with the bottom layers fixed, vacuum >= 12 A, dilute defect (4x2 surface cell). Remove one bridging (2-fold) surface O, relax both clean and defective slabs.",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "magnetism": "ISPIN=2",
+      "dft+u": "U_eff(Ti 3d) = 4.2",
+      "kpoints": ">= 2x2x1 (slab)",
+      "smearing": "ISMEAR=0, SIGMA=0.05",
+      "precision": "ENCUT >= 450 eV"
+    },
+    "rationale": "Value 3.7 eV is the bridging-O vacancy formation energy on rutile TiO2(110) at GGA(+U). Morgan & Watson 2007 (GGA+U, U_eff(Ti 3d)=4.2 eV) report the neutral bridging vacancy at 3.66 eV, and their 2009 JPCC study extends it across the rutile facets. CRITICAL: removing a bridging O leaves two electrons that should localize onto two Ti 3d states (Ti^4+ -> Ti^3+), so +U is needed for the correct Ti^3+ polaron picture. The +/-0.30 eV tolerance absorbs vacancy concentration, slab thickness, U value, and the ~0.4 eV PBE O2 overbinding error."
+  }
+}

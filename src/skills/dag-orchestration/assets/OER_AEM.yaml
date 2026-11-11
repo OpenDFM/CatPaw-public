@@ -1,0 +1,73 @@
+OER_AEM:
+  description: Oxygen evolution reaction adsorbate evolution mechanism workflow template for surface intermediates
+    under a CHE-style thermodynamic cycle.
+  methodology:
+    use_when:
+    - The user asks for an OER pathway, OER overpotential, or AEM free-energy profile on a catalyst surface.
+    - The requested pathway uses adsorbed surface intermediates such as *, *OH, *O, and *OOH.
+    pathway_scope:
+      required_surface_states:
+      - clean_slab
+      - OH_adsorbed
+      - O_adsorbed
+      - OOH_adsorbed
+      common_references:
+      - H2O gas-phase `mol_opt`
+      - H2 gas-phase `mol_opt`
+    decomposition_policy:
+    - Create bulk_opt when the surface needs a bulk parent.
+    - Create clean_slab_opt as the shared optimized basis, then one slab_opt node per requested adsorbed or modified
+      state.
+    - Keep molecular references independent. Do not create analysis or reporting nodes.
+    node_boundary_rules:
+    - Follow the shared preparation and input-binding rules in SKILL.md. Same-family states are independent nodes,
+      sharing one clean basis and parameter reference.
+    task_context_guidance:
+    - Place OH, O, and OOH at the same requested active site when the user specifies one.
+    evidence_requirements:
+    - Total energies for the clean, OH, O, and OOH slab states needed by the selected OER convention.
+    - Total energies for required molecular references such as H2O and H2.
+    - Geometry sanity evidence that adsorbates remain attached to the intended surface site.
+  worked_example:
+    user_goal: Build the OER AEM free-energy pathway on a catalyst surface.
+    canonical_dag:
+    - node_id: bulk_opt
+      task_type: bulk_opt
+      purpose: Optimize the parent catalyst bulk used to build the surface.
+      depends_on: []
+    - node_id: h2o_mol_opt
+      task_type: mol_opt
+      purpose: Optimize gas-phase H2O as a CHE reference.
+      depends_on: []
+    - node_id: h2_mol_opt
+      task_type: mol_opt
+      purpose: Optimize gas-phase H2 as a CHE reference.
+      depends_on: []
+    - node_id: clean_slab_opt
+      task_type: slab_opt
+      purpose: Optimize and validate the common clean surface for all requested members.
+      inputs:
+        structure: bulk_opt/final_structure
+    - node_id: oh_slab_opt
+      task_type: slab_opt
+      purpose: Optimize only the oh surface state.
+      inputs:
+        structure: clean_slab_opt/final_structure
+        modeling_reference: clean_slab_opt/modeling_summary
+        parameter_reference: clean_slab_opt/parameter_summary
+    - node_id: o_slab_opt
+      task_type: slab_opt
+      purpose: Optimize only the o surface state.
+      inputs:
+        structure: clean_slab_opt/final_structure
+        modeling_reference: clean_slab_opt/modeling_summary
+        parameter_reference: clean_slab_opt/parameter_summary
+    - node_id: ooh_slab_opt
+      task_type: slab_opt
+      purpose: Optimize only the ooh surface state.
+      inputs:
+        structure: clean_slab_opt/final_structure
+        modeling_reference: clean_slab_opt/modeling_summary
+        parameter_reference: clean_slab_opt/parameter_summary
+    notes:
+    - Illustrative chemistry only; instantiate the states and references required by the user.

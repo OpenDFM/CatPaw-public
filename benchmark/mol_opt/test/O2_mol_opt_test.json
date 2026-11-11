@@ -1,0 +1,10 @@
+{
+  "case_id": "O2_mol_opt",
+  "category": "mol_opt",
+  "description": "Optimize the geometry of an oxygen molecule in its triplet ground state.",
+  "workspace": "mol_opt/bench_O2_mol_opt",
+  "user_prompt": "Optimize the geometry of an oxygen molecule, then report the final energy and O-O bond length.",
+  "benchmark_result": {
+    "bond_length": null
+  }
+}

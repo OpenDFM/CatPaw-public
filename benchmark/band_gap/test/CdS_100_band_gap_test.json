@@ -1,0 +1,10 @@
+{
+  "case_id": "CdS_100_band_gap",
+  "category": "band_gap",
+  "description": "Calculate the corrected band gap of the CdS wurtzite (100) prismatic surface. PBE severely underestimates the gap.",
+  "workspace": "band_gap/bench_CdS_100_band_gap",
+  "user_prompt": "Calculate the band gap of the CdS (100) surface (wurtzite structure, P6_3mc) and report its value in eV.",
+  "benchmark_result": {
+    "band_gap": null
+  }
+}

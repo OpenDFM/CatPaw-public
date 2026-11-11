@@ -1,0 +1,10 @@
+{
+  "case_id": "Si_band_gap",
+  "category": "band_gap",
+  "description": "Calculate the PBE band gap of bulk silicon in the cubic diamond structure.",
+  "workspace": "band_gap/bench_Si_band_gap",
+  "user_prompt": "Calculate the band gap of bulk silicon Si (cubic, Fd-3m) and report its value in eV.",
+  "benchmark_result": {
+    "band_gap": null
+  }
+}

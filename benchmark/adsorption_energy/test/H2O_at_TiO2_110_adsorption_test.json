@@ -1,0 +1,10 @@
+{
+  "case_id": "H2O_at_TiO2_110_adsorption",
+  "category": "adsorption_energy",
+  "description": "Calculate the molecular adsorption energy of H2O on the TiO2(110) surface.",
+  "workspace": "adsorption_energy/bench_H2O_at_TiO2_110_adsorption",
+  "user_prompt": "Calculate the molecular adsorption energy of intact H2O on the stoichiometric TiO2(110) rutile surface (P4_2/mnm) at a fivefold-coordinated Ti site. Report the final adsorption energy Eads (in eV), defined as Eads = E(slab+H2O) - E(slab) - E(H2O).",
+  "benchmark_result": {
+    "Eads": null
+  }
+}

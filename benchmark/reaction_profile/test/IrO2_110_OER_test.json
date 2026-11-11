@@ -1,0 +1,10 @@
+{
+  "case_id": "IrO2_110_OER",
+  "category": "reaction_profile",
+  "description": "Compute the potential-determining free-energy step of the oxygen evolution reaction on IrO2(110) via the adsorbate evolution mechanism.",
+  "workspace": "reaction_profile/bench_IrO2_110_OER",
+  "user_prompt": "Compute the oxygen evolution reaction (OER) reaction profile on the IrO2(110) rutile surface (space group P4_2/mnm) using the adsorbate evolution mechanism (AEM) under the Computational Hydrogen Electrode (CHE) model at U = 0 V vs RHE. Build the CHE free-energy ladder for the four proton-coupled electron-transfer steps (* -> *OH -> *O -> *OOH -> O2) and identify the potential-determining step. Report the free energy of the potential-determining PCET step, delta_G_rds = max(delta_G_1..4) (in eV).",
+  "benchmark_result": {
+    "delta_G_rds": null
+  }
+}

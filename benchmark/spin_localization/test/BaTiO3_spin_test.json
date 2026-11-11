@@ -1,0 +1,10 @@
+{
+  "case_id": "BaTiO3_spin",
+  "category": "spin_localization",
+  "description": "Analyze spin density of bulk BaTiO3 (cubic perovskite). This is a negative control for bulk crystals.",
+  "workspace": "spin_localization/bench_BaTiO3_spin",
+  "user_prompt": "Perform spin density analysis on bulk BaTiO3 (cubic perovskite structure, Pm-3m). Determine whether the system has unpaired electrons and report the total magnetic moment of the cell.",
+  "benchmark_result": {
+    "total_magmom": null
+  }
+}

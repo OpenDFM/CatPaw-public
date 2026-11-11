@@ -1,0 +1,11 @@
+{
+  "case_id": "BaTiO3_Fedoped_spin",
+  "category": "spin_localization",
+  "description": "Analyze spin density of Fe-doped BaTiO3 bulk, where one Ti atom in a supercell is substituted by Fe.",
+  "workspace": "spin_localization/bench_BaTiO3_Fedoped_spin",
+  "user_prompt": "Perform spin density analysis on Fe-doped BaTiO3 (cubic perovskite structure, Pm-3m) bulk, where one Ti atom in a supercell is substituted by Fe. Determine whether the system has unpaired electrons. If unpaired electrons are present, identify the atom carrying the majority of the spin density by its element and report its magnetic moment; otherwise report that there is no spin-carrying element and report the maximum residual site magnetic moment.",
+  "benchmark_result": {
+    "element": null,
+    "magmom": null
+  }
+}

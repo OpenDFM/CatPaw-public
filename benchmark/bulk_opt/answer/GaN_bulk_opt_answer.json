@@ -1,0 +1,37 @@
+{
+  "case_id": "GaN_bulk_opt",
+  "category": "bulk_opt",
+  "description": "Optimize the hexagonal P6_3mc bulk structure of gallium nitride.",
+  "workspace": "bulk_opt/bench_GaN_bulk_opt",
+  "user_prompt": "Optimize the hexagonal (P6_3mc) bulk structure of gallium nitride (GaN). Report the final converged energy and lattice constants.",
+  "tags": {
+    "is_magnetic": false,
+    "needs_dft+u": false,
+    "modeling_difficulty": "M1",
+    "correction_difficulty": "P1",
+    "workflow_complexity": "W1"
+  },
+  "acceptance_criteria": {
+    "energy_per_formula_unit": {
+      "value": -12.317,
+      "unit": "eV/f.u.",
+      "tolerance": 0.5,
+      "tolerance_type": "absolute"
+    }
+  },
+  "method": {
+    "references": [
+      "Jain, Ong, Hautier, Chen, Richards, Dacek, Cholia, Gunter, Skinner, Ceder & Persson, APL Mater. 1, 011002 (2013)",
+      "Schulz & Thiemann, Solid State Communications 23, 815-819 (1977)"
+    ],
+    "modeling": "Wurtzite GaN hexagonal bulk cell with space group P6_3mc; GaN formula unit is one Ga and one N atom.",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "magnetism": "ISPIN=1",
+      "kpoints": ">= 6x6x6 (bulk)",
+      "smearing": "ISMEAR=0, SIGMA=0.05",
+      "precision": "ENCUT >= 450 eV"
+    },
+    "rationale": "The target energy is the Materials Project mp-804 uncorrected GGA final energy per atom (-6.1586 eV/atom) multiplied by two atoms per GaN formula unit. Only the total energy is scored; the lattice constants are left as diagnostics, with the relaxed MP structure close to the Schulz-Thiemann wurtzite reference. The +/-0.5 eV/f.u. absolute tolerance covers PAW dataset, cutoff, smearing, and Ga semicore-valence differences while still flagging qualitatively wrong bulk calculations."
+  }
+}

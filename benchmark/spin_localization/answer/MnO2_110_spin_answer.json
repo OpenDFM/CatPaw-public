@@ -1,0 +1,43 @@
+{
+  "case_id": "MnO2_110_spin",
+  "category": "spin_localization",
+  "description": "Analyze spin density of the clean rutile MnO2 (110) surface.",
+  "workspace": "spin_localization/bench_MnO2_110_spin",
+  "user_prompt": "Perform spin density analysis on the clean MnO2 (110) surface (rutile structure, P4_2/mnm). Determine whether the system has unpaired electrons. If unpaired electrons are present, identify the element carrying the spin density and report the magnetic moment of the outermost (undercoordinated, five-fold) surface-layer metal atom; otherwise report that there is no spin-carrying element and report the maximum residual site magnetic moment.",
+  "tags": {
+    "is_magnetic": true,
+    "needs_dft+u": true,
+    "modeling_difficulty": "M2",
+    "correction_difficulty": "P3",
+    "workflow_complexity": "W2"
+  },
+  "acceptance_criteria": {
+    "element": {
+      "value": "Mn",
+      "tolerance_type": "exact"
+    },
+    "magmom": {
+      "value": 3.75,
+      "unit": "uB",
+      "tolerance": 0.3,
+      "tolerance_type": "absolute",
+      "magnitude": true
+    }
+  },
+  "method": {
+    "references": [
+      "Tompsett, Parker & Islam, J. Am. Chem. Soc. 136, 1418 (2014)",
+      "Tompsett, Middlemiss & Islam, Phys. Rev. B 86, 205126 (2012)"
+    ],
+    "modeling": "Rutile beta-MnO2 (P4_2/mnm) non-polar, stoichiometric (110) surface (O-terminated); 4-5 layer slab with the bottom layers fixed, vacuum >= 15 A. AFM ground state: initialise alternating MAGMOM signs on Mn. Cleaving exposes a five-fold-coordinated surface Mn whose reduced coordination enhances its moment above the bulk-like six-fold Mn.",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "magnetism": "ISPIN=2",
+      "dft+u": "U(Mn 3d)=6.1 eV, J(Mn 3d)=1.0 eV",
+      "kpoints": ">= 4x4x1 (slab)",
+      "smearing": "ISMEAR=0, SIGMA=0.05",
+      "precision": "PREC=Accurate, ENCUT >= 520 eV, LORBIT=11"
+    },
+    "rationale": "Clean rutile beta-MnO2 is an AFM insulator: every Mn is Mn4+ (3d3, S=3/2) and carries a local moment, so the spin-carrying element is Mn. Value from Tompsett et al. 2014: the undercoordinated five-fold surface Mn has a moment of 3.75 uB, enhanced above bulk Mn (3.09 uB) because reduced coordination lowers covalent quenching. Tompsett et al. 2012 documents the anisotropic FLL +U scheme needed for the correct AFM-insulating ground state (the effective-U approach gives a spurious FM metal for the parameter settings tested in that comparison). Tolerance 0.30 uB covers U-scheme and integration-sphere sensitivity."
+  }
+}

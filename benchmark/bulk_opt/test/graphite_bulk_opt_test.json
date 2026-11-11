@@ -1,0 +1,10 @@
+{
+  "case_id": "graphite_bulk_opt",
+  "category": "bulk_opt",
+  "description": "Optimize the hexagonal P6_3/mmc bulk structure of graphite with a van der Waals correction.",
+  "workspace": "bulk_opt/bench_graphite_bulk_opt",
+  "user_prompt": "Optimize the hexagonal (P6_3/mmc) bulk structure of graphite. Report the final converged energy and lattice constants (a and c).",
+  "benchmark_result": {
+    "energy_per_formula_unit": null
+  }
+}

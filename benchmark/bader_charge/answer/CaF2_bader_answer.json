@@ -1,0 +1,45 @@
+{
+  "case_id": "CaF2_bader",
+  "category": "bader_charge",
+  "description": "Perform Bader charge analysis on bulk CaF2 (fluorite).",
+  "workspace": "bader_charge/bench_CaF2_bader",
+  "user_prompt": "Perform Bader charge analysis on bulk CaF2 (fluorite structure, Fm-3m). Report the Bader net charge (in electrons) for Ca atoms and F atoms.",
+
+  "tags": {
+    "is_magnetic": false,
+    "needs_dft+u": false,
+    "modeling_difficulty": "M1",
+    "correction_difficulty": "P1",
+    "workflow_complexity": "W2"
+  },
+
+  "acceptance_criteria": {
+    "Ca_bader_charge": {
+      "value": 1.4,
+      "unit": "e",
+      "tolerance": 0.2,
+      "tolerance_type": "absolute"
+    },
+    "F_bader_charge": {
+      "value": -0.7,
+      "unit": "e",
+      "tolerance": 0.2,
+      "tolerance_type": "absolute"
+    }
+  },
+
+  "method": {
+    "references": [
+      "Stachowicz, Malinska, Parafiniuk & Wozniak, Acta Cryst. B 73, 643 (2017)"
+    ],
+    "modeling": "Conventional fluorite cell (Fm-3m); 4 Ca and 8 F atoms, with F at equivalent T_d sites.",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "magnetism": "ISPIN=1",
+      "kpoints": ">= 6x6x6 (bulk)",
+      "smearing": "ISMEAR=-5 (or ISMEAR=0, SIGMA=0.05)",
+      "precision": "PREC=Accurate"
+    },
+    "rationale": "Value from the experimental QTAIM/Bader charge density of CaF2 (Stachowicz et al. 2017: multipole refinement of single-crystal X-ray data, Ag radiation, 90 K). The key_parameters are the recommended VASP protocol for running this case (the reference value is experimental). Tolerance +/-0.20 e absolute reflects the experimental-QTAIM vs VASP-PBE grid-Bader methodology gap. "
+  }
+}

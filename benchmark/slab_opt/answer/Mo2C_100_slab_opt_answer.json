@@ -1,0 +1,36 @@
+{
+  "case_id": "Mo2C_100_slab_opt",
+  "category": "slab_opt",
+  "description": "Surface Optimization of the (100) Surface of Orthorhombic Mo2C (beta-Mo2C, Pbcn) and Surface Energy Calculation",
+  "workspace": "slab_opt/bench_Mo2C_100_slab_opt",
+  "user_prompt": "Optimize the (100) surface of orthorhombic molybdenum carbide beta-Mo2C (Pbcn) and calculate the surface energy. Report the final surface energy in J/m^2.",
+  "tags": {
+    "is_magnetic": false,
+    "needs_dft+u": false,
+    "modeling_difficulty": "M2",
+    "correction_difficulty": "P1",
+    "workflow_complexity": "W2"
+  },
+  "acceptance_criteria": {
+    "surface_energy": {
+      "value": 3.03,
+      "unit": "J/m^2",
+      "tolerance": 0.3,
+      "tolerance_type": "absolute"
+    }
+  },
+
+  "method": {
+    "references": [
+      "Politi, Vines, Rodriguez & Illas, Phys. Chem. Chem. Phys. 15, 12617 (2013)"
+    ],
+    "modeling": "orthorhombic beta-Mo2C (Pbcn); nonpolar (100) surface; stoichiometric slab, two outermost layers relaxed.",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "magnetism": "ISPIN=1",
+      "kpoints": ">= 5x5x1 (slab)",
+      "smearing": "ISMEAR=1, SIGMA=0.2"
+    },
+    "rationale": "Value 3.03 J/m^2 is the relaxed PBE surface energy of the nonpolar orthorhombic beta-Mo2C(100) face from Politi et al. 2013 (VASP, PAW-PBE), which reports a cleavage energy Ecl = 6.06 J/m^2; for nonpolar surfaces gamma = Ecl/2 = 3.03 J/m^2. beta-Mo2C (orthorhombic) is the experimentally dominant Mo2C polymorph; its most stable nonpolar facet is the lower-energy (011) (gamma 1.82). Metallic carbide requires Methfessel-Paxton smearing. Tolerance +/-0.3 J/m^2 (absolute, ~10%) covers PBE inter-setup scatter and xc-functional sensitivity."
+  }
+}

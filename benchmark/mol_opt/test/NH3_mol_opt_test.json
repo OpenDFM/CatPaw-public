@@ -1,0 +1,10 @@
+{
+  "case_id": "NH3_mol_opt",
+  "category": "mol_opt",
+  "description": "Optimize the geometry of an ammonia molecule.",
+  "workspace": "mol_opt/bench_NH3_mol_opt",
+  "user_prompt": "Optimize the geometry of an ammonia molecule, then report the final energy and N-H bond length.",
+  "benchmark_result": {
+    "bond_length": null
+  }
+}

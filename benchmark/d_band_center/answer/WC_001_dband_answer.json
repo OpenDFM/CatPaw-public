@@ -1,0 +1,41 @@
+{
+  "case_id": "WC_001_dband",
+  "category": "d_band_center",
+  "description": "Calculate the d-band center of the W-terminated hexagonal WC(001) basal surface from projected density of states.",
+  "workspace": "d_band_center/bench_WC_001_dband",
+  "user_prompt": "Calculate the d-band center of tungsten carbide on its WC(001) basal surface (hexagonal structure, P-6m2), using the tungsten-terminated surface. Extract the d-band center (in eV relative to the Fermi level) from the surface W atoms' d-orbital projected DOS and report the final value.",
+
+  "tags": {
+    "is_magnetic": false,
+    "needs_dft+u": false,
+    "modeling_difficulty": "M2",
+    "correction_difficulty": "P1",
+    "workflow_complexity": "W2"
+  },
+
+  "acceptance_criteria": {
+    "d_band_center": {
+      "value": -1.08,
+      "unit": "eV",
+      "tolerance": 0.4,
+      "tolerance_type": "absolute"
+    }
+  },
+
+  "method": {
+    "references": [
+      "Wang, Li, Wang, Dai, Lei, Yang, Zhang, Lei, Leung, and Hou, Nano Energy 74, 104850 (2020).",
+      "Koverga, Florez, Dorkis, and Rodriguez, J. Phys. Chem. C 123, 8871-8883 (2019)."
+    ],
+    "modeling": "Use the W-terminated hexagonal WC(001) basal surface and project the DOS on top-layer surface W atoms only.",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "magnetism": "ISPIN=1",
+      "dft+u": "none",
+      "kpoints": ">= 5x5x1 (slab)",
+      "smearing": "ISMEAR=0 SIGMA=0.05",
+      "precision": "PREC=Accurate; LORBIT=11; NEDOS >= 2001; LDIPOL=.TRUE.; IDIPOL=3"
+    },
+    "rationale": "Wang et al. report the pristine WC surface W d-band center as -1.08 eV for WC(001), with Mo-WC shifted to -1.22 eV. The scored value is for the W-terminated basal surface; C-terminated slabs or subsurface-W projections are different quantities. The 0.4 eV absolute tolerance covers DMol3-vs-PAW projection differences, the paper's unspecified full-vs-occupied integration convention, and the termination sensitivity of this polar surface."
+  }
+}

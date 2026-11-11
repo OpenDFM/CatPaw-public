@@ -1,0 +1,36 @@
+{
+  "case_id": "FeS2_bulk_opt",
+  "category": "bulk_opt",
+  "description": "Optimize the cubic Pa-3 bulk structure of iron disulfide.",
+  "workspace": "bulk_opt/bench_FeS2_bulk_opt",
+  "user_prompt": "Optimize the cubic (Pa-3) bulk structure of iron disulfide (FeS2). Report the final converged energy and lattice constant.",
+  "tags": {
+    "is_magnetic": false,
+    "needs_dft+u": false,
+    "modeling_difficulty": "M1",
+    "correction_difficulty": "P2",
+    "workflow_complexity": "W1"
+  },
+  "acceptance_criteria": {
+    "energy_per_formula_unit": {
+      "value": -18.258,
+      "unit": "eV/f.u.",
+      "tolerance": 0.5,
+      "tolerance_type": "absolute"
+    }
+  },
+  "method": {
+    "references": [
+      "Jain, Ong, Hautier, Chen, Richards, Dacek, Cholia, Gunter, Skinner, Ceder & Persson, APL Mater. 1, 011002 (2013)"
+    ],
+    "modeling": "Pyrite FeS2 conventional cubic bulk cell with space group Pa-3; FeS2 formula unit is one Fe and two S atoms.",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "magnetism": "ISPIN=1",
+      "kpoints": ">= 6x6x6 (bulk)",
+      "smearing": "ISMEAR=0, SIGMA=0.05",
+      "precision": "ENCUT >= 450 eV"
+    },
+    "rationale": "The target energy is the Materials Project mp-226 PBE energy per atom multiplied by three atoms per FeS2 formula unit. The Materials Project reference uses Fe_pv and S PAW potentials. Only the total energy is scored; the lattice constant is left as a diagnostic because the accepted energy is tied to MP PAW/PBE conventions. Materials Project applies GGA+U mixing to selected transition-metal oxides and fluorides, so this sulfide case is treated as nonmagnetic PBE; the +/-0.5 eV/f.u. absolute tolerance covers PAW dataset, cutoff, and smearing differences while still flagging qualitatively wrong bulk calculations."
+  }
+}

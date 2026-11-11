@@ -1,0 +1,40 @@
+{
+  "case_id": "Diamond_band_gap",
+  "category": "band_gap",
+  "description": "Calculate the PBE band gap of bulk diamond in the cubic Fd-3m structure.",
+  "workspace": "band_gap/bench_Diamond_band_gap",
+  "user_prompt": "Calculate the band gap of bulk diamond (cubic, Fd-3m) and report its value in eV.",
+
+  "tags": {
+    "is_magnetic": false,
+    "needs_dft+u": false,
+    "modeling_difficulty": "M1",
+    "correction_difficulty": "P1",
+    "workflow_complexity": "W2"
+  },
+
+  "acceptance_criteria": {
+    "band_gap": {
+      "value": 4.10,
+      "unit": "eV",
+      "tolerance": 0.2,
+      "tolerance_type": "absolute"
+    }
+  },
+
+  "method": {
+    "references": [
+      "Tran & Blaha, Phys. Rev. Lett. 102, 226401 (2009)",
+      "Choudhary et al., npj Comput. Mater. 6, 173 (2020)"
+    ],
+    "modeling": "Use bulk diamond carbon in the cubic Fd-3m structure and report the indirect fundamental band gap from the valence-band maximum at Gamma to the conduction-band minimum near X.",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "magnetism": "ISPIN=1",
+      "kpoints": ">=12x12x12 (bulk)",
+      "smearing": "ISMEAR=0, SIGMA=0.05",
+      "precision": "ENCUT >= 500 eV, PREC=Accurate"
+    },
+    "rationale": "The scored value follows the PBE band gap reported by Tran and Blaha for diamond; JARVIS-DFT reports a comparable PBE-style gap near 4.1 eV as an independent consistency check. The experimental fundamental gap is about 5.48 eV, so this case intentionally scores the PBE underestimate rather than an experimental or hybrid-functional value. The absolute tolerance covers k-point resolution of the off-symmetry conduction-band minimum, plane-wave cutoff convergence, and small relaxed-geometry differences."
+  }
+}

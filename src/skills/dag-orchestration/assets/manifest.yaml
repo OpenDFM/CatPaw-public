@@ -1,0 +1,20 @@
+description: Canonical reaction and thermodynamic workflow templates for Supervisor
+  DAG decomposition.
+aliases:
+  OER: OER_AEM
+  OER-AEM: OER_AEM
+  AEM: OER_AEM
+  OXYGEN_EVOLUTION_REACTION: OER_AEM
+templates:
+- name: OER_AEM
+  file: OER_AEM.yaml
+  description: Traditional adsorbate evolution mechanism (AEM) for the oxygen evolution reaction (OER). Suitable for single-site catalysts and proceeds through four one-electron transfer steps.
+- name: SURFACE_ENERGY
+  file: SURFACE_ENERGY.yaml
+  description: Surface energy calculation. Surface formation energy (J/m^2) is computed from bulk energy and surface slab energy.
+- name: VACANCY_FORMATION
+  file: VACANCY_FORMATION.yaml
+  description: Vacancy formation energy calculation. Vacancy formation energy (eV) is computed from the energy difference between a perfect surface and a defective surface.
+- name: ADSORPTION_ENERGY
+  file: ADSORPTION_ENERGY.yaml
+  description: Adsorption energy calculation. Adsorption energy (eV) is computed from the energies of surface+adsorbate, clean surface, and gas-phase molecule.

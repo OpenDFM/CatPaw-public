@@ -1,0 +1,10 @@
+{
+  "case_id": "CeO2_111_Mndoped_band_gap",
+  "category": "band_gap",
+  "description": "Calculate the band gap of Mn-doped CeO2 (111) surface. Mn substitution at Ce site introduces Mn 3d mid-gap states and narrows the effective gap. PBE severely underestimates the gap.",
+  "workspace": "band_gap/bench_CeO2_111_Mndoped_band_gap",
+  "user_prompt": "Calculate the band gap of Mn-doped CeO2 (111) surface (cubic, Fm-3m), where one Ce atom at surface is substituted by Mn, and report its value in eV.",
+  "benchmark_result": {
+    "band_gap": null
+  }
+}

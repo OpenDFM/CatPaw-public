@@ -1,0 +1,47 @@
+VACANCY_FORMATION:
+  description: Vacancy formation workflow template for comparing a defective slab with its matched pristine reference
+    and the removed-species chemical potential.
+  methodology:
+    use_when:
+    - The user asks for vacancy formation energy or defect formation energy on a surface.
+    - A pristine surface and a vacancy-containing surface must be compared under a shared slab model.
+    decomposition_policy:
+    - Create bulk_opt when the surface needs a bulk parent.
+    - Create clean_slab_opt as the shared optimized basis, then one slab_opt node per requested adsorbed or modified
+      state.
+    - Keep molecular references independent. Do not create analysis or reporting nodes.
+    node_boundary_rules:
+    - Follow the shared preparation and input-binding rules in SKILL.md. Same-family states are independent nodes,
+      sharing one clean basis and parameter reference.
+    task_context_guidance:
+    - Record the removed element, site, and count when the user specifies them.
+    evidence_requirements:
+    - Total energy from the pristine-slab node.
+    - Total energy from the vacancy-containing node.
+    - Total energy from an O2 molecular reference when using an oxygen-vacancy convention.
+    - Bulk or user-specified chemical-potential reference when a metal atom is removed.
+  worked_example:
+    user_goal: Compute an oxygen-vacancy formation energy on a metal-oxide surface.
+    canonical_dag:
+    - node_id: bulk_opt
+      task_type: bulk_opt
+      purpose: Optimize the parent oxide bulk and provide any needed bulk reference.
+      depends_on: []
+    - node_id: o2_mol_opt
+      task_type: mol_opt
+      purpose: Optimize gas-phase O2 for the oxygen chemical potential.
+      depends_on: []
+    - node_id: clean_slab_opt
+      task_type: slab_opt
+      purpose: Optimize and validate the common clean surface for all requested members.
+      inputs:
+        structure: bulk_opt/final_structure
+    - node_id: vacancy_slab_opt
+      task_type: slab_opt
+      purpose: Optimize only the vacancy surface state.
+      inputs:
+        structure: clean_slab_opt/final_structure
+        modeling_reference: clean_slab_opt/modeling_summary
+        parameter_reference: clean_slab_opt/parameter_summary
+    notes:
+    - Illustrative chemistry only; instantiate the states and references required by the user.

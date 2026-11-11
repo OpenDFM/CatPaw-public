@@ -1,0 +1,10 @@
+{
+  "case_id": "Ni_111_CH4_dissociation",
+  "category": "reaction_profile",
+  "description": "Compute the electronic-energy reaction profile of sequential C-H scission of methane on the ferromagnetic Ni(111) FCC surface, using separately calculated *CHx and *H adsorption states to construct the intermediates and final *C + 4*H endpoint.",
+  "workspace": "reaction_profile/bench_Ni_111_CH4_dissociation",
+  "user_prompt": "Compute the sequential C-H scission reaction profile of methane on the Ni(111) FCC surface (space group Fm-3m). Starting from gas-phase CH4 and a clean slab, four C-H bonds are broken sequentially on a single carbon center, constructing the *CH3 + *H, *CH2 + 2*H, *CH + 3*H, and *C + 4*H intermediate energies from separately calculated adsorption states. This is a thermal catalysis case; use gas-phase CH4 as the carbon reference and calculate CHx (x = 0-3) and H adsorption states separately using consistent slab models and calculation settings, adding the H contribution according to the number of dissociated H atoms. Build the full four-step ladder as intermediate context. Report the cumulative electronic reaction energy delta_E_total of CH4(g) + 5* -> *C + 4*H (in eV).",
+  "benchmark_result": {
+    "delta_E_total": null
+  }
+}

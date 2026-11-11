@@ -1,0 +1,11 @@
+{
+  "case_id": "TiO2_bader",
+  "category": "bader_charge",
+  "description": "Perform Bader charge analysis on bulk rutile TiO2.",
+  "workspace": "bader_charge/bench_TiO2_bader",
+  "user_prompt": "Perform Bader charge analysis on bulk rutile TiO2 (rutile structure, P4_2/mnm). Report the Bader net charge (in electrons) for Ti atoms and O atoms.",
+  "benchmark_result": {
+    "Ti_bader_charge": null,
+    "O_bader_charge": null
+  }
+}

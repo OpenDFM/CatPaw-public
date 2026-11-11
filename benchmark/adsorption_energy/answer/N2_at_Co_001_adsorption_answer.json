@@ -1,0 +1,39 @@
+{
+  "case_id": "N2_at_Co_001_adsorption",
+  "category": "adsorption_energy",
+  "description": "Adsorption Energy of N2 on Co(001) Basal Surface (HCP P6_3/mmc, ferromagnetic, ISPIN=2, PBE)",
+  "workspace": "adsorption_energy/bench_N2_at_Co_001_adsorption",
+  "user_prompt": "Calculate the adsorption energy of N2 on the Co(001) HCP basal surface (P6_3/mmc). Report the final adsorption energy Eads (in eV), defined as Eads = E(slab+N2) - E(slab) - E(N2).",
+
+  "tags": {
+    "is_magnetic": true,
+    "needs_dft+u": false,
+    "modeling_difficulty": "M3",
+    "correction_difficulty": "P2",
+    "workflow_complexity": "W3"
+  },
+
+  "acceptance_criteria": {
+    "Eads": {
+      "value": -0.46,
+      "unit": "eV",
+      "tolerance": 0.2,
+      "tolerance_type": "absolute"
+    }
+  },
+
+  "method": {
+    "references": [
+      "Zhang, Chen, Liu, Su & Li, J. Phys. Chem. C 123, 10956-10966 (2019)"
+    ],
+    "modeling": "Ferromagnetic HCP Co(001) basal slab with at least 4 layers, vacuum >= 15 Angstrom, and a 3x3x1 or larger surface supercell; adsorb intact N2 end-on at an atop Co site. Reference Eads to the clean Co slab plus gas-phase singlet N2.",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "magnetism": "ISPIN=2 for Co slab and slab+N2; FM Co initialization",
+      "kpoints": ">= 4x4x1 (3x3x1 slab)",
+      "smearing": "ISMEAR=1, SIGMA=0.1 (slab)",
+      "precision": "PREC=Accurate, ENCUT >= 450 eV"
+    },
+    "rationale": "Value is the associative molecular chemisorption energy for N2 on HCP Co(001) from Zhang et al. 2019, written in this benchmark's negative Eads convention and referenced to gas-phase N2. The source used spin-polarized VASP/PAW/PBE for intact N2 adsorbed end-on at an atop Co site. The benchmark uses an absolute tolerance of +/-0.20 eV. Co magnetism and the gas/slab spin split are part of the trap: use ferromagnetic Co slabs, but a closed-shell singlet N2 gas reference."
+  }
+}

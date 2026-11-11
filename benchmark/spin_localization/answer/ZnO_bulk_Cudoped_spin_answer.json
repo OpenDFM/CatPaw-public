@@ -1,0 +1,40 @@
+{
+  "case_id": "ZnO_bulk_Cudoped_spin",
+  "category": "spin_localization",
+  "description": "Analyze spin density of Cu-doped bulk ZnO.",
+  "workspace": "spin_localization/bench_ZnO_bulk_Cudoped_spin",
+  "user_prompt": "Perform spin density analysis on a relatively large supercell of bulk ZnO (wurtzite structure, P6_3mc), where one Zn atom is substituted by Cu. Determine whether the system has unpaired electrons. If unpaired electrons are present, identify the atom carrying the majority of the spin density by its element and report its magnetic moment; otherwise report that there is no spin-carrying element and report the maximum residual site magnetic moment.",
+  "tags": {
+    "is_magnetic": true,
+    "needs_dft+u": false,
+    "modeling_difficulty": "M3",
+    "correction_difficulty": "P2",
+    "workflow_complexity": "W2"
+  },
+  "acceptance_criteria": {
+    "element": {
+      "value": "Cu",
+      "tolerance_type": "exact"
+    },
+    "magmom": {
+      "value": 0.57,
+      "unit": "uB",
+      "tolerance": 0.3,
+      "tolerance_type": "absolute"
+    }
+  },
+  "method": {
+    "references": [
+      "Ferhat, Zaoui & Ahuja, Appl. Phys. Lett. 94, 142502 (2009)"
+    ],
+    "modeling": "A relatively large periodic supercell of bulk wurtzite ZnO with one Zn substituted by Cu. Cu adopts the Cu2+ 3d9 configuration (one unpaired electron, S=1/2), so Cu is the spin-carrying element; the d-hole moment is partly delocalised onto neighbouring O.",
+    "key_parameters": {
+      "functional": "PBE(PAW)/GGA",
+      "magnetism": "ISPIN=2",
+      "kpoints": "3x3x2 (bulk supercell)",
+      "smearing": "ISMEAR=0, SIGMA=0.05",
+      "precision": "PREC=Accurate, ENCUT >= 500 eV, LORBIT=11"
+    },
+    "rationale": "Value from Ferhat et al. 2009: their WIEN2k full-potential LAPW GGA calculation gives a local moment of 0.57 uB on substitutional Cu in bulk ZnO at 6.25% Cu concentration. Cu enters as Cu2+ (3d9, S=1/2, one unpaired electron), so Cu is the majority spin carrier; the moment sits well below the spin-only single-hole value because Cu 3d / O 2p hybridisation spreads spin density onto neighbouring O."
+  }
+}

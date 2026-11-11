@@ -1,0 +1,41 @@
+{
+  "case_id": "H_at_Ni_111_adsorption",
+  "category": "adsorption_energy",
+  "description": "Calculate the adsorption energy of atomic H on the Ni(111) surface.",
+  "workspace": "adsorption_energy/bench_H_at_Ni_111_adsorption",
+  "user_prompt": "Calculate the adsorption energy of atomic hydrogen H on the Ni(111) surface (FCC, Fm-3m). Report the final adsorption energy Eads (in eV), defined as Eads = E(slab+H) - E(slab) - E(H).",
+
+  "tags": {
+    "is_magnetic": true,
+    "needs_dft+u": false,
+    "modeling_difficulty": "M3",
+    "correction_difficulty": "P2",
+    "workflow_complexity": "W3"
+  },
+
+  "acceptance_criteria": {
+    "Eads": {
+      "value": -2.89,
+      "unit": "eV",
+      "tolerance": 0.3,
+      "tolerance_type": "absolute"
+    }
+  },
+
+  "method": {
+    "references": [
+      "Greeley & Mavrikakis, Surf. Sci. 540, 215 (2003)",
+      "Greeley & Mavrikakis, J. Phys. Chem. B 109, 3460 (2005)",
+      "Ferrin, Kandoi, Nilekar & Mavrikakis, Surf. Sci. 606, 679 (2012)"
+    ],
+    "modeling": "Ferromagnetic Ni(111) slab with at least 4 layers, vacuum >= 15 Angstrom, and a 3x3x1 or larger surface supercell; adsorb atomic H at the fcc hollow site. Reference the adsorption energy to the clean Ni(111) slab plus an isolated gas-phase H atom.",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "magnetism": "ISPIN=2",
+      "kpoints": ">= 4x4x1 (3x3x1 slab)",
+      "smearing": "ISMEAR=1, SIGMA=0.1 (slab)",
+      "precision": "PREC=Accurate, ENCUT >= 450 eV"
+    },
+    "rationale": "Value is the electronic binding energy for fcc-hollow surface H on Ni(111) at 0.25 ML in Greeley & Mavrikakis 2003, written in the negative Eads convention used by this benchmark. The +/-0.30 eV absolute tolerance covers coverage, k-mesh, slab-thickness, magnetic initialization, and atomic-H reference sensitivity."
+  }
+}

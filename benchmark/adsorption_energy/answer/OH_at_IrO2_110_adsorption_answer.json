@@ -1,0 +1,41 @@
+{
+  "case_id": "OH_at_IrO2_110_adsorption",
+  "category": "adsorption_energy",
+  "description": "Adsorption Energy of OH on IrO2(110) Surface (rutile P4_2/mnm, spin-polarized, CHE/water reference, Ir 5d +U optional/small)",
+  "workspace": "adsorption_energy/bench_OH_at_IrO2_110_adsorption",
+  "user_prompt": "Calculate the adsorption energy of OH on the IrO2(110) rutile surface (P4_2/mnm) at the coordinatively unsaturated Ir site. Report the final adsorption energy Eads (in eV), defined as Eads = E(slab+OH) - E(slab) - (E_H2O - 1/2 E_H2).",
+
+  "tags": {
+    "is_magnetic": true,
+    "needs_dft+u": true,
+    "modeling_difficulty": "M3",
+    "correction_difficulty": "P3",
+    "workflow_complexity": "W3"
+  },
+
+  "acceptance_criteria": {
+    "Eads": {
+      "value": -0.23,
+      "unit": "eV",
+      "tolerance": 0.20,
+      "tolerance_type": "absolute"
+    }
+  },
+
+  "method": {
+    "references": [
+      "Man, Su, Calle-Vallejo, Hansen, Martinez, Inoglu, Kitchin, Jaramillo, Norskov & Rossmeisl, ChemCatChem 3, 1159 (2011)",
+      "Ping, Galli & Goddard, J. Phys. Chem. C 119, 11570 (2015)"
+    ],
+    "modeling": "Rutile IrO2(110) slab with at least 4 layers, vacuum >= 15 Angstrom, and a 1x2 or larger surface cell; adsorb OH on a coordinatively-unsaturated Ir site. Reference Eads to the clean slab plus E_H2O - 1/2 E_H2, not to a gas-phase OH radical.",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "magnetism": "ISPIN=2",
+      "dft+u": "Ueff(Ir 5d) = 0-2 eV",
+      "kpoints": ">= 4x4x1 (1x2 slab)",
+      "smearing": "ISMEAR=0, SIGMA=0.05",
+      "precision": "PREC=Accurate, ENCUT >= 520 eV"
+    },
+    "rationale": "Value follows Man et al.'s low-coverage electronic DE_HO* for IrO2(110) in the CHE water/H2 reference convention. The target state is OH on a CUS Ir site; using a free OH radical reference gives a different quantity. The +/-0.20 eV absolute tolerance covers low/high coverage spread, RPBE/PBE differences, small Ir 5d +U choices, and OH orientation."
+  }
+}

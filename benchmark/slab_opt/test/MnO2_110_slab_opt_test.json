@@ -1,0 +1,10 @@
+{
+  "case_id": "MnO2_110_slab_opt",
+  "category": "slab_opt",
+  "description": "Surface Optimization of the (110) Surface of MnO2 (Tetragonal, P4_2/mnm) and Surface Energy Calculation",
+  "workspace": "slab_opt/bench_MnO2_110_slab_opt",
+  "user_prompt": "Optimize the (110) surface of beta-MnO2 (rutile structure, P4_2/mnm) and calculate the surface energy. Report the final surface energy in J/m^2.",
+  "benchmark_result": {
+    "surface_energy": null
+  }
+}

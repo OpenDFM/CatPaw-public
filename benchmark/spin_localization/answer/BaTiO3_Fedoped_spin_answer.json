@@ -1,0 +1,42 @@
+{
+  "case_id": "BaTiO3_Fedoped_spin",
+  "category": "spin_localization",
+  "description": "Analyze spin density of Fe-doped BaTiO3 bulk, where one Ti atom in a supercell is substituted by Fe.",
+  "workspace": "spin_localization/bench_BaTiO3_Fedoped_spin",
+  "user_prompt": "Perform spin density analysis on Fe-doped BaTiO3 (cubic perovskite structure, Pm-3m) bulk, where one Ti atom in a supercell is substituted by Fe. Determine whether the system has unpaired electrons. If unpaired electrons are present, identify the atom carrying the majority of the spin density by its element and report its magnetic moment; otherwise report that there is no spin-carrying element and report the maximum residual site magnetic moment.",
+  "tags": {
+    "is_magnetic": true,
+    "needs_dft+u": true,
+    "modeling_difficulty": "M3",
+    "correction_difficulty": "P3",
+    "workflow_complexity": "W2"
+  },
+  "acceptance_criteria": {
+    "element": {
+      "value": "Fe",
+      "tolerance_type": "exact"
+    },
+    "magmom": {
+      "value": 3.05,
+      "unit": "uB",
+      "tolerance": 0.6,
+      "tolerance_type": "absolute"
+    }
+  },
+  "method": {
+    "references": [
+      "Xu, Yin, Lin, Xia, Wan, Yin, Bai, Du & Liu, Phys. Rev. B 79, 134109 (2009)",
+      "Li, Xie & Zhang, arXiv:2603.22571 (2026)"
+    ],
+    "modeling": "Cubic perovskite BaTiO3 (Pm-3m); at least a 2x2x2 supercell (40 atoms) with one Ti replaced by Fe. The dopant adopts high-spin Fe3+ (3d5, S=5/2); initialize MAGMOM = 5 on the Fe site and 0 elsewhere.",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "magnetism": "ISPIN=2; MAGMOM=5 on Fe, 0 on other sites",
+      "dft+u": "Ueff(Fe 3d) = 4.0 eV (Dudarev)",
+      "kpoints": ">= 4x4x4 (supercell)",
+      "smearing": "ISMEAR=0, SIGMA=0.05",
+      "precision": "PREC=Accurate, ENCUT >= 500 eV, LORBIT=11"
+    },
+    "rationale": "Value from Xu et al. 2009: their LSDA+U (FLL, U=4.5 eV, J=0.5 eV on Fe) calculation of Fe substituting Ti in BaTiO3 gives a local moment of 3.05 uB per Fe. Fe enters as high-spin Fe3+ (3d5, S=5/2), confirmed by XANES/EPR and corroborated by Li et al. 2026 (VASP PBE+U, Dudarev Ueff=4.0 eV on Fe 3d). The spin density localizes on Fe."
+  }
+}

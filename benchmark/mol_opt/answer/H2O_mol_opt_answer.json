@@ -1,0 +1,36 @@
+{
+  "case_id": "H2O_mol_opt",
+  "category": "mol_opt",
+  "description": "Optimize the geometry of a water molecule.",
+  "workspace": "mol_opt/bench_H2O_mol_opt",
+  "user_prompt": "Optimize the geometry of a water molecule, then report the final energy and O-H bond length.",
+  "tags": {
+    "is_magnetic": false,
+    "needs_dft+u": false,
+    "modeling_difficulty": "M1",
+    "correction_difficulty": "P1",
+    "workflow_complexity": "W1"
+  },
+  "acceptance_criteria": {
+    "bond_length": {
+      "value": 0.972,
+      "unit": "angstrom",
+      "tolerance": 0.02,
+      "tolerance_type": "absolute"
+    }
+  },
+  "method": {
+    "references": [
+      "Han, AIP Advances 12, 125009 (2022)"
+    ],
+    "modeling": "Gas-phase H2O molecule in a cubic box with at least 12 Angstrom vacuum separation.",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "magnetism": "ISPIN=1",
+      "kpoints": "Gamma-only",
+      "smearing": "ISMEAR=0, SIGMA=0.05",
+      "precision": "ENCUT >= 450 eV"
+    },
+    "rationale": "The target O-H bond length is the PAW/PBE value reported by Han (2022) for VASP molecular geometries. The reference uses a 600 eV cutoff and a 23 x 22 x 21 Angstrom molecular cell. Only the O-H bond length is scored because the absolute molecular total energy is sensitive to PAW dataset and cell conventions. The +/-0.02 Angstrom tolerance covers ordinary PAW/PBE setup and relaxation-threshold differences."
+  }
+}

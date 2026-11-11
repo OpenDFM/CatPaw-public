@@ -1,0 +1,37 @@
+{
+  "case_id": "MgO_100_slab_opt",
+  "category": "slab_opt",
+  "description": "Surface Optimization of the (100) Surface of MgO (Cubic, Fm-3m) and Surface Energy Calculation",
+  "workspace": "slab_opt/bench_MgO_100_slab_opt",
+  "user_prompt": "Optimize the (100) surface of magnesium oxide MgO (cubic, Fm-3m) and calculate the surface energy. Report the final surface energy in J/m^2.",
+  "tags": {
+    "is_magnetic": false,
+    "needs_dft+u": false,
+    "modeling_difficulty": "M2",
+    "correction_difficulty": "P1",
+    "workflow_complexity": "W2"
+  },
+  "acceptance_criteria": {
+    "surface_energy": {
+      "value": 1.02,
+      "unit": "J/m^2",
+      "tolerance": 0.2,
+      "tolerance_type": "absolute"
+    }
+  },
+
+  "method": {
+    "references": [
+      "Bajdich, Norskov & Vojvodic, Phys. Rev. B 91, 155401 (2015)",
+      "Broqvist, Gronbeck & Panas, Surf. Sci. 554, 262 (2004)"
+    ],
+    "modeling": "rock-salt MgO (Fm-3m) non-polar (100) surface; symmetric slab (>= 4-5 MgO layers, converged), vacuum >= 15 A, surface relaxed.",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "magnetism": "ISPIN=1",
+      "kpoints": ">= 4x4x1 (slab)",
+      "smearing": "ISMEAR=0, SIGMA=0.05"
+    },
+    "rationale": "Value 1.02 J/m^2 is the PBE MgO(100) surface energy from Broqvist et al. 2004 (ultrasoft pseudopotentials rather than the benchmark PAW). PBE underestimates the experimental ~1.04 J/m^2 surface energy, so the case is graded against the PBE value, not experiment. MgO(100) is the non-polar Tasker type-1 facet. Tolerance +/-0.20 J/m^2 (absolute) covers inter-setup PBE scatter (slab thickness, k-mesh, the lattice constant used for the cell area); larger deviations usually signal an unconverged slab."
+  }
+}

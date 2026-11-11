@@ -1,0 +1,57 @@
+{
+  "node_dir": "/abs/path/to/node",
+  "status": "ready",
+  "calculations": [
+    {
+      "subdir": "subdir_name",
+      "working_dir": "/abs/path/to/node/subdir_name",
+      "task_type": "slab_opt",
+      "input_files": {
+        "poscar": "/abs/path/to/node/subdir_name/POSCAR",
+        "incar": "/abs/path/to/node/subdir_name/INCAR",
+        "kpoints": "/abs/path/to/node/subdir_name/KPOINTS",
+        "potcar": "/abs/path/to/node/subdir_name/POTCAR"
+      },
+      "incar_params": {
+        "ENCUT": 520,
+        "ISIF": 2,
+        "KPAR": 1,
+        "NCORE": 8
+      },
+      "potcar_mapping": {
+        "Fe": "Fe",
+        "O": "O"
+      },
+      "kpoints_custom_grid": null,
+      "resource_profile": "large",
+      "submit_params": {
+        "job_name": "subdir_name",
+        "total_cpus": 48,
+        "num_dcus": 1,
+        "omp_threads": 1
+      },
+      "inherited_files": [],
+      "analysis_contract": {
+        "calc_purpose": "relax",
+        "scientific_object": "surface intermediate",
+        "state_label": "OH*",
+        "reaction_family": "OER",
+        "reaction_group": "oer_main_path",
+        "state_order": 1,
+        "comparable": true,
+        "is_final_deliverable": true,
+        "expected_outputs": [
+          "CONTCAR",
+          "OUTCAR",
+          "OSZICAR"
+        ],
+        "suggested_analyses": [
+          "summary",
+          "diagnosis"
+        ],
+        "param_worker_notes_for_analyzer": "Focus on convergence, final energy, and structure health."
+      }
+    }
+  ],
+  "notes": []
+}

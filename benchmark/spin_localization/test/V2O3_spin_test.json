@@ -1,0 +1,11 @@
+{
+  "case_id": "V2O3_spin",
+  "category": "spin_localization",
+  "description": "Analyze spin density of bulk V2O3 (corundum, R-3c).",
+  "workspace": "spin_localization/bench_V2O3_spin",
+  "user_prompt": "Perform spin density analysis on bulk V2O3 (corundum structure, R-3c). Determine whether the system has unpaired electrons. If unpaired electrons are present, identify the atom carrying the majority of the spin density by its element and report its magnetic moment; otherwise report that there is no spin-carrying element and report the maximum residual site magnetic moment.",
+  "benchmark_result": {
+    "element": null,
+    "magmom": null
+  }
+}

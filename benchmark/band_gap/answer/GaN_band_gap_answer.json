@@ -1,0 +1,42 @@
+{
+  "case_id": "GaN_band_gap",
+  "category": "band_gap",
+  "description": "Calculate the PBE band gap of bulk wurtzite GaN.",
+  "workspace": "band_gap/bench_GaN_band_gap",
+  "user_prompt": "Calculate the band gap of bulk GaN (wurtzite structure, P6_3mc) and report its value in eV.",
+
+  "tags": {
+    "is_magnetic": false,
+    "needs_dft+u": false,
+    "modeling_difficulty": "M1",
+    "correction_difficulty": "P2",
+    "workflow_complexity": "W2"
+  },
+
+  "acceptance_criteria": {
+    "band_gap": {
+      "value": 1.71,
+      "unit": "eV",
+      "tolerance": 0.2,
+      "tolerance_type": "absolute"
+    }
+  },
+
+  "method": {
+    "references": [
+      "Onen, Kecik, Durgun & Ciraci, Phys. Rev. B 93, 085431 (2016)",
+      "Kecik et al., Appl. Phys. Rev. 5, 011105 (2018)",
+      "Wright & Nelson, Phys. Rev. B 50, 2159-2165 (1994)"
+    ],
+    "modeling": "Use bulk wurtzite GaN in the P6_3mc structure and report the direct Gamma-point fundamental band gap.",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "magnetism": "ISPIN=1",
+      "potentials": "Ga 3d treated as valence (e.g. Ga_d)",
+      "kpoints": ">=8x8x6 (bulk)",
+      "smearing": "ISMEAR=0, SIGMA=0.05",
+      "precision": "ENCUT >= 500 eV, PREC=Accurate"
+    },
+    "rationale": "The scored value is the 1.71 eV PBE direct gap tabulated for 3D wurtzite GaN by Kecik et al. from the Onen et al. calculations. This replaces the older Tran-Blaha citation, whose tabulated GaN entry is zinc-blende/LDA rather than wurtzite/PBE. Wright and Nelson support the explicit Ga 3d-valence treatment, which lowers GaN gaps relative to frozen-3d pseudopotential calculations; the wider absolute tolerance covers this POTCAR sensitivity and ordinary k-point/geometry convergence."
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "case_id": "TiO2_110_Ovac_slab_opt",
+  "category": "slab_opt",
+  "description": "Surface Optimization of the (110) Surface of Rutile TiO2 (Tetragonal, P4_2/mnm) and Bridging Oxygen Vacancy Formation Energy Calculation",
+  "workspace": "slab_opt/bench_TiO2_110_Ovac_slab_opt",
+  "user_prompt": "Compute the formation energy of a bridging oxygen vacancy on the rutile TiO2(110) surface (P4_2/mnm). Optimize both the clean slab and the slab with one bridging O removed, then compute E_vf = E(defective) - E(clean) + 1/2 * E(O2). Report E_vf in eV.",
+  "benchmark_result": {
+    "vacancy_formation_energy": null
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "case_id": "CeO2_111_Ovac_slab_opt",
+  "category": "slab_opt",
+  "description": "Surface Oxygen Vacancy Formation Energy on the (111) Surface of CeO2 (Fluorite, Fm-3m)",
+  "workspace": "slab_opt/bench_CeO2_111_Ovac_slab_opt",
+  "user_prompt": "Compute the formation energy of a surface oxygen vacancy on the CeO2(111) surface (fluorite structure, Fm-3m). Optimize both the clean slab and the slab with one surface O removed, then compute E_vf = E(defective) - E(clean) + 1/2 * E(O2). Report E_vf in eV.",
+  "tags": {
+    "is_magnetic": true,
+    "needs_dft+u": true,
+    "modeling_difficulty": "M3",
+    "correction_difficulty": "P3",
+    "workflow_complexity": "W3"
+  },
+  "acceptance_criteria": {
+    "vacancy_formation_energy": {
+      "value": 2.3,
+      "unit": "eV",
+      "tolerance": 0.3,
+      "tolerance_type": "absolute"
+    }
+  },
+  "method": {
+    "references": [
+      "Ganduglia-Pirovano, Da Silva & Sauer, Phys. Rev. Lett. 102, 026101 (2009)",
+      "Murgida & Ganduglia-Pirovano, Phys. Rev. Lett. 110, 246101 (2013)",
+      "Han, Zhang, Liu, Ganduglia-Pirovano & Gao, Front. Chem. 7, 436 (2019)"
+    ],
+    "modeling": "Fluorite CeO2(111), non-polar O-Ce-O trilayer termination; slab of >= 3 trilayers (bottom trilayer fixed), vacuum >= 15 A, >= 2x2x1 surface cell. Remove one outermost (surface) O, relax both clean and defective slabs.",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "magnetism": "ISPIN=2",
+      "dft+u": "U_eff(Ce 4f)=5.0 eV",
+      "kpoints": ">= 2x2x1 (2x2x1 slab)",
+      "smearing": "ISMEAR=0, SIGMA=0.05",
+      "precision": "ENCUT >= 450 eV"
+    },
+    "rationale": "Value 2.3 eV is the surface O-vacancy formation energy on CeO2(111) at PBE+U from Han et al. 2019 (U_eff=5.0 eV). CRITICAL: removing one O leaves two electrons that MUST localize onto two Ce 4f states (Ce^4+ -> Ce^3+); plain PBE without +U delocalizes them and gives a qualitatively wrong result. The +/-0.30 eV tolerance spans the U-value dependence, the Ce^3+ localization pattern, supercell/slab-thickness differences, and the ~0.4 eV PBE O2 overbinding error. Subsurface vacancies are ~0.2-0.5 eV more stable than surface ones, so the prompt pins the SURFACE vacancy explicitly. ISPIN=2 is required so the reduced slab can localize the Ce^3+ polarons."
+  }
+}

@@ -1,0 +1,47 @@
+ADSORPTION_ENERGY:
+  description: Adsorption energy workflow template for comparing an adsorbed surface state with a clean surface
+    and a gas-phase adsorbate reference.
+  methodology:
+    use_when:
+    - The user asks for adsorption energy, binding energy, or adsorbate stability on a surface.
+    - The energy expression directly compares a clean slab, an adsorbate-covered slab, and a gas-phase molecule.
+    decomposition_policy:
+    - Create bulk_opt when the surface needs a bulk parent.
+    - Create clean_slab_opt as the shared optimized basis, then one slab_opt node per requested adsorbed or modified
+      state.
+    - Keep molecular references independent. Do not create analysis or reporting nodes.
+    node_boundary_rules:
+    - Follow the shared preparation and input-binding rules in SKILL.md. Same-family states are independent nodes,
+      sharing one clean basis and parameter reference.
+    task_context_guidance:
+    - Record the requested adsorbate identity and adsorption site only when the user specifies them.
+    evidence_requirements:
+    - Total energy from the clean-slab node.
+    - Total energy from the adsorbate-covered node.
+    - Total energy from the independent molecular reference node.
+    - Geometry sanity evidence that the adsorbate remains on the surface and the slab did not collapse.
+  worked_example:
+    user_goal: Compute the adsorption energy of CO on Pd.
+    canonical_dag:
+    - node_id: bulk_opt
+      task_type: bulk_opt
+      purpose: Optimize the parent bulk used to build the surface.
+      depends_on: []
+    - node_id: co_mol_opt
+      task_type: mol_opt
+      purpose: Optimize gas-phase CO as the molecular reference.
+      depends_on: []
+    - node_id: clean_slab_opt
+      task_type: slab_opt
+      purpose: Optimize and validate the common clean surface for all requested members.
+      inputs:
+        structure: bulk_opt/final_structure
+    - node_id: co_slab_opt
+      task_type: slab_opt
+      purpose: Optimize only the co surface state.
+      inputs:
+        structure: clean_slab_opt/final_structure
+        modeling_reference: clean_slab_opt/modeling_summary
+        parameter_reference: clean_slab_opt/parameter_summary
+    notes:
+    - Illustrative chemistry only; instantiate the states and references required by the user.

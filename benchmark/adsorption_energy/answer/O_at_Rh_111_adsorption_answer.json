@@ -1,0 +1,40 @@
+{
+  "case_id": "O_at_Rh_111_adsorption",
+  "category": "adsorption_energy",
+  "description": "Adsorption Energy of Atomic O at Rh(111) FCC Hollow Site (FCC Fm-3m, ISPIN=2 negative control, PBE)",
+  "workspace": "adsorption_energy/bench_O_at_Rh_111_adsorption",
+  "user_prompt": "Calculate the adsorption energy of atomic oxygen O on the Rh(111) surface (Fm-3m). Report the final adsorption energy Eads (in eV), defined as Eads = E(slab+O) - E(slab) - E(O).",
+
+  "tags": {
+    "is_magnetic": true,
+    "needs_dft+u": false,
+    "modeling_difficulty": "M3",
+    "correction_difficulty": "P2",
+    "workflow_complexity": "W3"
+  },
+
+  "acceptance_criteria": {
+    "Eads": {
+      "value": -5.22,
+      "unit": "eV",
+      "tolerance": 0.30,
+      "tolerance_type": "absolute"
+    }
+  },
+
+  "method": {
+    "references": [
+      "Ganduglia-Pirovano & Scheffler, Phys. Rev. B 59, 15533 (1999)"
+    ],
+    "modeling": "Rh(111) slab with at least 4 layers, vacuum >= 15 Angstrom, and a 2x2x1 or larger surface supercell; adsorb atomic O at the fcc hollow site. Reference Eads to the clean Rh(111) slab plus a gas-phase triplet O atom.",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "magnetism": "ISPIN=1 for Rh slab and slab+O; ISPIN=2, MAGMOM=2, NUPDOWN=2 for O gas",
+      "dft+u": "none",
+      "kpoints": ">= 5x5x1 (2x2x1 slab)",
+      "smearing": "ISMEAR=1, SIGMA=0.1 (slab); ISMEAR=0, SIGMA=0.01 (O gas)",
+      "precision": "PREC=Accurate, ENCUT >= 450 eV"
+    },
+    "rationale": "Value is the 0.25 ML fcc-hollow O/Rh(111) atomic-O binding energy from Ganduglia-Pirovano and Scheffler, written as negative Eads for this benchmark. This replaces the older indirect 1/2 O2-based conversion and avoids carrying forward the unsupported Loffreda citation. The +/-0.30 eV absolute tolerance covers coverage, PAW/all-electron and GGA/PBE differences, and the triplet atomic-O reference sensitivity."
+  }
+}

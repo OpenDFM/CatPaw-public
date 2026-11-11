@@ -1,0 +1,26 @@
+scf:
+  description: Used for high-precision self-consistent field (SCF) electronic-step calculations under fixed atomic coordinates and cell shape, to obtain accurate total energy, charge density (CHGCAR), and wavefunction (WAVECAR).
+  pre_requisite_checks:
+  - Read inputs.json for the named upstream final structure and required charge/wavefunction artifacts. ModelingWorker prepares POSCAR from the optimized structure; ParamWorker copies only the electronic artifacts required by this stage into its calculation directory.
+  incar_rules:
+    mandatory:
+      IBRION: -1
+      NSW: 0
+      EDIFF: 1e-6
+      LCHARG: .TRUE.
+      LWAVE: .TRUE.
+      LAECHG: .TRUE.
+      LORBIT: 11
+      ALGO: Normal
+      NELM: 500
+    dynamic_logic:
+    - '[Inheritance principle]: ENCUT and K-point settings for static calculations should remain fully consistent with the preceding structural optimization task.'
+    - '[FFT densification]: read NGX/NGY/NGZ from the previous optimization OUTCAR (search section ''dimension of arrays''), then pass NGXF=2*NGX, NGYF=2*NGY, NGZF=2*NGZ via custom_params. This ensures charge-density output precision is sufficient for post-processing such as Bader analysis.'
+    - '[LORBIT requirement]: LORBIT=11 is mandatory for any task involving per-atom magnetic moment analysis (e.g. spin_localization, d_band_center). Without LORBIT>=10, VASP will not write site-projected magnetization data for downstream result extraction. If the upstream task is spin-polarized (ISPIN=2), always keep LORBIT=11.'
+  kpoints_rules:
+    strategy: High-density Gamma-centered
+    instructions: 'K-point density for static calculation should stay consistent with preceding structural optimization. CreateKpoints uses built-in empirical rule k = 20 / cell length with the same auto-generation logic as optimization stage, so manual custom_grid is usually unnecessary. Note: K-point count directly affects compute cost; do not manually densify without physical justification.'
+  audit_criteria:
+  - INCAR must use IBRION=-1 and NSW=0.
+  - INCAR must enable LCHARG, LWAVE, LAECHG, and LORBIT=11 when SCF outputs are needed downstream.
+  - Required inherited structure inputs must be non-empty before submission.

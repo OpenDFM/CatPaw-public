@@ -1,0 +1,11 @@
+{
+  "case_id": "MnO2_110_spin",
+  "category": "spin_localization",
+  "description": "Analyze spin density of the clean rutile MnO2 (110) surface.",
+  "workspace": "spin_localization/bench_MnO2_110_spin",
+  "user_prompt": "Perform spin density analysis on the clean MnO2 (110) surface (rutile structure, P4_2/mnm). Determine whether the system has unpaired electrons. If unpaired electrons are present, identify the element carrying the spin density and report the magnetic moment of the outermost (undercoordinated, five-fold) surface-layer metal atom; otherwise report that there is no spin-carrying element and report the maximum residual site magnetic moment.",
+  "benchmark_result": {
+    "element": null,
+    "magmom": null
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "case_id": "Fe2O3_bader",
+  "category": "bader_charge",
+  "description": "Perform Bader charge analysis on bulk alpha-Fe2O3 (hematite).",
+  "workspace": "bader_charge/bench_Fe2O3_bader",
+  "user_prompt": "Perform Bader charge analysis on bulk alpha-Fe2O3 (hematite structure, R-3c). Report the Bader net charge (in electrons) for Fe atoms and O atoms.",
+  "benchmark_result": {
+    "Fe_bader_charge": null,
+    "O_bader_charge": null
+  }
+}

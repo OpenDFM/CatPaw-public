@@ -1,0 +1,10 @@
+{
+  "case_id": "GaN_bulk_opt",
+  "category": "bulk_opt",
+  "description": "Optimize the hexagonal P6_3mc bulk structure of gallium nitride.",
+  "workspace": "bulk_opt/bench_GaN_bulk_opt",
+  "user_prompt": "Optimize the hexagonal (P6_3mc) bulk structure of gallium nitride (GaN). Report the final converged energy and lattice constants.",
+  "benchmark_result": {
+    "energy_per_formula_unit": null
+  }
+}

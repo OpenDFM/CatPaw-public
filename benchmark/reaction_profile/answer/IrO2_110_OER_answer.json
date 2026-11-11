@@ -1,0 +1,42 @@
+{
+  "case_id": "IrO2_110_OER",
+  "category": "reaction_profile",
+  "description": "Compute the potential-determining free-energy step for OER on IrO2(110) under the Computational Hydrogen Electrode model.",
+  "workspace": "reaction_profile/bench_IrO2_110_OER",
+  "user_prompt": "Compute the oxygen evolution reaction (OER) reaction profile on the IrO2(110) rutile surface (space group P4_2/mnm) using the adsorbate evolution mechanism (AEM) under the Computational Hydrogen Electrode (CHE) model at U = 0 V vs RHE. Build the CHE free-energy ladder for the four proton-coupled electron-transfer steps (* -> *OH -> *O -> *OOH -> O2) and identify the potential-determining step. Report the free energy of the potential-determining PCET step, delta_G_rds = max(delta_G_1..4) (in eV).",
+
+  "tags": {
+    "is_magnetic": true,
+    "needs_dft+u": true,
+    "modeling_difficulty": "M3",
+    "correction_difficulty": "P3",
+    "workflow_complexity": "W3"
+  },
+
+  "acceptance_criteria": {
+    "delta_G_rds": {
+      "value": 1.79,
+      "unit": "eV",
+      "tolerance": 0.3,
+      "tolerance_type": "absolute"
+    }
+  },
+
+  "method": {
+    "references": [
+      "Rossmeisl, Qu, Zhu, Kroes & Norskov, J. Electroanal. Chem. 607, 83-89 (2007)",
+      "Ping, Galli & Goddard, J. Phys. Chem. C 119, 11570 (2015)"
+    ],
+    "modeling": "Use a rutile IrO2(110) slab with 4-5 trilayers, vacuum >= 18 Angstrom, and cus-site cycling through *OH, *O, and *OOH intermediates. Build the CHE free-energy ladder at U = 0 V vs RHE for * -> *OH -> *O -> *OOH -> O2, and identify delta_G_rds from the four PCET steps.",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "magnetism": "ISPIN=2",
+      "dft+u": "Ueff(Ir 5d)=2.0 eV",
+      "kpoints": ">= 4x4x1",
+      "smearing": "ISMEAR=0, SIGMA=0.05",
+      "precision": "PREC=Accurate, ENCUT >= 520 eV",
+      "free_energy_corrections": "CHE with ZPE and entropy corrections at 298 K"
+    },
+    "rationale": "Rossmeisl et al. report a theoretical overpotential of 0.56 V for OER on oxygen-covered IrO2(110), with OOH* formation as the potential-determining step, corresponding to delta_G_rds = 1.79 eV at U = 0 V. The corresponding overpotential is the derived quantity eta = delta_G_rds/e - 1.23 V = 0.56 V, while the benchmark scores only delta_G_rds. The +/-0.3 eV absolute tolerance covers HOO* correction choices, low- versus high-coverage IrO2(110) values, and functional/U sensitivity."
+  }
+}

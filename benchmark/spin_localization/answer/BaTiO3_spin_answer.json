@@ -1,0 +1,39 @@
+{
+  "case_id": "BaTiO3_spin",
+  "category": "spin_localization",
+  "description": "Analyze spin density of bulk BaTiO3 (cubic perovskite). This is a negative control for bulk crystals.",
+  "workspace": "spin_localization/bench_BaTiO3_spin",
+  "user_prompt": "Perform spin density analysis on bulk BaTiO3 (cubic perovskite structure, Pm-3m). Determine whether the system has unpaired electrons and report the total magnetic moment of the cell.",
+
+  "tags": {
+    "is_magnetic": false,
+    "needs_dft+u": false,
+    "modeling_difficulty": "M1",
+    "correction_difficulty": "P1",
+    "workflow_complexity": "W2"
+  },
+
+  "acceptance_criteria": {
+    "total_magmom": {
+      "value": 0.0,
+      "unit": "uB",
+      "tolerance": 0.10,
+      "tolerance_type": "absolute"
+    }
+  },
+
+  "method": {
+    "references": [
+      "Cohen, Nature 358, 136 (1992)"
+    ],
+    "modeling": "Cubic perovskite BaTiO3 (Pm-3m) primitive cell.",
+    "key_parameters": {
+      "functional": "PBE(PAW)",
+      "magnetism": "ISPIN=2",
+      "kpoints": ">= 6x6x6 (bulk)",
+      "smearing": "ISMEAR=0, SIGMA=0.05",
+      "precision": "PREC=Accurate"
+    },
+    "rationale": "Negative control: cubic BaTiO3 is a closed-shell band insulator (Ba2+, Ti4+ 3d0, O2- 2p6) with no unpaired electrons, so the total moment and every site moment are zero; Cohen 1992 establishes the Ti d0 closed-shell electronic structure. ISPIN=2 must be enabled so the agent verifies rather than assumes the non-magnetic ground state, and must report 'no unpaired electrons'. Tolerance +/-0.10 uB absorbs the VASP magnetisation-integration noise floor."
+  }
+}
